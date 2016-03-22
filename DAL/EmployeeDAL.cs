@@ -12,7 +12,7 @@ namespace DAL
     {
         #region Private Method(s)
         /// <summary>
-        /// Fills values fetched from Database to Object objDept.
+        /// Fills values fetched from Database to Object objEmployee.
         /// </summary>
         /// <param name="myDataRec">Record Object containing data values.</param>
         /// <returns>Returns object ObjEmployee containing Data values from Database.</returns>
@@ -44,6 +44,29 @@ namespace DAL
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPPLANT")))
                 objEmp.EmpPlant = Convert.ToString(myDataRec["EMPPLANT"]);
 
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("GENDER")))
+                objEmp.Gender= Convert.ToString(myDataRec["GENDER"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("DESIGNATIONID")))
+                objEmp.DesignationID = Convert.ToInt32(myDataRec["DESIGNATIONID"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("DESIGNATION")))
+                objEmp.Designation = Convert.ToString(myDataRec["DESIGNATION"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPTYPEID")))
+                objEmp.EmpTypeID = Convert.ToInt32(myDataRec["EMPTYPEID"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPTYPE")))
+                objEmp.EmpType = Convert.ToString(myDataRec["EMPTYPE"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("COFFFLAG")))
+                objEmp.FlgCOff = Convert.ToInt16(myDataRec["COFFFLAG"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LWFFLAG")))
+                objEmp.FlgLWF= Convert.ToInt16(myDataRec["LWFFLAG"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("SALARYFLAG")))
+                objEmp.CalculateSalary = Convert.ToInt16(myDataRec["SALARYFLAG"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("ESIFLAG")))
+                objEmp.FlgESI = Convert.ToInt16(myDataRec["ESIFLAG"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("PFFLAG")))
+                objEmp.CalculatePF = Convert.ToInt16(myDataRec["PFFLAG"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("PTFLAG")))
+                objEmp.CalculatePT= Convert.ToInt16(myDataRec["PTFLAG"]);
+
             objEmp.IsNew = false;
             objEmp.IsEdited = false;
             objEmp.IsDeleted = false;
@@ -53,6 +76,7 @@ namespace DAL
         }
         #endregion
 
+        #region Public Method(s)
         /// <summary>
         /// This method retrieves "Employee" Record, from Database.
         /// </summary>
@@ -69,9 +93,11 @@ namespace DAL
                     {
                         objCmd.Connection = Conn;
                         objCmd.CommandType = CommandType.Text;
-                        objCmd.CommandText = "SELECT a.*, b.DeptName " +
-                            " FROM EMPMast a, DEPTMAST b" +
+                        objCmd.CommandText = "SELECT a.*, b.DeptName, C.DESIGNATION, D.EMPTYPE " +
+                            " FROM EMPMast a, DEPTMAST b, DESIGNATIONMAST C, EMPTYPEMAST D" +
                             " WHERE a.dept = b.dbid " +
+                            " AND A.DESIGNATIONID = C.DBID(+) " +
+                            " AND A.EMPTYPEID = D.DBID(+)" +
                             " and a.DBID = @mDBID";
                         objCmd.Parameters.AddWithValue("@mDBID", dbid);
 
@@ -161,19 +187,27 @@ namespace DAL
                 if (objEmp.IsNew)
                 {
                     strSaveQry = "INSERT INTO EMPMAST(DBID, EMPCODE, FIRSTNAME, MIDDLENAME, LASTNAME, " +
-                        " INITIALS, DEPT, MOBILENO, EMAILID, INACTIVE, " +
-                        " EMPPLANT, ST_DATE, MODIFY_DATE, CRBY, MODBY, MACHINENAME) " +
+                        " INITIALS, DEPT, JOINDATE, BIRTHDATE, LEFTDATE, MOBILENO, EMAILID, INACTIVE, " +
+                        " EMPPLANT, ST_DATE, MODIFY_DATE, CRBY, MODBY, MACHINENAME, " +
+                        " GENDER, DESIGNATIONID, EMPTYPEID, COFFFLAG, LWFFLAG, SALARYFLAG, " +
+                        " ESIFLAG, PFFLAG, PTFLAG) " +
                         " VALUES (@dbId, @EMPCODE, @FIRSTNAME, @MIDDLENAME, @LASTNAME,  " +
-                        " @INITIALS, @DEPT, @MOBILENO, @EMAILID, @INACTIVE, " +
-                        " @EMPPLANT, @STDate, @ModifyDate, @CrBy, @ModBy, @MachineName)";
+                        " @INITIALS, @DEPT, @JOINDATE, @BIRTHDATE, @LEFTDATE, @MOBILENO, @EMAILID, @INACTIVE, " +
+                        " @EMPPLANT, @STDate, @ModifyDate, @CrBy, @ModBy, @MachineName, "  +
+                        " @GENDER, @DesignationID, @EmpTypeID, @COffFlg, @LWFFlg, @SalaryFlg, " +
+                        " @ESIFlg, @PFFlg, @PTFlg)";
                 }
                 else
                 {
                     strSaveQry = "UPDATE EMPMAST " +
                         " SET EMPCODE = @EMPCODE, FIRSTNAME = @FIRSTNAME, MIDDLENAME = @MIDDLENAME, " +
                         " LASTNAME = @LASTNAME, INITIALS = @INITIALS, DEPT = @DEPT, " +
+                        " JOINDATE = @JOINDATE, BIRTHDATE = @BIRTHDATE, LEFTDATE = @LEFTDATE, " +
                         " MOBILENO = @MOBILENO, EMAILID = @EMAILID, INACTIVE = @INACTIVE, " +
-                        " EMPPLANT = @EMPPLANT, " +
+                        " EMPPLANT = @EMPPLANT, GENDER = @Gender, DESIGNATIONID = @DesignationID, " +
+                        " EMPTYPEID = @EmpTypeID, COFFFLAG = @COffFlg, LWFFLAG = @LWFFlg, " +
+                        " SALARYFLAG = @SalaryFlg, ESIFLAG = @ESIFlg, PFFLAG = @PFFlg, " +
+                        " PTFLAG = @PTFlg, " +
                         " MODIFY_DATE = @ModifyDate, MODBY = @ModBy, MACHINENAME = @MachineName " +
                         " WHERE DBID = @dbId";
                 }
@@ -190,13 +224,23 @@ namespace DAL
                     objCmd.Parameters.AddWithValue("@LASTNAME", objEmp.LastName);
                     objCmd.Parameters.AddWithValue("@INITIALS", objEmp.Initials);
                     objCmd.Parameters.AddWithValue("@DEPT", objEmp.DeptID);
-                    //objCmd.Parameters.AddWithValue("@JOINDATE", objEmp.JoinDate);
-                    //objCmd.Parameters.AddWithValue("@BIRTHDATE", objEmp.BirthDate);
-                    //objCmd.Parameters.AddWithValue("@LEFTDATE", objEmp.LeftDate);
+                    objCmd.Parameters.AddWithValue("@JOINDATE", objEmp.JoinDate);
+                    objCmd.Parameters.AddWithValue("@BIRTHDATE", objEmp.BirthDate);
+                    objCmd.Parameters.AddWithValue("@LEFTDATE", objEmp.LeftDate);
                     objCmd.Parameters.AddWithValue("@MOBILENO", objEmp.MobileNo);
                     objCmd.Parameters.AddWithValue("@EMAILID", objEmp.EMailID);
                     objCmd.Parameters.AddWithValue("@INACTIVE", objEmp.InActive);
                     objCmd.Parameters.AddWithValue("@EMPPLANT", objEmp.EmpPlant);
+
+                    objCmd.Parameters.AddWithValue("@GENDER", objEmp.Gender);
+                    objCmd.Parameters.AddWithValue("@DesignationID", objEmp.DesignationID);
+                    objCmd.Parameters.AddWithValue("@EmpTypeID", objEmp.EmpTypeID);
+                    objCmd.Parameters.AddWithValue("@COffFlg", objEmp.FlgCOff);
+                    objCmd.Parameters.AddWithValue("@LWFFlg", objEmp.FlgLWF);
+                    objCmd.Parameters.AddWithValue("@SalaryFlg", objEmp.CalculateSalary);
+                    objCmd.Parameters.AddWithValue("@ESIFlg", objEmp.FlgESI);
+                    objCmd.Parameters.AddWithValue("@PFFlg", objEmp.CalculatePF);
+                    objCmd.Parameters.AddWithValue("@PTFlg", objEmp.CalculatePT);
 
                     if (objEmp.IsNew)
                     {
@@ -305,6 +349,6 @@ namespace DAL
             }
             return IsRecordExist;
         }
-
+        #endregion
     }
 }

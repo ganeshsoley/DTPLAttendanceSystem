@@ -29,6 +29,18 @@ namespace EntityObject
         private string eMail;
         private int inActive;
         private string empPlant;
+
+        private string gender;
+        private long designationID;
+        private string designation;
+        private long empTypeID;
+        private string empType;
+        private int flgCOff;
+        private int flgLWF;
+        private int flgCalSalary;
+        private int flgESI;
+        private int flgPF;
+        private int flgPT;
         #endregion
 
         #region Constructor(s)
@@ -53,6 +65,16 @@ namespace EntityObject
             eMail = string.Empty;
             inActive = 0;
             empPlant = string.Empty;
+
+            gender = string.Empty;
+            designationID = 0;
+            empTypeID = 0;
+            flgCOff = 0;
+            flgLWF = 0;
+            flgCalSalary = 0;
+            flgESI = 0;
+            flgPF = 0;
+            flgPT = 0;
 
             RuleBroken("EmpCode", true);
             RuleBroken("FirstName", true);
@@ -404,6 +426,173 @@ namespace EntityObject
                 }
                 RuleBroken("EmpPlant", (value.Trim().Length == 0));
                 empPlant = value.Trim().ToUpper();
+                flgEdited = true;
+            }
+        }
+
+        public string Gender
+        {
+            get
+            {
+                return gender;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                    if (value.Trim().Length > 10)
+                    {
+                        throw new Exception("Length can not be greater than 10 Character(s).");
+                    }
+                }
+                gender = value.Trim().ToUpper();
+                flgEdited = true;
+            }
+        }
+
+        public long DesignationID
+        {
+            get
+            {
+                return designationID;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+
+                }
+                designationID = value;
+                flgEdited = true;
+            }
+        }
+
+        public string Designation
+        {
+            get
+            {
+                return designation;
+            }
+            set
+            {
+                designation = value.ToUpper();
+            }
+        }
+
+        public long EmpTypeID
+        {
+            get
+            {
+                return empTypeID;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                }
+                empTypeID = value;
+                flgEdited = true;
+            }
+        }
+
+        public string EmpType
+        {
+            get
+            {
+                return empType;
+            }
+            set
+            {
+                empType = value.ToUpper();
+            }
+        }
+
+        public int FlgCOff
+        {
+            get
+            {
+                return flgCOff;
+            }
+            set
+            {
+                if (!flgLoading)
+                { }
+                flgCOff = value;
+                flgEdited = true;
+            }
+        }
+
+        public int FlgLWF
+        {
+            get
+            {
+                return flgLWF;
+            }
+            set
+            {
+                if (!flgLoading)
+                { }
+                flgLWF = value;
+                flgEdited = true;
+            }
+        }
+
+        public int CalculateSalary
+        {
+            get
+            {
+                return flgCalSalary;
+            }
+            set
+            {
+                if (!flgLoading)
+                { }
+                flgCalSalary = value;
+                flgEdited = true;
+            }
+        }
+
+        public int FlgESI
+        {
+            get
+            {
+                return flgESI;
+            }
+            set
+            {
+                if (!flgLoading)
+                { }
+                flgESI = value;
+                flgEdited = true;
+            }
+        }
+
+        public int CalculatePF
+        {
+            get
+            {
+                return flgPF;
+            }
+            set
+            {
+                if (!flgLoading)
+                { }
+                flgPF = value;
+                flgEdited = true;
+            }
+        }
+
+        public int CalculatePT
+        {
+            get
+            {
+                return flgPT;
+            }
+            set
+            {
+                if (!flgLoading)
+                { }
+                flgPT = value;
                 flgEdited = true;
             }
         }

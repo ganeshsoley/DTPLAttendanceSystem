@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityObject
 {
-    public class EmpType: BrokenRule
+    public class LeaveType: BrokenRule
     {
         #region Private Variable(s)
         private bool flgNew;
@@ -15,46 +15,41 @@ namespace EntityObject
         private bool flgLoading;
 
         private long dbID;
-        private string empTypeCode;
-        private string empTypeName;
-        private string otFormula;
-        private string minOT;
-        private string lcGraceTime;
-        private string egGraceTime;
-        private int calculateHalfDay;
-        private string halfDayMins;
-        private int calculateAbsentDay;
-        private string absentDayMins;
-        private int markWOHasBothDayAbsent;
-
+        private string leaveTypeCode;
+        private string leaveTypeName;
+        private string yearlyLimit;
+        private int carryFwdLimit;
+        private int flgAddMonthly;
+        private int addMonthlyLV;
+        private string gender;
+        private string considerAs;
+        private int isAllowNegativeBal;
         #endregion
 
-        public EmpType()
+        #region Constructor(s)
+        public LeaveType()
         {
             flgNew = true;
             flgEdited = false;
             flgDeleted = false;
 
             dbID = 0;
-            empTypeCode = string.Empty;
-            empTypeName = string.Empty;
-            otFormula = string.Empty;
-            minOT = string.Empty;
-            lcGraceTime = string.Empty;
-            egGraceTime = string.Empty;
-            calculateHalfDay = 0;
-            halfDayMins = string.Empty;
-            calculateAbsentDay = 0;
-            absentDayMins = string.Empty;
-            markWOHasBothDayAbsent = 0;
+            leaveTypeCode = string.Empty;
+            leaveTypeName = string.Empty;
+            yearlyLimit = string.Empty;
+            carryFwdLimit = 0;
+            flgAddMonthly = 0;
+            addMonthlyLV = 0;
+            gender = string.Empty;
+            considerAs = string.Empty;
+            isAllowNegativeBal = 0;
 
-            RuleBroken("EmpTypeCode", true);
-            RuleBroken("EmpType", true);
-            RuleBroken("OTFormula", true);
-            RuleBroken("CalHalfDay", true);
-            RuleBroken("CalAbsentDay", true);
-            RuleBroken("MarkWOHAbsentBothDays", true);
+            RuleBroken("LeaveType", true);
+            RuleBroken("LeaveTypeName", true);
+            RuleBroken("YearlyLimit", true);
+            RuleBroken("ConsiderAs", true);
         }
+        #endregion
 
         #region Public Properties
         public bool IsNew
@@ -117,32 +112,11 @@ namespace EntityObject
             }
         }
 
-        public string EmpTypeCode
+        public string LeaveTypeCode
         {
             get
             {
-                return empTypeCode;
-            }
-            set
-            {
-                if (!flgLoading)
-                {
-                    if (value.Trim().Length > 30)
-                    {
-                        throw new Exception("Length can not be greater than 30 character(s).");
-                    }
-                }
-                RuleBroken("EmpTypeCode", (value.Trim().Length == 0));
-                empTypeCode = value.Trim().ToUpper();
-                flgEdited = true;
-            }
-        }
-
-        public string EmpTypeName
-        {
-            get
-            {
-                return empTypeName;
+                return leaveTypeCode;
             }
             set
             {
@@ -153,17 +127,17 @@ namespace EntityObject
                         throw new Exception("Length can not be greater than 50 character(s).");
                     }
                 }
-                RuleBroken("EmpType", (value.Trim().Length == 0));
-                empTypeName = value.Trim().ToUpper();
+                RuleBroken("LeaveTypeCode", (value.Trim().Length == 0));
+                leaveTypeCode = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }
 
-        public string OTFormula
+        public string LeaveTypeName
         {
             get
             {
-                return otFormula;
+                return leaveTypeName;
             }
             set
             {
@@ -174,17 +148,86 @@ namespace EntityObject
                         throw new Exception("Length can not be greater than 50 character(s).");
                     }
                 }
-                RuleBroken("OTFormula", (value.Trim().Length == 0));
-                otFormula = value.Trim().ToUpper();
+                RuleBroken("LeaveTypeName", (value.Trim().Length == 0));
+                leaveTypeName = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }
 
-        public string MinOT
+        public string YearlyLimit
         {
             get
             {
-                return minOT;
+                return yearlyLimit;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                    if (value.Trim().Length > 50)
+                    {
+                        throw new Exception("Length can not be greater than 50 character(s).");
+                    }
+                }
+                RuleBroken("YearlyLimit", (value.Trim().Length == 0));
+                yearlyLimit = value.Trim().ToUpper();
+                flgEdited = true;
+            }
+        }
+
+        public int CarryFwdLimit
+        {
+            get
+            {
+                return carryFwdLimit;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                }
+                carryFwdLimit = value;
+                flgEdited = true;
+            }
+        }
+
+        public int IsAddMonthly
+        {
+            get
+            {
+                return flgAddMonthly;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                }
+                flgAddMonthly = value;
+                flgEdited = true;
+            }
+        }
+
+        public int AddMonthlyLV
+        {
+            get
+            {
+                return addMonthlyLV;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                }
+                addMonthlyLV = value;
+                flgEdited = true;
+            }
+        }
+
+        public string ApplicableGender
+        {
+            get
+            {
+                return gender;
             }
             set
             {
@@ -195,135 +238,43 @@ namespace EntityObject
                         throw new Exception("Length can not be greater than 10 character(s).");
                     }
                 }
-                minOT = value.Trim().ToUpper();
+                gender = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }
 
-        public string LateComingGraceTime
+        public string ConsiderAs
         {
             get
             {
-                return lcGraceTime;
+                return considerAs;
             }
             set
             {
                 if (!flgLoading)
                 {
-                    if (value.Trim().Length > 20)
+                    if (value.Trim().Length > 255)
                     {
-                        throw new Exception("Length can not be greater than 20 character(s).");
+                        throw new Exception("Length can not be greater than 255 character(s).");
                     }
                 }
-                lcGraceTime = value.Trim().ToUpper();
+                considerAs = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }
 
-        public string EarlyGoingGraceTime
+        public int IsAllowNegativeBal
         {
             get
             {
-                return egGraceTime;
-            }
-            set
-            {
-                if (!flgLoading)
-                {
-                    if (value.Trim().Length > 20)
-                    {
-                        throw new Exception("Length can not be greater than 20 character(s).");
-                    }
-                }
-                egGraceTime = value.Trim().ToUpper();
-                flgEdited = true;
-            }
-        }
-
-        public int CalculateHalfDay
-        {
-            get
-            {
-                return calculateHalfDay;
-            }
-            set
-            {
-                if (!flgLoading)
-                { }
-                calculateHalfDay = value;
-                flgEdited = true;
-            }
-        }
-
-        public string HalfDayMins
-        {
-            get
-            {
-                return halfDayMins;
-            }
-            set
-            {
-                if (!flgLoading)
-                {
-                    if (value.Trim().Length > 10)
-                    {
-                        throw new Exception("Length can not be greater than 10 character(s).");
-                    }
-                }
-                halfDayMins = value;
-                flgEdited = true;
-            }
-        }
-
-        public int CalculateAbsentDay
-        {
-            get
-            {
-                return calculateAbsentDay;
-            }
-            set
-            {
-                if (!flgLoading)
-                {
-
-                }
-                calculateAbsentDay = value;
-                flgEdited = true;
-            }
-        }
-
-        public string AbsentDayMins
-        {
-            get
-            {
-                return absentDayMins;
-            }
-            set
-            {
-                if (!flgLoading)
-                {
-                    if (value.Trim().Length > 10)
-                    {
-                        throw new Exception("Length can not be greater than 10 character(s).");
-                    }
-                }
-                absentDayMins = value;
-                flgEdited = true;
-            }
-        }
-
-        public int MarkWOHasBothDayAbsent
-        {
-            get
-            {
-                return markWOHasBothDayAbsent;
+                return isAllowNegativeBal;
             }
             set
             {
                 if (!flgLoading)
                 {
                 }
-                markWOHasBothDayAbsent = value;
+                isAllowNegativeBal = value;
                 flgEdited = true;
             }
         }
