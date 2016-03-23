@@ -58,11 +58,59 @@
     <Compile Include="frmDesignationProp.Designer.cs">
       <DependentUpon>frmDesignationProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEmpTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpTypeList.Designer.cs">
+      <DependentUpon>frmEmpTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpTypeProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpTypeProp.Designer.cs">
+      <DependentUpon>frmEmpTypeProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHolidayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHolidayList.Designer.cs">
+      <DependentUpon>frmHolidayList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHolidayProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHolidayProp.Designer.cs">
+      <DependentUpon>frmHolidayProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveTypeList.Designer.cs">
+      <DependentUpon>frmLeaveTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveTypeProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveTypeProp.Designer.cs">
+      <DependentUpon>frmLeaveTypeProp.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShiftList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShiftList.Designer.cs">
+      <DependentUpon>frmShiftList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShiftProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShiftProp.Designer.cs">
+      <DependentUpon>frmShiftProp.cs</DependentUpon>
     </Compile>
     <Compile Include="GeneralMethods.cs" />
     <Compile Include="ListViewColumnSorter.cs" />
@@ -74,8 +122,32 @@
     <EmbeddedResource Include="frmDesignationProp.resx">
       <DependentUpon>frmDesignationProp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpTypeList.resx">
+      <DependentUpon>frmEmpTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpTypeProp.resx">
+      <DependentUpon>frmEmpTypeProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHolidayList.resx">
+      <DependentUpon>frmHolidayList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHolidayProp.resx">
+      <DependentUpon>frmHolidayProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveTypeList.resx">
+      <DependentUpon>frmLeaveTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveTypeProp.resx">
+      <DependentUpon>frmLeaveTypeProp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShiftList.resx">
+      <DependentUpon>frmShiftList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShiftProp.resx">
+      <DependentUpon>frmShiftProp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
