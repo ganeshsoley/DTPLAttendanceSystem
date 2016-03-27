@@ -422,20 +422,20 @@ namespace DTPLAttendanceSystem
 
                     lvItem = new ListViewItem();
                     lvItem.Name = Convert.ToString(e.DBID);
-                    lvItem.Text = e.EmpTypeCode;
-                    lvItem.SubItems.Add(e.EmpTypeName);
+                    lvItem.Text = e.HolidayDate.ToShortDateString();
+                    lvItem.SubItems.Add(e.HolidayName);
 
-                    lvwEmpTypes.Items.Add(lvItem);
-                    lvwEmpTypes.EnsureVisible(lvItem.Index);
+                    lvwHolidays.Items.Add(lvItem);
+                    lvwHolidays.EnsureVisible(lvItem.Index);
 
                     break;
 
                 case DataEventType.UPDATE_EVENT:
-                    lvItem = lvwEmpTypes.Items[lvwEmpTypes.SelectedItems[0].Index];
-                    lvItem.Text = e.EmpTypeCode;
-                    lvItem.SubItems[1].Text = e.EmpTypeName;
+                    lvItem = lvwHolidays.Items[lvwHolidays.SelectedItems[0].Index];
+                    lvItem.Text = e.HolidayDate.ToShortDateString();
+                    lvItem.SubItems[1].Text = e.HolidayName;
 
-                    lvwEmpTypes.EnsureVisible(lvwEmpTypes.SelectedItems[0].Index);
+                    lvwHolidays.EnsureVisible(lvwHolidays.SelectedItems[0].Index);
 
                     break;
             }

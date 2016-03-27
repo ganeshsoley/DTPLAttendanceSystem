@@ -119,27 +119,47 @@ namespace DTPLAttendanceSystem
 
         private void txtHolidayName_Enter(object sender, EventArgs e)
         {
-
+            txtHolidayName.SelectAll();
         }
 
         private void txtHolidayName_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objHoliday.HolidayName = txtHolidayName.Text.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtHolidayName_Leave(object sender, EventArgs e)
         {
-
+            txtHolidayName.Text = objHoliday.HolidayName;
         }
 
         private void dtpHoliday_Enter(object sender, EventArgs e)
         {
-
+            dtpHoliday.Select();
         }
 
         private void dtpHoliday_ValueChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objHoliday.HolidayDate = dtpHoliday.Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void dtpHoliday_Leave(object sender, EventArgs e)
@@ -149,43 +169,140 @@ namespace DTPLAttendanceSystem
 
         private void cboApplicableTo_Enter(object sender, EventArgs e)
         {
-
+            cboApplicableTo.SelectAll();
         }
 
         private void cboApplicableTo_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objHoliday.ApplicableTo = cboApplicableTo.Text.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void cboApplicableTo_Leave(object sender, EventArgs e)
         {
-
+            cboApplicableTo.Text = objHoliday.ApplicableTo;
         }
 
         private void txtDescription_Enter(object sender, EventArgs e)
         {
-
+            txtDescription.SelectAll();
         }
 
         private void txtDescription_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objHoliday.Description = txtDescription.Text.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtDescription_Leave(object sender, EventArgs e)
         {
-
+            txtDescription.Text = objHoliday.Description;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                bool flgApplyEdit;
+                flgApplyEdit = HolidayManager.Save(objHoliday);
+                if (flgApplyEdit)
+                {
+                    // instance the event args and pass it value
+                    HolidayUpdateEventArgs args = new HolidayUpdateEventArgs(objHoliday.DBID, objHoliday.HolidayDate, objHoliday.HolidayName);
 
+                    // raise event wtth  updated 
+                    if (Entry_DataChanged != null)
+                    {
+                        if (this.IsNew)
+                        {
+                            Entry_DataChanged(this, args, DataEventType.INSERT_EVENT);
+                        }
+                        else
+                        {
+                            Entry_DataChanged(this, args, DataEventType.UPDATE_EVENT);
+                        }
+                    }
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Record Not Saved.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
         #endregion
+    }
+
+    public class HolidayUpdateEventArgs : EventArgs
+    {
+        private long mDBID;
+        private DateTime mHolidayDate;
+        private string mHolidayName;
+
+        public HolidayUpdateEventArgs(long sDBID, DateTime sHolidayDate, string sHolidayName)
+        {
+            this.mDBID = sDBID;
+            this.mHolidayDate = sHolidayDate;
+            this.mHolidayName= sHolidayName;
+        }
+
+        public long DBID
+        {
+            get
+            {
+                return mDBID;
+            }
+        }
+
+        public DateTime HolidayDate
+        {
+            get
+            {
+                return mHolidayDate;
+            }
+        }
+
+        public string HolidayName
+        {
+            get
+            {
+                return mHolidayName;
+            }
+        }
     }
 }
