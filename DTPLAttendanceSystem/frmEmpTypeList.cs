@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityObject;
 using EntityObject.Enum;
@@ -67,7 +62,7 @@ namespace DTPLAttendanceSystem
             }
         }
 
-        public int DBID
+        public long DBID
         {
             get
             {

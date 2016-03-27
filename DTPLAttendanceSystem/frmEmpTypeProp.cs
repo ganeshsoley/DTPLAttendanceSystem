@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityObject;
 using EntityObject.Enum;
@@ -92,6 +86,13 @@ namespace DTPLAttendanceSystem
             objEmpType.OnInvalid += new EmpType.EventHandler(EmpType_OnInValid);
         }
 
+        private void FillOTFormula()
+        {
+            cboOTFormula.Items.Add("OT Not Applicable");
+            cboOTFormula.Items.Add("OutPunch - ShiftEndTime");
+            cboOTFormula.Items.Add("Total Duration - Shift Hrs");
+            cboOTFormula.Items.Add("Early Coming + Late Going");
+        }
         #endregion
 
         #region UI Control Logic
@@ -101,6 +102,7 @@ namespace DTPLAttendanceSystem
             flgLoading = true;
             EmpType_OnInValid(sender, e);
 
+            FillOTFormula();
             if (objEmpType.IsNew)
             {
                 this.Text += " [ NEW ]";
@@ -114,7 +116,7 @@ namespace DTPLAttendanceSystem
             cboOTFormula.Text = objEmpType.OTFormula;
             txtMinOT.Text = objEmpType.MinOT;
             txtLCGraceTime.Text = objEmpType.LateComingGraceTime;
-            txtEGGraceTime.Text = objEmpType.LateComingGraceTime;
+            txtEGGraceTime.Text = objEmpType.EarlyGoingGraceTime;
             if (objEmpType.CalculateAbsentDay == 1)
             {
                 chkCalculateAbsent.Checked = true;
@@ -149,7 +151,7 @@ namespace DTPLAttendanceSystem
             {
                 if (!IsLoading)
                 {
-                    objEmpType.EmpTypeName = txtEmpTypeCode.Text.Trim();
+                    objEmpType.EmpTypeCode = txtEmpTypeCode.Text.Trim();
                 }
             }
             catch (Exception ex)
@@ -345,9 +347,16 @@ namespace DTPLAttendanceSystem
                 if (!IsLoading)
                 {
                     if (chkCalulateHalfDay.Checked == true)
+                    {
                         objEmpType.CalculateHalfDay = 1;
+                        txtHDMins.Enabled = true;
+                    }
                     else
+                    {
                         objEmpType.CalculateHalfDay = 0;
+                        txtHDMins.Enabled = false;
+                        objEmpType.HalfDayMins = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -363,9 +372,16 @@ namespace DTPLAttendanceSystem
                 if (!IsLoading)
                 {
                     if (chkCalculateAbsent.Checked == true)
+                    {
                         objEmpType.CalculateAbsentDay = 1;
+                        txtAbsentMins.Enabled = true;
+                    }
                     else
+                    {
                         objEmpType.CalculateAbsentDay = 0;
+                        txtAbsentMins.Enabled = false;
+                        objEmpType.AbsentDayMins = "";
+                    }
                 }
             }
             catch (Exception ex)

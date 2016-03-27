@@ -40,8 +40,8 @@
             this.conMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grbList.SuspendLayout();
             this.grbButtons.SuspendLayout();
             this.conMenu.SuspendLayout();
@@ -91,7 +91,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(305, 17);
+            this.btnNew.Location = new System.Drawing.Point(302, 17);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(72, 24);
             this.btnNew.TabIndex = 2;
@@ -101,7 +101,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(227, 17);
+            this.btnCancel.Location = new System.Drawing.Point(302, 17);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(72, 24);
             this.btnCancel.TabIndex = 1;
@@ -111,7 +111,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(149, 17);
+            this.btnOk.Location = new System.Drawing.Point(224, 17);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(72, 24);
             this.btnOk.TabIndex = 0;
@@ -127,34 +127,34 @@
             this.toolStripSeparator1,
             this.deleteToolStripMenuItem});
             this.conMenu.Name = "conMenu";
-            this.conMenu.Size = new System.Drawing.Size(153, 98);
+            this.conMenu.Size = new System.Drawing.Size(113, 76);
             this.conMenu.Opening += new System.ComponentModel.CancelEventHandler(this.conMenu_Opening);
             // 
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.modifyToolStripMenuItem.Text = "&Modify";
             this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deleteToolStripMenuItem.Text = "&Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(109, 6);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.deleteToolStripMenuItem.Text = "&Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmEmpTypeList
             // 
