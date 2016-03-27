@@ -7,28 +7,33 @@ using BLL;
 
 namespace DTPLAttendanceSystem
 {
-    public partial class frmDesignationProp : Form
+    public partial class frmDeptProp : Form
     {
+
         #region Private Variable
         private bool flgNew;
         private bool flgLoading;
 
-        private Designation objDesg;
+        private Department objDept;
+
         #endregion
 
         #region Constructor
-        public frmDesignationProp()
+
+        public frmDeptProp()
         {
             InitializeComponent();
         }
-        public frmDesignationProp(Designation objDesg)
+        public frmDeptProp(Department objDept)
         {
-            this.objDesg = objDesg;
+            this.objDept = objDept;
             InitializeComponent();
         }
+
+
         #endregion
 
-        #region Public Properties
+        #region Public Properties 
         public bool IsNew
         {
             get
@@ -54,57 +59,56 @@ namespace DTPLAttendanceSystem
         #endregion
 
         #region Delegate & Event
-        public delegate void DesgUpdateHandler(object sender, DesgUpdateEventArgs e, DataEventType Action);
-
-        public event DesgUpdateHandler Entry_DataChanged;
+        public delegate void DeptUpdateHandler(object sender, DeptUpdateEventArgs e, DataEventType Action);
+        public event DeptUpdateHandler Entry_DataChanged;
         #endregion
 
         #region Private Methods
         private void EnableDisableSave()
         {
-            btnSave.Enabled = objDesg.IsValid;
+            btnSave.Enabled = objDept.IsValid;
         }
-
-        private void Desg_OnValid(object sender, EventArgs e)
+        private void Dept_OnValid(object sender, EventArgs e)
         {
             EnableDisableSave();
         }
-
-        private void Desg_OnInValid(object sender, EventArgs e)
+        private void Dept_OnInValid(object sender, EventArgs e)
         {
             EnableDisableSave();
         }
-
         private void SubscribeToEvents()
         {
-            objDesg.OnValid += new Department.EventHandler(Desg_OnValid);
-            objDesg.OnInvalid += new Department.EventHandler(Desg_OnInValid);
+            objDept.OnValid += new Department.EventHandler(Dept_OnValid);
+            objDept.OnInvalid += new Department.EventHandler(Dept_OnInValid);
         }
         #endregion
 
         #region UI Control Logic
-        private void frmDesignationProp_Load(object sender, EventArgs e)
+        private void frmDeptProp_Load(object sender, EventArgs e)
         {
             //this.Icon = new Icon("Images/DTPL.ico");
             flgLoading = true;
-            Desg_OnInValid(sender, e);
+            Dept_OnInValid(sender, e);
 
-            if (objDesg.IsNew)
+            if (objDept.IsNew)
             {
                 this.Text += " [ NEW ]";
             }
             else
             {
-                this.Text += " [ " + objDesg.DesigName + " ]";
+                this.Text += " [ " + objDept.DeptName + " ]";
             }
-            txtDesignation.Text = objDesg.DesigName;
-            txtDescription.Text = objDesg.Description;
-
+            txtDept.Text = objDept.DeptName;
+            txtDescr.Text = objDept.Description;
+            if (objDept.IsActive)
+                chkIsActive.Checked = true;
+            else
+                chkIsActive.Checked = false;
 
             SubscribeToEvents();
             flgLoading = false;
         }
-        private void frmDesignationProp_KeyDown(object sender, KeyEventArgs e)
+        private void frmDeptProp_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -112,13 +116,13 @@ namespace DTPLAttendanceSystem
             }
         }
 
-        private void txtDesignation_TextChanged(object sender, EventArgs e)
+        private void txtDept_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 if (!IsLoading)
                 {
-                    objDesg.DesigName  = Convert.ToString(txtDesignation.Text.Trim());
+                    objDept.DeptName = Convert.ToString(txtDept.Text.Trim());
                 }
             }
             catch (Exception ex)
@@ -126,22 +130,22 @@ namespace DTPLAttendanceSystem
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        private void txtDesignation_Leave(object sender, EventArgs e)
+        private void txtDept_Enter(object sender, EventArgs e)
         {
-            txtDesignation.Text = objDesg.DesigName;
+            GeneralMethods.Selection(txtDept);
         }
-        private void txtDesignation_Enter(object sender, EventArgs e)
+        private void txtDept_Leave(object sender, EventArgs e)
         {
-            GeneralMethods.Selection(txtDesignation);
+            txtDept.Text = objDept.DeptName;
         }
 
-        private void txtDescription_TextChanged(object sender, EventArgs e)
+        private void txtDescr_TextChanged(object sender, EventArgs e)
         {
             try
             {
                 if (!IsLoading)
                 {
-                    objDesg.Description = Convert.ToString(txtDescription.Text.Trim());
+                    objDept.Description = Convert.ToString(txtDescr.Text.Trim());
                 }
             }
             catch (Exception ex)
@@ -149,13 +153,51 @@ namespace DTPLAttendanceSystem
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        private void txtDescription_Enter(object sender, EventArgs e)
+        private void txtDescr_Enter(object sender, EventArgs e)
         {
-            GeneralMethods.Selection(txtDescription);
+            GeneralMethods.Selection(txtDescr);
         }
-        private void txtDescription_Leave(object sender, EventArgs e)
+        private void txtDescr_Leave(object sender, EventArgs e)
         {
-            txtDescription.Text = objDesg.Description;
+            txtDescr.Text = objDept.Description;
+        }
+
+        private void txtSrNo_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!IsLoading)
+                {
+                    objDept.SrNo  = Convert.ToInt16(txtSrNo.Text.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        private void txtSrNo_Enter(object sender, EventArgs e)
+        {
+            GeneralMethods.Selection(txtSrNo);
+        }
+        private void txtSrNo_Leave(object sender, EventArgs e)
+        {
+            txtSrNo.Text =Convert.ToString(objDept.SrNo);
+        }
+
+        private void chkIsActive_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void chkIsActive_Click(object sender, EventArgs e)
+        {
+            if (!IsLoading)
+            {
+                if (chkIsActive.Checked)
+                    objDept.IsActive = true;
+                else
+                    objDept.IsActive = false;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -163,11 +205,11 @@ namespace DTPLAttendanceSystem
             try
             {
                 bool flgApplyEdit;
-                flgApplyEdit = DesignationManager.Save(objDesg);
+                flgApplyEdit = DeptManager.Save(objDept);
                 if (flgApplyEdit)
                 {
                     // instance the event args and pass it value
-                    DesgUpdateEventArgs args = new DesgUpdateEventArgs(objDesg.DBID, objDesg.DesigName, objDesg.Description);
+                    DeptUpdateEventArgs args = new DeptUpdateEventArgs(objDept.DBID, objDept.DeptName, objDept.Description);
 
                     // raise event wtth  updated 
                     if (Entry_DataChanged != null)
@@ -207,21 +249,20 @@ namespace DTPLAttendanceSystem
             }
         }
 
-
         #endregion
 
 
     }
-    public class DesgUpdateEventArgs : System.EventArgs
+    public class DeptUpdateEventArgs : System.EventArgs
     {
         private int mDBID;
-        private string mDesig;
+        private string mDept;
         private string mDescr;
 
-        public DesgUpdateEventArgs(int sDBID, string sDesig, string sDescr)
+        public DeptUpdateEventArgs(int sDBID, string sDept, string sDescr)
         {
             this.mDBID = sDBID;
-            this.mDesig = sDesig;
+            this.mDept = sDept;
             this.mDescr = sDescr;
         }
 
@@ -233,11 +274,11 @@ namespace DTPLAttendanceSystem
             }
         }
 
-        public string Desig
+        public string Dept
         {
             get
             {
-                return mDesig;
+                return mDept;
             }
         }
 

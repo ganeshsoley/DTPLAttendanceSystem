@@ -46,17 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmDesignationList.cs">
+    <Compile Include="frmDeptList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDesignationList.Designer.cs">
-      <DependentUpon>frmDesignationList.cs</DependentUpon>
+    <Compile Include="frmDeptList.Designer.cs">
+      <DependentUpon>frmDeptList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeptProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeptProp.Designer.cs">
+      <DependentUpon>frmDeptProp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDesignationProp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDesignationProp.Designer.cs">
       <DependentUpon>frmDesignationProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDesignationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDesignationList.Designer.cs">
+      <DependentUpon>frmDesignationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpList.Designer.cs">
+      <DependentUpon>frmEmpList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpProp.Designer.cs">
+      <DependentUpon>frmEmpProp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -68,11 +92,23 @@
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmDesignationList.resx">
-      <DependentUpon>frmDesignationList.cs</DependentUpon>
+    <EmbeddedResource Include="frmDeptList.resx">
+      <DependentUpon>frmDeptList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeptProp.resx">
+      <DependentUpon>frmDeptProp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDesignationProp.resx">
       <DependentUpon>frmDesignationProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDesignationList.resx">
+      <DependentUpon>frmDesignationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpList.resx">
+      <DependentUpon>frmEmpList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpProp.resx">
+      <DependentUpon>frmEmpProp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

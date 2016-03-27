@@ -14,7 +14,7 @@ namespace EntityObject
         private bool flgDeleted;
         private bool flgLoading;
 
-        private long dbID;
+        private int dbID;
         private string designation;
         private string description;
         #endregion
@@ -83,7 +83,7 @@ namespace EntityObject
             }
         }
 
-        public long DBID
+        public int DBID
         {
             get
             {
