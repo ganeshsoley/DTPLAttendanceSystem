@@ -36,5 +36,6 @@ namespace DTPLAttendanceSystem
                 frmMain objFrmMain = new frmMain();
                 objFrmMain.Show();
             }
+        }
     }
 }
