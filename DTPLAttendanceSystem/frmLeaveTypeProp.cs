@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityObject;
 using EntityObject.Enum;
@@ -65,9 +59,9 @@ namespace DTPLAttendanceSystem
         #endregion
 
         #region Delegate & Event
-        public delegate void EmpTypeUpdateHandler(object sender, EmpTypeUpdateEventArgs e, DataEventType Action);
+        public delegate void LeaveTypeUpdateHandler(object sender, LeaveTypeUpdateEventArgs e, DataEventType Action);
 
-        public event EmpTypeUpdateHandler Entry_DataChanged;
+        public event LeaveTypeUpdateHandler Entry_DataChanged;
         #endregion
 
         #region Private Methods
@@ -92,15 +86,14 @@ namespace DTPLAttendanceSystem
             objLeaveType.OnInvalid += new EmpType.EventHandler(LeaveType_OnInValid);
         }
 
-        private void FillOTFormula()
+        private void FillConsiderAs()
         {
-            cboOTFormula.Items.Add("OT Not Applicable");
-            cboOTFormula.Items.Add("OutPunch - ShiftEndTime");
-            cboOTFormula.Items.Add("Total Duration - Shift Hrs");
-            cboOTFormula.Items.Add("Early Coming + Late Going");
+            cboConsiderAs.Items.Add("Leave Without Pay");
+            cboConsiderAs.Items.Add("Leave With Pay");
         }
         #endregion
 
+        #region UI Control Logic
         private void frmLeaveTypeProp_Load(object sender, EventArgs e)
         {
             this.Icon = new Icon("Images/DTPL.ico");
@@ -248,10 +241,27 @@ namespace DTPLAttendanceSystem
 
         private void chkAddLvsMonthly_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkAddLvsMonthly.Checked == true)
-                objLeaveType.IsAddMonthly = 1;
-            else
-                objLeaveType.IsAddMonthly = 0;
+            try
+            {
+                if (!IsLoading)
+                {
+                    if (chkAddLvsMonthly.Checked == true)
+                    {
+                        objLeaveType.IsAddMonthly = 1;
+                        txtMonthlyLeaves.Enabled = true;
+                    }
+                    else
+                    {
+                        objLeaveType.IsAddMonthly = 0;
+                        txtMonthlyLeaves.Enabled = false;
+                        objLeaveType.AddMonthlyLV = 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtMonthlyLeaves_Enter(object sender, EventArgs e)
@@ -281,47 +291,201 @@ namespace DTPLAttendanceSystem
 
         private void rdbAll_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    if (rdbAll.Checked)
+                        objLeaveType.ApplicableGender = "ALL";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void rdbMale_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    if (rdbMale.Checked)
+                        objLeaveType.ApplicableGender = "MALE";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void rdbFemale_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    if (rdbFemale.Checked)
+                        objLeaveType.ApplicableGender = "FEMALE";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void cboConsiderAs_Enter(object sender, EventArgs e)
         {
-
+            cboConsiderAs.SelectAll();
         }
 
         private void cboConsiderAs_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objLeaveType.ConsiderAs = cboConsiderAs.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void cboConsiderAs_Leave(object sender, EventArgs e)
         {
-
+            cboConsiderAs.Text = objLeaveType.ConsiderAs;
         }
 
         private void chkAllowNegBalance_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    if (chkAllowNegBalance.Checked)
+                        objLeaveType.IsAllowNegativeBal = 1;
+                    else
+                        objLeaveType.IsAllowNegativeBal = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                bool flgApplyEdit;
+                flgApplyEdit = LeaveTypeManager.Save(objLeaveType);
+                if (flgApplyEdit)
+                {
+                    // instance the event args and pass it value
+                    LeaveTypeUpdateEventArgs args = new LeaveTypeUpdateEventArgs(objLeaveType.DBID, objLeaveType.LeaveTypeCode, objLeaveType.LeaveTypeName, objLeaveType.YearlyLimit, objLeaveType.CarryFwdLimit);
 
+                    // raise event wtth  updated 
+                    if (Entry_DataChanged != null)
+                    {
+                        if (this.IsNew)
+                        {
+                            Entry_DataChanged(this, args, DataEventType.INSERT_EVENT);
+                        }
+                        else
+                        {
+                            Entry_DataChanged(this, args, DataEventType.UPDATE_EVENT);
+                        }
+                    }
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Record Not Saved.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        #endregion
+    }
 
+    public class LeaveTypeUpdateEventArgs : EventArgs
+    {
+        private long mDBID;
+        private string mLeaveTypeCode;
+        private string mLeaveTypeName;
+        private string mYearlyLimit;
+        private int mCarryFwdLimit;
+
+        public LeaveTypeUpdateEventArgs(long sDBID, string sLeaveCode, string sLeaveName, string sYearlyLimit, int sCarryFwdLimit)
+        {
+            this.mDBID = sDBID;
+            this.mLeaveTypeCode = sLeaveCode;
+            this.mLeaveTypeName = sLeaveName;
+            this.mYearlyLimit = sYearlyLimit;
+            this.mCarryFwdLimit = sCarryFwdLimit;
+        }
+
+        public long DBID
+        {
+            get
+            {
+                return mDBID;
+            }
+        }
+
+        public string LeaveCode
+        {
+            get
+            {
+                return mLeaveTypeCode;
+            }
+        }
+
+        public string LeaveTypeName
+        {
+            get
+            {
+                return mLeaveTypeName;
+            }
+        }
+
+        public string YearlyLimit
+        {
+            get
+            {
+                return mYearlyLimit;
+            }
+        }
+
+        public int CarryFwdLimit
+        {
+            get
+            {
+                return mCarryFwdLimit;
+            }
         }
     }
 }

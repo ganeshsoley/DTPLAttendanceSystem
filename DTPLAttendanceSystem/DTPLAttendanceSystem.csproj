@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDeptList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +57,30 @@
     </Compile>
     <Compile Include="frmDeptProp.designer.cs">
       <DependentUpon>frmDeptProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDesignationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDesignationList.Designer.cs">
+      <DependentUpon>frmDesignationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDesignationProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDesignationProp.Designer.cs">
+      <DependentUpon>frmDesignationProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpList.designer.cs">
+      <DependentUpon>frmEmpList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpProp.designer.cs">
+      <DependentUpon>frmEmpProp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEmpTypeList.cs">
       <SubType>Form</SubType>
@@ -87,6 +105,18 @@
     </Compile>
     <Compile Include="frmHolidayProp.designer.cs">
       <DependentUpon>frmHolidayProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveEntryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveEntryList.Designer.cs">
+      <DependentUpon>frmLeaveEntryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveEntryProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveEntryProp.Designer.cs">
+      <DependentUpon>frmLeaveEntryProp.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLeaveTypeList.cs">
       <SubType>Form</SubType>
@@ -128,6 +158,18 @@
     <EmbeddedResource Include="frmDeptProp.resx">
       <DependentUpon>frmDeptProp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDesignationList.resx">
+      <DependentUpon>frmDesignationList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDesignationProp.resx">
+      <DependentUpon>frmDesignationProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpList.resx">
+      <DependentUpon>frmEmpList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpProp.resx">
+      <DependentUpon>frmEmpProp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmpTypeList.resx">
       <DependentUpon>frmEmpTypeList.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +181,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHolidayProp.resx">
       <DependentUpon>frmHolidayProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveEntryList.resx">
+      <DependentUpon>frmLeaveEntryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveEntryProp.resx">
+      <DependentUpon>frmLeaveEntryProp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLeaveTypeList.resx">
       <DependentUpon>frmLeaveTypeList.cs</DependentUpon>
@@ -176,6 +224,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{5de20d3a-bac9-4bcf-9e8a-d3adc2ecb858}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityObject\EntityObject.csproj">
+      <Project>{c065ebd1-976d-4c45-a8f3-43cd9ecb0a8c}</Project>
+      <Name>EntityObject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

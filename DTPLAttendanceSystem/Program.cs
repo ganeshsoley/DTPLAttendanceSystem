@@ -33,8 +33,9 @@ namespace DTPLAttendanceSystem
                 //    objLogin.ShowDialog();
                 //}
                 //Application.Run(new frmMain(objLogin.UserID, objLogin.SelectedComID));
-                frmMain objFrmMain = new frmMain();
+                FrmMain objFrmMain = new FrmMain();
                 objFrmMain.Show();
             }
+        }
     }
 }

@@ -10,14 +10,11 @@ using System.Windows.Forms;
 
 namespace DTPLAttendanceSystem
 {
-    public partial class FrmMain : Form
+    public partial class frmLeaveEntryList : Form
     {
-        private int childFormNumber = 0;
-
-        public FrmMain()
+        public frmLeaveEntryList()
         {
             InitializeComponent();
         }
-
     }
 }
