@@ -53,9 +53,6 @@
             this.lvwDesignations.Size = new System.Drawing.Size(291, 253);
             this.lvwDesignations.TabIndex = 2;
             this.lvwDesignations.UseCompatibleStateImageBehavior = false;
-            this.lvwDesignations.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwDesignations_ColumnClick);
-            this.lvwDesignations.DoubleClick += new System.EventHandler(this.lvwDesignations_DoubleClick);
-            this.lvwDesignations.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvwDesignations_KeyPress);
             // 
             // columnHeader1
             // 
@@ -75,13 +72,12 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(204, 19);
+            this.btnNew.Location = new System.Drawing.Point(204, 18);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 2;
             this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnCancel
             // 
@@ -91,7 +87,6 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOk
             // 
@@ -101,7 +96,6 @@
             this.btnOk.TabIndex = 0;
             this.btnOk.Text = "&OK";
             this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // conMenu
             // 
@@ -111,22 +105,19 @@
             this.toolStripSeparator1,
             this.deleteToolStripMenuItem});
             this.conMenu.Name = "conMenu";
-            this.conMenu.Size = new System.Drawing.Size(153, 98);
-            this.conMenu.Opening += new System.ComponentModel.CancelEventHandler(this.conMenu_Opening);
+            this.conMenu.Size = new System.Drawing.Size(113, 76);
             // 
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.modifyToolStripMenuItem.Text = "&Modify";
-            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -136,9 +127,8 @@
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.deleteToolStripMenuItem.Text = "&Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmDesignationList
             // 
@@ -151,8 +141,6 @@
             this.MinimizeBox = false;
             this.Name = "frmDesignationList";
             this.Text = "Designation List";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDesignationList_FormClosing);
-            this.Load += new System.EventHandler(this.frmDesignationList_Load);
             this.grbButtons.ResumeLayout(false);
             this.conMenu.ResumeLayout(false);
             this.ResumeLayout(false);
