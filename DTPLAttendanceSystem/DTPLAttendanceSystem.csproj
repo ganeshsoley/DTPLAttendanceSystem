@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{300387E5-26FA-429B-A8C6-171B6FFD79F5}</ProjectGuid>
+    <ProjectGuid>{366E266E-48C0-4948-8940-B16EDE428FE8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DTPLAttendanceSystem</RootNamespace>
@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmDeptList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDeptList.Designer.cs">
-      <DependentUpon>frmDeptList.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmDeptProp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,9 +131,6 @@
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmDeptList.resx">
-      <DependentUpon>frmDeptList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDeptProp.resx">
       <DependentUpon>frmDeptProp.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,7 +146,7 @@
     <EmbeddedResource Include="frmEmpProp.resx">
       <DependentUpon>frmEmpProp.cs</DependentUpon>
     </EmbeddedResource>
-      <EmbeddedResource Include="frmEmpTypeList.resx">
+    <EmbeddedResource Include="frmEmpTypeList.resx">
       <DependentUpon>frmEmpTypeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpTypeProp.resx">
@@ -172,9 +163,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLeaveTypeProp.resx">
       <DependentUpon>frmLeaveTypeProp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDesignationList.resx">
-      <DependentUpon>frmDesignationList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDesignationProp.resx">
       <DependentUpon>frmDesignationProp.cs</DependentUpon>
