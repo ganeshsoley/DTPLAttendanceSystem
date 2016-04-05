@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4333E372-2B3A-42C3-8B56-6CF795655D7B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AttendanceSystem</RootNamespace>
+    <AssemblyName>AttendanceSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmDeptList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeptList.designer.cs">
+      <DependentUpon>frmDeptList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeptProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeptProp.designer.cs">
+      <DependentUpon>frmDeptProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDesignationList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDesignationList.designer.cs">
+      <DependentUpon>frmDesignationList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDesignationProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDesignationProp.designer.cs">
+      <DependentUpon>frmDesignationProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmployeeList.designer.cs">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpProp.designer.cs">
+      <DependentUpon>frmEmpProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpTypeList.designer.cs">
+      <DependentUpon>frmEmpTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmpTypeProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmpTypeProp.designer.cs">
+      <DependentUpon>frmEmpTypeProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHolidayList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHolidayList.designer.cs">
+      <DependentUpon>frmHolidayList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHolidayProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHolidayProp.designer.cs">
+      <DependentUpon>frmHolidayProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveEntryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveEntryList.designer.cs">
+      <DependentUpon>frmLeaveEntryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveEntryProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveEntryProp.designer.cs">
+      <DependentUpon>frmLeaveEntryProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveTypeList.designer.cs">
+      <DependentUpon>frmLeaveTypeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLeaveTypeProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLeaveTypeProp.designer.cs">
+      <DependentUpon>frmLeaveTypeProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShiftList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShiftList.designer.cs">
+      <DependentUpon>frmShiftList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShiftProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShiftProp.designer.cs">
+      <DependentUpon>frmShiftProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralMethods.cs" />
+    <Compile Include="ListViewColumnSorter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmDeptList.resx">
+      <DependentUpon>frmDeptList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeptProp.resx">
+      <DependentUpon>frmDeptProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDesignationProp.resx">
+      <DependentUpon>frmDesignationProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmployeeList.resx">
+      <DependentUpon>frmEmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpProp.resx">
+      <DependentUpon>frmEmpProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpTypeList.resx">
+      <DependentUpon>frmEmpTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmpTypeProp.resx">
+      <DependentUpon>frmEmpTypeProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHolidayList.resx">
+      <DependentUpon>frmHolidayList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHolidayProp.resx">
+      <DependentUpon>frmHolidayProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveEntryList.resx">
+      <DependentUpon>frmLeaveEntryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveEntryProp.resx">
+      <DependentUpon>frmLeaveEntryProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveTypeList.resx">
+      <DependentUpon>frmLeaveTypeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLeaveTypeProp.resx">
+      <DependentUpon>frmLeaveTypeProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShiftList.resx">
+      <DependentUpon>frmShiftList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShiftProp.resx">
+      <DependentUpon>frmShiftProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{5de20d3a-bac9-4bcf-9e8a-d3adc2ecb858}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityObject\EntityObject.csproj">
+      <Project>{c065ebd1-976d-4c45-a8f3-43cd9ecb0a8c}</Project>
+      <Name>EntityObject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\LogOutIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Search16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
