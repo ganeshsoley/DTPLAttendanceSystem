@@ -31,7 +31,7 @@
             this.grbDesignation = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDescr = new System.Windows.Forms.TextBox();
-            this.txtDept = new System.Windows.Forms.TextBox();
+            this.txtDesignation = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grbButtons = new System.Windows.Forms.GroupBox();
@@ -45,7 +45,7 @@
             // 
             this.grbDesignation.Controls.Add(this.label3);
             this.grbDesignation.Controls.Add(this.txtDescr);
-            this.grbDesignation.Controls.Add(this.txtDept);
+            this.grbDesignation.Controls.Add(this.txtDesignation);
             this.grbDesignation.Controls.Add(this.label2);
             this.grbDesignation.Controls.Add(this.label1);
             this.grbDesignation.Location = new System.Drawing.Point(5, 0);
@@ -70,13 +70,19 @@
             this.txtDescr.Name = "txtDescr";
             this.txtDescr.Size = new System.Drawing.Size(205, 20);
             this.txtDescr.TabIndex = 3;
+            this.txtDescr.TextChanged += new System.EventHandler(this.txtDescr_TextChanged);
+            this.txtDescr.Enter += new System.EventHandler(this.txtDescr_Enter);
+            this.txtDescr.Leave += new System.EventHandler(this.txtDescr_Leave);
             // 
-            // txtDept
+            // txtDesignation
             // 
-            this.txtDept.Location = new System.Drawing.Point(82, 16);
-            this.txtDept.Name = "txtDept";
-            this.txtDept.Size = new System.Drawing.Size(205, 20);
-            this.txtDept.TabIndex = 2;
+            this.txtDesignation.Location = new System.Drawing.Point(82, 16);
+            this.txtDesignation.Name = "txtDesignation";
+            this.txtDesignation.Size = new System.Drawing.Size(205, 20);
+            this.txtDesignation.TabIndex = 2;
+            this.txtDesignation.TextChanged += new System.EventHandler(this.txtDesignation_TextChanged);
+            this.txtDesignation.Enter += new System.EventHandler(this.txtDesignation_Enter);
+            this.txtDesignation.Leave += new System.EventHandler(this.txtDesignation_Leave);
             // 
             // label2
             // 
@@ -114,6 +120,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -123,6 +130,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmDesignationProp
             // 
@@ -133,6 +141,7 @@
             this.Controls.Add(this.grbButtons);
             this.Name = "frmDesignationProp";
             this.Text = "Designation";
+            this.Load += new System.EventHandler(this.frmDesignationProp_Load);
             this.grbDesignation.ResumeLayout(false);
             this.grbDesignation.PerformLayout();
             this.grbButtons.ResumeLayout(false);
@@ -144,7 +153,7 @@
 
         private System.Windows.Forms.GroupBox grbDesignation;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDept;
+        private System.Windows.Forms.TextBox txtDesignation;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox grbButtons;
         private System.Windows.Forms.Button btnCancel;

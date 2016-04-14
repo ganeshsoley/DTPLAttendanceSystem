@@ -441,11 +441,11 @@ namespace AttendanceSystem
 
         public LeaveTypeUpdateEventArgs(long sDBID, string sLeaveCode, string sLeaveName, string sYearlyLimit, int sCarryFwdLimit)
         {
-            this.mDBID = sDBID;
-            this.mLeaveTypeCode = sLeaveCode;
-            this.mLeaveTypeName = sLeaveName;
-            this.mYearlyLimit = sYearlyLimit;
-            this.mCarryFwdLimit = sCarryFwdLimit;
+            mDBID = sDBID;
+            mLeaveTypeCode = sLeaveCode;
+            mLeaveTypeName = sLeaveName;
+            mYearlyLimit = sYearlyLimit;
+            mCarryFwdLimit = sCarryFwdLimit;
         }
 
         public long DBID

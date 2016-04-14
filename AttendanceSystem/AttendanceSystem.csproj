@@ -130,6 +130,12 @@
     <Compile Include="frmLeaveTypeProp.designer.cs">
       <DependentUpon>frmLeaveTypeProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDeptProp.resx">
       <DependentUpon>frmDeptProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDesignationList.resx">
+      <DependentUpon>frmDesignationList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDesignationProp.resx">
       <DependentUpon>frmDesignationProp.cs</DependentUpon>
@@ -190,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLeaveTypeProp.resx">
       <DependentUpon>frmLeaveTypeProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -241,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\LoginImg.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

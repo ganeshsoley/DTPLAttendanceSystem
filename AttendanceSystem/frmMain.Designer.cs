@@ -32,7 +32,27 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.mnuMainMenu = new System.Windows.Forms.MenuStrip();
+            this.mastersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shiftDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leaveTypesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.employeeCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.holidaysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.departmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.designationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bankMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leaveEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.attendanceLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculateAttendaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.utilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
+            this.mnuMainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -51,17 +71,171 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // mnuMainMenu
+            // 
+            this.mnuMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mastersToolStripMenuItem,
+            this.transactionsToolStripMenuItem,
+            this.utilityToolStripMenuItem});
+            this.mnuMainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mnuMainMenu.Name = "mnuMainMenu";
+            this.mnuMainMenu.Size = new System.Drawing.Size(632, 24);
+            this.mnuMainMenu.TabIndex = 4;
+            this.mnuMainMenu.Text = "menuStrip1";
+            // 
+            // mastersToolStripMenuItem
+            // 
+            this.mastersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.shiftDetailsToolStripMenuItem,
+            this.leaveTypesToolStripMenuItem,
+            this.employeeCategoriesToolStripMenuItem,
+            this.holidaysToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.employeesToolStripMenuItem,
+            this.departmentsToolStripMenuItem,
+            this.designationsToolStripMenuItem,
+            this.bankMasterToolStripMenuItem,
+            this.userMasterToolStripMenuItem,
+            this.userRightsToolStripMenuItem});
+            this.mastersToolStripMenuItem.Name = "mastersToolStripMenuItem";
+            this.mastersToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.mastersToolStripMenuItem.Text = "Masters";
+            // 
+            // shiftDetailsToolStripMenuItem
+            // 
+            this.shiftDetailsToolStripMenuItem.Name = "shiftDetailsToolStripMenuItem";
+            this.shiftDetailsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.shiftDetailsToolStripMenuItem.Text = "Shift Details";
+            this.shiftDetailsToolStripMenuItem.Click += new System.EventHandler(this.shiftDetailsToolStripMenuItem_Click);
+            // 
+            // leaveTypesToolStripMenuItem
+            // 
+            this.leaveTypesToolStripMenuItem.Name = "leaveTypesToolStripMenuItem";
+            this.leaveTypesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.leaveTypesToolStripMenuItem.Text = "Leave Types";
+            this.leaveTypesToolStripMenuItem.Click += new System.EventHandler(this.leaveTypesToolStripMenuItem_Click);
+            // 
+            // employeeCategoriesToolStripMenuItem
+            // 
+            this.employeeCategoriesToolStripMenuItem.Name = "employeeCategoriesToolStripMenuItem";
+            this.employeeCategoriesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.employeeCategoriesToolStripMenuItem.Text = "Employee Categories";
+            this.employeeCategoriesToolStripMenuItem.Click += new System.EventHandler(this.employeeCategoriesToolStripMenuItem_Click);
+            // 
+            // holidaysToolStripMenuItem
+            // 
+            this.holidaysToolStripMenuItem.Name = "holidaysToolStripMenuItem";
+            this.holidaysToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.holidaysToolStripMenuItem.Text = "Holidays";
+            this.holidaysToolStripMenuItem.Click += new System.EventHandler(this.holidaysToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(182, 6);
+            // 
+            // employeesToolStripMenuItem
+            // 
+            this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.employeesToolStripMenuItem.Text = "Employee Master";
+            this.employeesToolStripMenuItem.Click += new System.EventHandler(this.employeesToolStripMenuItem_Click);
+            // 
+            // departmentsToolStripMenuItem
+            // 
+            this.departmentsToolStripMenuItem.Name = "departmentsToolStripMenuItem";
+            this.departmentsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.departmentsToolStripMenuItem.Text = "Department Master";
+            this.departmentsToolStripMenuItem.Click += new System.EventHandler(this.departmentsToolStripMenuItem_Click);
+            // 
+            // designationsToolStripMenuItem
+            // 
+            this.designationsToolStripMenuItem.Name = "designationsToolStripMenuItem";
+            this.designationsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.designationsToolStripMenuItem.Text = "Designations";
+            this.designationsToolStripMenuItem.Click += new System.EventHandler(this.designationsToolStripMenuItem_Click);
+            // 
+            // bankMasterToolStripMenuItem
+            // 
+            this.bankMasterToolStripMenuItem.Name = "bankMasterToolStripMenuItem";
+            this.bankMasterToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.bankMasterToolStripMenuItem.Text = "Bank Master";
+            this.bankMasterToolStripMenuItem.Click += new System.EventHandler(this.bankMasterToolStripMenuItem_Click);
+            // 
+            // transactionsToolStripMenuItem
+            // 
+            this.transactionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.leaveEntryToolStripMenuItem,
+            this.attendanceLogsToolStripMenuItem,
+            this.calculateAttendaneToolStripMenuItem});
+            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.transactionsToolStripMenuItem.Text = "Transactions";
+            // 
+            // leaveEntryToolStripMenuItem
+            // 
+            this.leaveEntryToolStripMenuItem.Name = "leaveEntryToolStripMenuItem";
+            this.leaveEntryToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.leaveEntryToolStripMenuItem.Text = "Leave Entry";
+            this.leaveEntryToolStripMenuItem.Click += new System.EventHandler(this.leaveEntryToolStripMenuItem_Click);
+            // 
+            // attendanceLogsToolStripMenuItem
+            // 
+            this.attendanceLogsToolStripMenuItem.Name = "attendanceLogsToolStripMenuItem";
+            this.attendanceLogsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.attendanceLogsToolStripMenuItem.Text = "Attendance Logs";
+            this.attendanceLogsToolStripMenuItem.Click += new System.EventHandler(this.attendanceLogsToolStripMenuItem_Click);
+            // 
+            // calculateAttendaneToolStripMenuItem
+            // 
+            this.calculateAttendaneToolStripMenuItem.Name = "calculateAttendaneToolStripMenuItem";
+            this.calculateAttendaneToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.calculateAttendaneToolStripMenuItem.Text = "Calculate Attendance";
+            this.calculateAttendaneToolStripMenuItem.Click += new System.EventHandler(this.calculateAttendaneToolStripMenuItem_Click);
+            // 
+            // userMasterToolStripMenuItem
+            // 
+            this.userMasterToolStripMenuItem.Name = "userMasterToolStripMenuItem";
+            this.userMasterToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.userMasterToolStripMenuItem.Text = "User Master";
+            this.userMasterToolStripMenuItem.Click += new System.EventHandler(this.userMasterToolStripMenuItem_Click);
+            // 
+            // userRightsToolStripMenuItem
+            // 
+            this.userRightsToolStripMenuItem.Name = "userRightsToolStripMenuItem";
+            this.userRightsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.userRightsToolStripMenuItem.Text = "User Rights";
+            this.userRightsToolStripMenuItem.Click += new System.EventHandler(this.userRightsToolStripMenuItem_Click);
+            // 
+            // utilityToolStripMenuItem
+            // 
+            this.utilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backUpToolStripMenuItem});
+            this.utilityToolStripMenuItem.Name = "utilityToolStripMenuItem";
+            this.utilityToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.utilityToolStripMenuItem.Text = "Utility";
+            // 
+            // backUpToolStripMenuItem
+            // 
+            this.backUpToolStripMenuItem.Name = "backUpToolStripMenuItem";
+            this.backUpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backUpToolStripMenuItem.Text = "Back Up";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 453);
             this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.mnuMainMenu);
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.mnuMainMenu;
             this.Name = "FrmMain";
             this.Text = "FrmMain";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.mnuMainMenu.ResumeLayout(false);
+            this.mnuMainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,6 +245,25 @@
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.MenuStrip mnuMainMenu;
+        private System.Windows.Forms.ToolStripMenuItem mastersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shiftDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leaveTypesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeeCategoriesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem holidaysToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem employeesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem departmentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem designationsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bankMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userMasterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userRightsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leaveEntryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem attendanceLogsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem calculateAttendaneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem utilityToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backUpToolStripMenuItem;
     }
 }
 

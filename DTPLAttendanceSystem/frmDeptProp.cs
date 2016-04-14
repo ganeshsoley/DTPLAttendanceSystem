@@ -5,34 +5,35 @@ using EntityObject;
 using EntityObject.Enum;
 using BLL;
 
-namespace AttendanceSystem
+namespace DTPLAttendanceSystem
 {
     public partial class frmDeptProp : Form
     {
-        #region Private Variable(s)
+
+        #region Private Variable
         private bool flgNew;
         private bool flgLoading;
 
         private Department objDept;
+
         #endregion
 
         #region Constructor
+
         public frmDeptProp()
         {
             InitializeComponent();
         }
-
         public frmDeptProp(Department objDept)
         {
             this.objDept = objDept;
             InitializeComponent();
         }
+
+
         #endregion
 
-        /// <summary>
-        /// Contains Public Properties of Form that are accessible through out the Project.
-        /// </summary>
-        #region Public Properties
+        #region Public Properties 
         public bool IsNew
         {
             get
@@ -44,7 +45,6 @@ namespace AttendanceSystem
                 flgNew = value;
             }
         }
-
         public bool IsLoading
         {
             get
@@ -58,15 +58,8 @@ namespace AttendanceSystem
         }
         #endregion
 
-        /// <summary>
-        /// Contains Delegates and events available on Form.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// <param name="Action"></param>
         #region Delegate & Event
         public delegate void DeptUpdateHandler(object sender, DeptUpdateEventArgs e, DataEventType Action);
-
         public event DeptUpdateHandler Entry_DataChanged;
         #endregion
 
@@ -75,17 +68,14 @@ namespace AttendanceSystem
         {
             btnSave.Enabled = objDept.IsValid;
         }
-
         private void Dept_OnValid(object sender, EventArgs e)
         {
             EnableDisableSave();
         }
-
         private void Dept_OnInValid(object sender, EventArgs e)
         {
             EnableDisableSave();
         }
-
         private void SubscribeToEvents()
         {
             objDept.OnValid += new Department.EventHandler(Dept_OnValid);
@@ -96,7 +86,7 @@ namespace AttendanceSystem
         #region UI Control Logic
         private void frmDeptProp_Load(object sender, EventArgs e)
         {
-            this.Icon = new Icon("Images/DTPL.ico");
+            //this.Icon = new Icon("Images/DTPL.ico");
             flgLoading = true;
             Dept_OnInValid(sender, e);
 
@@ -110,7 +100,6 @@ namespace AttendanceSystem
             }
             txtDept.Text = objDept.DeptName;
             txtDescr.Text = objDept.Description;
-            txtSrNo.Text = objDept.SrNo.ToString();
             if (objDept.IsActive)
                 chkIsActive.Checked = true;
             else
@@ -119,24 +108,12 @@ namespace AttendanceSystem
             SubscribeToEvents();
             flgLoading = false;
         }
-
         private void frmDeptProp_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 SendKeys.Send("{TAB}");
             }
-        }
-
-        private void txtDept_Enter(object sender, EventArgs e)
-        {
-            GeneralMethods.Selection(txtDept);
-        }
-
-        private void txtDept_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (!(Char.IsLetter(e.KeyChar) || Char.IsNumber(e.KeyChar) || (e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Delete)))
-            //    e.Handled = true;
         }
 
         private void txtDept_TextChanged(object sender, EventArgs e)
@@ -150,24 +127,16 @@ namespace AttendanceSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
+        private void txtDept_Enter(object sender, EventArgs e)
+        {
+            GeneralMethods.Selection(txtDept);
+        }
         private void txtDept_Leave(object sender, EventArgs e)
         {
             txtDept.Text = objDept.DeptName;
-        }
-
-        private void txtDescr_Enter(object sender, EventArgs e)
-        {
-            GeneralMethods.Selection(txtDescr);
-        }
-
-        private void txtDescr_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //if (!(Char.IsLetter(e.KeyChar) || Char.IsNumber(e.KeyChar) || (e.KeyChar == (char)Keys.Back) || (e.KeyChar == (char)Keys.Delete)))
-            //    e.Handled = true;
         }
 
         private void txtDescr_TextChanged(object sender, EventArgs e)
@@ -181,15 +150,45 @@ namespace AttendanceSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
+        private void txtDescr_Enter(object sender, EventArgs e)
+        {
+            GeneralMethods.Selection(txtDescr);
+        }
         private void txtDescr_Leave(object sender, EventArgs e)
         {
             txtDescr.Text = objDept.Description;
         }
 
+        private void txtSrNo_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!IsLoading)
+                {
+                    objDept.SrNo  = Convert.ToInt16(txtSrNo.Text.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+        private void txtSrNo_Enter(object sender, EventArgs e)
+        {
+            GeneralMethods.Selection(txtSrNo);
+        }
+        private void txtSrNo_Leave(object sender, EventArgs e)
+        {
+            txtSrNo.Text =Convert.ToString(objDept.SrNo);
+        }
+
+        private void chkIsActive_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
         private void chkIsActive_Click(object sender, EventArgs e)
         {
             if (!IsLoading)
@@ -234,10 +233,9 @@ namespace AttendanceSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,Application.ProductName,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             try
@@ -251,33 +249,10 @@ namespace AttendanceSystem
             }
         }
 
-        private void txtSrNo_Enter(object sender, EventArgs e)
-        {
-            txtSrNo.SelectAll();
-        }
-
-        private void txtSrNo_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!IsLoading)
-                {
-                    objDept.SrNo = Convert.ToInt32(txtSrNo.Text.Trim());
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void txtSrNo_Leave(object sender, EventArgs e)
-        {
-            txtSrNo.Text = Convert.ToString(objDept.SrNo);
-        }
         #endregion
-    }
 
+
+    }
     public class DeptUpdateEventArgs : System.EventArgs
     {
         private int mDBID;

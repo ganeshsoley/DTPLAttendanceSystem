@@ -20,9 +20,9 @@ namespace AttendanceSystem
         private string empTypeName;
 
         private ListViewColumnSorter lvwColSorter;
-        //private UserCompany objUserCompany;
-        //private User objCurUser;
-        //private UIRights objUIRights;
+        private UserCompany objUserCompany;
+        private User objCurUser;
+        private UIRights objUIRights;
         #endregion
 
         #region Public Properties
@@ -150,35 +150,35 @@ namespace AttendanceSystem
             InitializeListView();
         }
 
-        //public frmEmpTypeList(UserCompany objCompany, User objUser)
-        //{
-        //    this.objCurUser = objUser;
-        //    this.objUserCompany = objCompany;
+        public frmEmpTypeList(UserCompany objCompany, User objUser)
+        {
+            objCurUser = objUser;
+            objUserCompany = objCompany;
 
-        //    objUIRights = new UIRights();
+            objUIRights = new UIRights();
 
-        //    InitializeComponent();
-        //    InitializeListView();
-        //    GeneralMethods.FormAuthenticate(this.Name, objUserCompany, objCurUser);
+            InitializeComponent();
+            InitializeListView();
+            GeneralMethods.FormAuthenticate(Name, objUserCompany, objCurUser);
 
-        //    objUIRights.AddRight = GeneralMethods.frmAddRight;
-        //    objUIRights.ModifyRight = GeneralMethods.frmModifyRight;
-        //    objUIRights.ViewRight = GeneralMethods.frmViewRight;
-        //    objUIRights.DeleteRight = GeneralMethods.frmDeleteRight;
-        //    objUIRights.PrintRight = GeneralMethods.repPrintRight;
-        //}
+            objUIRights.AddRight = GeneralMethods.frmAddRight;
+            objUIRights.ModifyRight = GeneralMethods.frmModifyRight;
+            objUIRights.ViewRight = GeneralMethods.frmViewRight;
+            objUIRights.DeleteRight = GeneralMethods.frmDeleteRight;
+            objUIRights.PrintRight = GeneralMethods.repPrintRight;
+        }
         #endregion
 
         #region UI Control Logic
         private void frmEmpTypeList_Load(object sender, EventArgs e)
         {
-            this.Icon = new Icon("Images/DTPL.ico");
+            Icon = new Icon("Images/DTPL.ico");
             flgLoading = true;
             FillList();
             SetButtonVisibility();
             if (IsList)
             {
-                this.CancelButton = btnCancel;
+                CancelButton = btnCancel;
             }
             flgLoading = false;
         }
@@ -264,7 +264,7 @@ namespace AttendanceSystem
             }
 
             // Perform the sort with these new sort options.
-            this.lvwEmpTypes.Sort();
+            lvwEmpTypes.Sort();
         }
 
         private void lvwEmpTypes_DoubleClick(object sender, EventArgs e)
@@ -297,8 +297,8 @@ namespace AttendanceSystem
                     }
                     else
                     {
-                        //if (objUIRights.ModifyRight)
-                        //{
+                        if (objUIRights.ModifyRight)
+                        {
                             EmpType objEmpType;
                             frmEmpTypeProp objFrmProp;
 
@@ -307,11 +307,11 @@ namespace AttendanceSystem
                             objFrmProp.MdiParent = this.MdiParent;
                             objFrmProp.Entry_DataChanged += new frmEmpTypeProp.EmpTypeUpdateHandler(Entry_DataChanged);
                             objFrmProp.Show();
-                        //}
-                        //else
-                        //{
-                        //    throw new Exception("Not Authorised.");
-                        //}
+                        }
+                        else
+                        {
+                            throw new Exception("Not Authorised.");
+                        }
                     }
                 }
             }
@@ -327,22 +327,22 @@ namespace AttendanceSystem
             {
                 if (!IsList)
                 {
-//                    if (objUIRights.AddRight)
-//                    {
+                    if (objUIRights.AddRight)
+                    {
                         EmpType objEmpType;
                         frmEmpTypeProp objFrmProp;
 
                         objEmpType = new EmpType();
                         objFrmProp = new frmEmpTypeProp(objEmpType);
                         objFrmProp.IsNew = true;
-                        objFrmProp.MdiParent = this.MdiParent;
+                        objFrmProp.MdiParent = MdiParent;
                         objFrmProp.Entry_DataChanged += new frmEmpTypeProp.EmpTypeUpdateHandler(Entry_DataChanged);
                         objFrmProp.Show();
-                    //}
-                    //else
-                    //{
-                    //    throw new Exception("Not Authorised.");
-                    //}
+                    }
+                    else
+                    {
+                        throw new Exception("Not Authorised.");
+                    }
                 }
             }
             catch (Exception ex)
@@ -359,8 +359,8 @@ namespace AttendanceSystem
                 {
                     if (!IsList)
                     {
-                        //if (objUIRights.DeleteRight)
-                        //{
+                        if (objUIRights.DeleteRight)
+                        {
                             DialogResult dr = new DialogResult();
                             dr = MessageBox.Show("Do You Really Want to Delete Record ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
@@ -371,11 +371,11 @@ namespace AttendanceSystem
                                 EmpTypeManager.Delete(objEmpType);
                                 lvwEmpTypes.Items.Remove(lvwEmpTypes.SelectedItems[0]);
                             }
-                        //}
-                        //else
-                        //{
-                        //    throw new Exception("Not Authorised.");
-                        //}
+                        }
+                        else
+                        {
+                            throw new Exception("Not Authorised.");
+                        }
                     }
                 }
             }

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityObject;
 using EntityObject.Enum;
@@ -96,7 +90,7 @@ namespace AttendanceSystem
         #region UI Control Logic
         private void frmHolidayProp_Load(object sender, EventArgs e)
         {
-            this.Icon = new Icon("Images/DTPL.ico");
+            Icon = new Icon("Images/DTPL.ico");
             flgLoading = true;
             Holiday_OnInValid(sender, e);
 
@@ -106,7 +100,7 @@ namespace AttendanceSystem
             }
             else
             {
-                this.Text += " [ " + objHoliday.HolidayDate + " ]";
+                this.Text += " [ " + objHoliday.HolidayName + " ]";
             }
             dtpHoliday.Value = objHoliday.HolidayDate;
             txtHolidayName.Text = objHoliday.HolidayName;
@@ -276,9 +270,9 @@ namespace AttendanceSystem
 
         public HolidayUpdateEventArgs(long sDBID, DateTime sHolidayDate, string sHolidayName)
         {
-            this.mDBID = sDBID;
-            this.mHolidayDate = sHolidayDate;
-            this.mHolidayName= sHolidayName;
+            mDBID = sDBID;
+            mHolidayDate = sHolidayDate;
+            mHolidayName= sHolidayName;
         }
 
         public long DBID

@@ -63,6 +63,16 @@ namespace AttendanceSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LoginImg {
+            get {
+                object obj = ResourceManager.GetObject("LoginImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LogOutIcon {
             get {
                 object obj = ResourceManager.GetObject("LogOutIcon", resourceCulture);

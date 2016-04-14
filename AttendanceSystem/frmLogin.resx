@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,4 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAQAAAAAADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAICAgAAAAP8AAP8AAAD//wD/AAAA/wD/AP//
+        AAD///8A//////////////////////////////////////////////////////////////////+IiIiI
+        iIiP//////////+IiIiIiIiIiP/5////////+IiIiIiIiIiI+Zn///////iIiIiIiIiIiI/5n//////4
+        iIiI//+IiIiI/5n//////4j///////+IiI+Zn/////+I/////////4iI+Zn/////iP/////////4iImZ
+        /////4iP/////////4iPmZ/////4j//////////4iJmf////+I+f////////+Ij5mf////+Pmf//+Zn/
+        //+I+Zn/////iJn//5mZn///iPmZ/////4j5n/+ZmZn//4j5mZ////+I+Z//mZmZ//+I+Zmf////+Imf
+        //mZn///iPmZn/////iJn///mf///4iZmZ/////4j5n///////+PmZn/////+IiZ////////+ZmZ////
+        //+Imf////////mZmf//////iPmf//////+ZmZ/////////5n/////+ZmZn/////////+Z////mZmZmf
+        //////////+ZmZmZmZmZ////////////mZmZmZmZ//////////////mZmZmZn///////////////////
+        //////////////////////////////////////////////////8AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTPLAttendanceSystem", "DTPLAttendanceSystem\DTPLAttendanceSystem.csproj", "{366E266E-48C0-4948-8940-B16EDE428FE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttendanceSystem", "AttendanceSystem\AttendanceSystem.csproj", "{4333E372-2B3A-42C3-8B56-6CF795655D7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{366E266E-48C0-4948-8940-B16EDE428FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{366E266E-48C0-4948-8940-B16EDE428FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{366E266E-48C0-4948-8940-B16EDE428FE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4333E372-2B3A-42C3-8B56-6CF795655D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4333E372-2B3A-42C3-8B56-6CF795655D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4333E372-2B3A-42C3-8B56-6CF795655D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4333E372-2B3A-42C3-8B56-6CF795655D7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

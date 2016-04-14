@@ -109,7 +109,7 @@ namespace AttendanceSystem
             }
             else
             {
-                this.Text += " [ " + objEmpType.EmpTypeCode + " ]";
+                this.Text += " [ " + objEmpType.EmpTypeName + " ]";
             }
             txtEmpTypeCode.Text = objEmpType.EmpTypeCode;
             txtEmpTypeName.Text = objEmpType.EmpTypeName;

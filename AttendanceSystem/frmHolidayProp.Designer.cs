@@ -32,14 +32,17 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.grbHoliday = new System.Windows.Forms.GroupBox();
+            this.cboApplicableTo = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.dtpHoliday = new System.Windows.Forms.DateTimePicker();
             this.txtHolidayName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboApplicableTo = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.grbButtons.SuspendLayout();
             this.grbHoliday.SuspendLayout();
             this.SuspendLayout();
@@ -48,9 +51,9 @@
             // 
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnSave);
-            this.grbButtons.Location = new System.Drawing.Point(6, 199);
+            this.grbButtons.Location = new System.Drawing.Point(6, 192);
             this.grbButtons.Name = "grbButtons";
-            this.grbButtons.Size = new System.Drawing.Size(345, 50);
+            this.grbButtons.Size = new System.Drawing.Size(361, 50);
             this.grbButtons.TabIndex = 2;
             this.grbButtons.TabStop = false;
             // 
@@ -76,6 +79,9 @@
             // 
             // grbHoliday
             // 
+            this.grbHoliday.Controls.Add(this.label7);
+            this.grbHoliday.Controls.Add(this.label6);
+            this.grbHoliday.Controls.Add(this.label5);
             this.grbHoliday.Controls.Add(this.cboApplicableTo);
             this.grbHoliday.Controls.Add(this.label4);
             this.grbHoliday.Controls.Add(this.txtDescription);
@@ -86,9 +92,29 @@
             this.grbHoliday.Controls.Add(this.label1);
             this.grbHoliday.Location = new System.Drawing.Point(6, -1);
             this.grbHoliday.Name = "grbHoliday";
-            this.grbHoliday.Size = new System.Drawing.Size(345, 194);
+            this.grbHoliday.Size = new System.Drawing.Size(361, 194);
             this.grbHoliday.TabIndex = 3;
             this.grbHoliday.TabStop = false;
+            // 
+            // cboApplicableTo
+            // 
+            this.cboApplicableTo.FormattingEnabled = true;
+            this.cboApplicableTo.Location = new System.Drawing.Point(96, 81);
+            this.cboApplicableTo.Name = "cboApplicableTo";
+            this.cboApplicableTo.Size = new System.Drawing.Size(154, 21);
+            this.cboApplicableTo.TabIndex = 7;
+            this.cboApplicableTo.TextChanged += new System.EventHandler(this.cboApplicableTo_TextChanged);
+            this.cboApplicableTo.Enter += new System.EventHandler(this.cboApplicableTo_Enter);
+            this.cboApplicableTo.Leave += new System.EventHandler(this.cboApplicableTo_Leave);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Applicable To";
             // 
             // txtDescription
             // 
@@ -149,31 +175,41 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Holiday Name";
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 81);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Applicable To";
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(341, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "*";
             // 
-            // cboApplicableTo
+            // label6
             // 
-            this.cboApplicableTo.FormattingEnabled = true;
-            this.cboApplicableTo.Location = new System.Drawing.Point(96, 81);
-            this.cboApplicableTo.Name = "cboApplicableTo";
-            this.cboApplicableTo.Size = new System.Drawing.Size(154, 21);
-            this.cboApplicableTo.TabIndex = 7;
-            this.cboApplicableTo.TextChanged += new System.EventHandler(this.cboApplicableTo_TextChanged);
-            this.cboApplicableTo.Enter += new System.EventHandler(this.cboApplicableTo_Enter);
-            this.cboApplicableTo.Leave += new System.EventHandler(this.cboApplicableTo_Leave);
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(208, 53);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(11, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "*";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(257, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(11, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "*";
             // 
             // frmHolidayProp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 252);
+            this.ClientSize = new System.Drawing.Size(371, 245);
             this.Controls.Add(this.grbHoliday);
             this.Controls.Add(this.grbButtons);
             this.MaximizeBox = false;
@@ -202,5 +238,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboApplicableTo;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
     }
 }

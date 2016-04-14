@@ -17,7 +17,8 @@ namespace EntityObject
         private long dbID;
         private long leaveTypeID;
         private string leaveType;
-        private long empID;
+        private long employeeID;
+        private string empID;
         private string empName;
         private string empDept;
         private string leaveReason;
@@ -42,7 +43,7 @@ namespace EntityObject
             dbID = 0;
             leaveTypeID = 0;
             leaveType = string.Empty;
-            empID = 0;
+            employeeID = 0;
             empName = string.Empty;
             empDept = string.Empty;
             leaveReason = string.Empty;
@@ -156,12 +157,25 @@ namespace EntityObject
         {
             get
             {
-                return empID;
+                return employeeID;
             }
             set
             {
                 RuleBroken("EmpID", (value == 0));
-                empID = value;
+                employeeID = value;
+                flgEdited = true;
+            }
+        }
+
+        public string EmpID
+        {
+            get
+            {
+                return empID;
+            }
+            set
+            {
+                empID = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }

@@ -58,6 +58,8 @@
             this.grbButtons = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblShiftHrs = new System.Windows.Forms.Label();
+            this.lblShiftMins = new System.Windows.Forms.Label();
             this.grbShift.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grbButtons.SuspendLayout();
@@ -82,24 +84,29 @@
             this.grbShift.Controls.Add(this.label1);
             this.grbShift.Location = new System.Drawing.Point(3, 1);
             this.grbShift.Name = "grbShift";
-            this.grbShift.Size = new System.Drawing.Size(572, 231);
+            this.grbShift.Size = new System.Drawing.Size(572, 203);
             this.grbShift.TabIndex = 0;
             this.grbShift.TabStop = false;
-            this.grbShift.Enter += new System.EventHandler(this.grbShift_Enter);
             // 
             // txtGraceTime
             // 
-            this.txtGraceTime.Location = new System.Drawing.Point(128, 197);
+            this.txtGraceTime.Location = new System.Drawing.Point(128, 170);
             this.txtGraceTime.Name = "txtGraceTime";
             this.txtGraceTime.Size = new System.Drawing.Size(50, 20);
             this.txtGraceTime.TabIndex = 18;
+            this.txtGraceTime.TextChanged += new System.EventHandler(this.txtGraceTime_TextChanged);
+            this.txtGraceTime.Enter += new System.EventHandler(this.txtGraceTime_Enter);
+            this.txtGraceTime.Leave += new System.EventHandler(this.txtGraceTime_Leave);
             // 
             // txtPunchEnd
             // 
-            this.txtPunchEnd.Location = new System.Drawing.Point(128, 169);
+            this.txtPunchEnd.Location = new System.Drawing.Point(335, 144);
             this.txtPunchEnd.Name = "txtPunchEnd";
             this.txtPunchEnd.Size = new System.Drawing.Size(50, 20);
             this.txtPunchEnd.TabIndex = 17;
+            this.txtPunchEnd.TextChanged += new System.EventHandler(this.txtPunchEnd_TextChanged);
+            this.txtPunchEnd.Enter += new System.EventHandler(this.txtPunchEnd_Enter);
+            this.txtPunchEnd.Leave += new System.EventHandler(this.txtPunchEnd_Leave);
             // 
             // txtPunchBegin
             // 
@@ -107,11 +114,14 @@
             this.txtPunchBegin.Name = "txtPunchBegin";
             this.txtPunchBegin.Size = new System.Drawing.Size(50, 20);
             this.txtPunchBegin.TabIndex = 16;
+            this.txtPunchBegin.TextChanged += new System.EventHandler(this.txtPunchBegin_TextChanged);
+            this.txtPunchBegin.Enter += new System.EventHandler(this.txtPunchBegin_Enter);
+            this.txtPunchBegin.Leave += new System.EventHandler(this.txtPunchBegin_Leave);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(213, 197);
+            this.label15.Location = new System.Drawing.Point(215, 171);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(245, 13);
             this.label15.TabIndex = 15;
@@ -120,7 +130,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(180, 197);
+            this.label13.Location = new System.Drawing.Point(180, 170);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(29, 13);
             this.label13.TabIndex = 14;
@@ -129,7 +139,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(180, 169);
+            this.label12.Location = new System.Drawing.Point(391, 144);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 13);
             this.label12.TabIndex = 13;
@@ -138,17 +148,18 @@
             // chkIsGrace
             // 
             this.chkIsGrace.AutoSize = true;
-            this.chkIsGrace.Location = new System.Drawing.Point(23, 197);
+            this.chkIsGrace.Location = new System.Drawing.Point(22, 170);
             this.chkIsGrace.Name = "chkIsGrace";
             this.chkIsGrace.Size = new System.Drawing.Size(81, 17);
             this.chkIsGrace.TabIndex = 12;
             this.chkIsGrace.Text = "Grace Time";
             this.chkIsGrace.UseVisualStyleBackColor = true;
+            this.chkIsGrace.CheckedChanged += new System.EventHandler(this.chkIsGrace_CheckedChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(20, 169);
+            this.label11.Location = new System.Drawing.Point(244, 144);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 13);
             this.label11.TabIndex = 11;
@@ -174,6 +185,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblShiftMins);
+            this.groupBox1.Controls.Add(this.lblShiftHrs);
             this.groupBox1.Controls.Add(this.txtShiftMins);
             this.groupBox1.Controls.Add(this.txtShiftHrs);
             this.groupBox1.Controls.Add(this.txtShiftEndTime);
@@ -211,6 +224,9 @@
             this.txtShiftEndTime.Name = "txtShiftEndTime";
             this.txtShiftEndTime.Size = new System.Drawing.Size(74, 20);
             this.txtShiftEndTime.TabIndex = 12;
+            this.txtShiftEndTime.TextChanged += new System.EventHandler(this.txtShiftEndTime_TextChanged);
+            this.txtShiftEndTime.Enter += new System.EventHandler(this.txtShiftEndTime_Enter);
+            this.txtShiftEndTime.Leave += new System.EventHandler(this.txtShiftEndTime_Leave);
             // 
             // txtShiftBeginTime
             // 
@@ -218,6 +234,9 @@
             this.txtShiftBeginTime.Name = "txtShiftBeginTime";
             this.txtShiftBeginTime.Size = new System.Drawing.Size(74, 20);
             this.txtShiftBeginTime.TabIndex = 11;
+            this.txtShiftBeginTime.TextChanged += new System.EventHandler(this.txtShiftBeginTime_TextChanged);
+            this.txtShiftBeginTime.Enter += new System.EventHandler(this.txtShiftBeginTime_Enter);
+            this.txtShiftBeginTime.Leave += new System.EventHandler(this.txtShiftBeginTime_Leave);
             // 
             // label14
             // 
@@ -288,6 +307,9 @@
             this.txtShiftCode.Name = "txtShiftCode";
             this.txtShiftCode.Size = new System.Drawing.Size(125, 20);
             this.txtShiftCode.TabIndex = 3;
+            this.txtShiftCode.TextChanged += new System.EventHandler(this.txtShiftCode_TextChanged);
+            this.txtShiftCode.Enter += new System.EventHandler(this.txtShiftCode_Enter);
+            this.txtShiftCode.Leave += new System.EventHandler(this.txtShiftCode_Leave);
             // 
             // label2
             // 
@@ -304,6 +326,9 @@
             this.txtShiftName.Name = "txtShiftName";
             this.txtShiftName.Size = new System.Drawing.Size(120, 20);
             this.txtShiftName.TabIndex = 1;
+            this.txtShiftName.TextChanged += new System.EventHandler(this.txtShiftName_TextChanged);
+            this.txtShiftName.Enter += new System.EventHandler(this.txtShiftName_Enter);
+            this.txtShiftName.Leave += new System.EventHandler(this.txtShiftName_Leave);
             // 
             // label1
             // 
@@ -318,7 +343,7 @@
             // 
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnSave);
-            this.grbButtons.Location = new System.Drawing.Point(3, 232);
+            this.grbButtons.Location = new System.Drawing.Point(3, 205);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(572, 58);
             this.grbButtons.TabIndex = 1;
@@ -332,6 +357,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -341,12 +367,33 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // lblShiftHrs
+            // 
+            this.lblShiftHrs.BackColor = System.Drawing.SystemColors.Window;
+            this.lblShiftHrs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblShiftHrs.Location = new System.Drawing.Point(88, 45);
+            this.lblShiftHrs.Name = "lblShiftHrs";
+            this.lblShiftHrs.Size = new System.Drawing.Size(49, 20);
+            this.lblShiftHrs.TabIndex = 15;
+            this.lblShiftHrs.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblShiftMins
+            // 
+            this.lblShiftMins.BackColor = System.Drawing.SystemColors.Window;
+            this.lblShiftMins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblShiftMins.Location = new System.Drawing.Point(172, 45);
+            this.lblShiftMins.Name = "lblShiftMins";
+            this.lblShiftMins.Size = new System.Drawing.Size(57, 20);
+            this.lblShiftMins.TabIndex = 16;
+            this.lblShiftMins.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // frmShiftProp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 291);
+            this.ClientSize = new System.Drawing.Size(578, 265);
             this.Controls.Add(this.grbButtons);
             this.Controls.Add(this.grbShift);
             this.MaximizeBox = false;
@@ -394,5 +441,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblShiftMins;
+        private System.Windows.Forms.Label lblShiftHrs;
     }
 }

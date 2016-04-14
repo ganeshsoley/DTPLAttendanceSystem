@@ -16,13 +16,13 @@ namespace AttendanceSystem
         private bool flgListCancel;
 
         private long dbID;
-        private DateTime holidayDate;
+        private string holidayDate;
         private string holidayName;
 
         private ListViewColumnSorter lvwColSorter;
-        //private UserCompany objUserCompany;
-        //private User objCurUser;
-        //private UIRights objUIRights;
+        private UserCompany objUserCompany;
+        private User objCurUser;
+        private UIRights objUIRights;
         #endregion
 
         #region Public Properties
@@ -74,7 +74,7 @@ namespace AttendanceSystem
             }
         }
 
-        public DateTime HolidayDate
+        public string HolidayDate
         {
             get
             {
@@ -106,12 +106,12 @@ namespace AttendanceSystem
             // to the ListView control.
             lvwColSorter = new ListViewColumnSorter();
 
-            this.lvwHolidays.ContextMenuStrip = conMenu;
-            this.lvwHolidays.FullRowSelect = true;
-            this.lvwHolidays.GridLines = true;
-            this.lvwHolidays.ListViewItemSorter = lvwColSorter;
-            this.lvwHolidays.MultiSelect = false;
-            this.lvwHolidays.View = View.Details;
+            lvwHolidays.ContextMenuStrip = conMenu;
+            lvwHolidays.FullRowSelect = true;
+            lvwHolidays.GridLines = true;
+            lvwHolidays.ListViewItemSorter = lvwColSorter;
+            lvwHolidays.MultiSelect = false;
+            lvwHolidays.View = View.Details;
         }
 
         private void FillList()
@@ -149,25 +149,23 @@ namespace AttendanceSystem
             InitializeComponent();
             InitializeListView();
         }
+        public frmHolidayList(UserCompany objCompany, User objUser)
+        {
+            objCurUser = objUser;
+            objUserCompany = objCompany;
 
+            objUIRights = new UIRights();
 
-        //public frmHolidayList(UserCompany objCompany, User objUser)
-        //{
-        //    this.objCurUser = objUser;
-        //    this.objUserCompany = objCompany;
+            InitializeComponent();
+            InitializeListView();
+            GeneralMethods.FormAuthenticate(Name, objUserCompany, objCurUser);
 
-        //    objUIRights = new UIRights();
-
-        //    InitializeComponent();
-        //    InitializeListView();
-        //    GeneralMethods.FormAuthenticate(this.Name, objUserCompany, objCurUser);
-
-        //    objUIRights.AddRight = GeneralMethods.frmAddRight;
-        //    objUIRights.ModifyRight = GeneralMethods.frmModifyRight;
-        //    objUIRights.ViewRight = GeneralMethods.frmViewRight;
-        //    objUIRights.DeleteRight = GeneralMethods.frmDeleteRight;
-        //    objUIRights.PrintRight = GeneralMethods.repPrintRight;
-        //}
+            objUIRights.AddRight = GeneralMethods.frmAddRight;
+            objUIRights.ModifyRight = GeneralMethods.frmModifyRight;
+            objUIRights.ViewRight = GeneralMethods.frmViewRight;
+            objUIRights.DeleteRight = GeneralMethods.frmDeleteRight;
+            objUIRights.PrintRight = GeneralMethods.repPrintRight;
+        }
         #endregion
 
         #region Context Menu
@@ -183,21 +181,21 @@ namespace AttendanceSystem
                     }
                     else
                     {
-                        //if (objUIRights.ModifyRight)
-                        //{
-                        Holiday objHoliday;
-                        frmHolidayProp objFrmProp;
+                        if (objUIRights.ModifyRight)
+                        {
+                            Holiday objHoliday;
+                            frmHolidayProp objFrmProp;
 
-                        objHoliday = HolidayManager.GetItem(Convert.ToInt32(lvwHolidays.SelectedItems[0].Name));
-                        objFrmProp = new frmHolidayProp(objHoliday);
-                        objFrmProp.MdiParent = this.MdiParent;
-                        objFrmProp.Entry_DataChanged += new frmHolidayProp.HolidayUpdateHandler(Entry_DataChanged);
-                        objFrmProp.Show();
-                        //}
-                        //else
-                        //{
-                        //    throw new Exception("Not Authorised.");
-                        //}
+                            objHoliday = HolidayManager.GetItem(Convert.ToInt32(lvwHolidays.SelectedItems[0].Name));
+                            objFrmProp = new frmHolidayProp(objHoliday);
+                            objFrmProp.MdiParent = this.MdiParent;
+                            objFrmProp.Entry_DataChanged += new frmHolidayProp.HolidayUpdateHandler(Entry_DataChanged);
+                            objFrmProp.Show();
+                        }
+                        else
+                        {
+                            throw new Exception("Not Authorised.");
+                        }
                     }
                 }
             }
@@ -213,22 +211,22 @@ namespace AttendanceSystem
             {
                 if (!IsList)
                 {
-                    //                    if (objUIRights.AddRight)
-                    //                    {
-                    Holiday objHoliday;
-                    frmHolidayProp objFrmProp;
+                    if (objUIRights.AddRight)
+                    {
+                        Holiday objHoliday;
+                        frmHolidayProp objFrmProp;
 
-                    objHoliday = new Holiday();
-                    objFrmProp = new frmHolidayProp(objHoliday);
-                    objFrmProp.IsNew = true;
-                    objFrmProp.MdiParent = this.MdiParent;
-                    objFrmProp.Entry_DataChanged += new frmHolidayProp.HolidayUpdateHandler(Entry_DataChanged);
-                    objFrmProp.Show();
-                    //}
-                    //else
-                    //{
-                    //    throw new Exception("Not Authorised.");
-                    //}
+                        objHoliday = new Holiday();
+                        objFrmProp = new frmHolidayProp(objHoliday);
+                        objFrmProp.IsNew = true;
+                        objFrmProp.MdiParent = this.MdiParent;
+                        objFrmProp.Entry_DataChanged += new frmHolidayProp.HolidayUpdateHandler(Entry_DataChanged);
+                        objFrmProp.Show();
+                    }
+                    else
+                    {
+                        throw new Exception("Not Authorised.");
+                    }
                 }
             }
             catch (Exception ex)
@@ -245,23 +243,23 @@ namespace AttendanceSystem
                 {
                     if (!IsList)
                     {
-                        //if (objUIRights.DeleteRight)
-                        //{
-                        DialogResult dr = new DialogResult();
-                        dr = MessageBox.Show("Do You Really Want to Delete Record ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                        if (dr == DialogResult.Yes)
+                        if (objUIRights.DeleteRight)
                         {
-                            Holiday objHoliday = new Holiday();
-                            objHoliday = HolidayManager.GetItem(Convert.ToInt32(lvwHolidays.SelectedItems[0].Name));
-                            HolidayManager.Delete(objHoliday);
-                            lvwHolidays.Items.Remove(lvwHolidays.SelectedItems[0]);
+                            DialogResult dr = new DialogResult();
+                            dr = MessageBox.Show("Do You Really Want to Delete Record ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                            if (dr == DialogResult.Yes)
+                            {
+                                Holiday objHoliday = new Holiday();
+                                objHoliday = HolidayManager.GetItem(Convert.ToInt32(lvwHolidays.SelectedItems[0].Name));
+                                HolidayManager.Delete(objHoliday);
+                                lvwHolidays.Items.Remove(lvwHolidays.SelectedItems[0]);
+                            }
                         }
-                        //}
-                        //else
-                        //{
-                        //    throw new Exception("Not Authorised.");
-                        //}
+                        else
+                        {
+                            throw new Exception("Not Authorised.");
+                        }
                     }
                 }
             }
@@ -296,13 +294,13 @@ namespace AttendanceSystem
         #region UI Control Logic
         private void frmHolidayList_Load(object sender, EventArgs e)
         {
-            this.Icon = new Icon("Images/DTPL.ico");
+            Icon = new Icon("Images/DTPL.ico");
             flgLoading = true;
             FillList();
             SetButtonVisibility();
             if (IsList)
             {
-                this.CancelButton = btnCancel;
+                CancelButton = btnCancel;
             }
             flgLoading = false;
         }
@@ -320,7 +318,7 @@ namespace AttendanceSystem
                 if (IsList && lvwHolidays.SelectedItems != null && lvwHolidays.SelectedItems.Count == 1)
                 {
                     dbID = Convert.ToInt32(lvwHolidays.SelectedItems[0].Name);
-                    holidayDate = Convert.ToDateTime(lvwHolidays.SelectedItems[0].Text);
+                    holidayDate = lvwHolidays.SelectedItems[0].Text;
                     holidayName = lvwHolidays.SelectedItems[0].SubItems[1].Text;
 
                     flgListCancel = false;
@@ -344,7 +342,7 @@ namespace AttendanceSystem
                 if (IsList)
                 {
                     dbID = 0;
-                    holidayDate = DateTime.MinValue ;
+                    holidayDate = string.Empty;
                     holidayName = string.Empty;
 
                     flgListCancel = true;
@@ -388,7 +386,7 @@ namespace AttendanceSystem
             }
 
             // Perform the sort with these new sort options.
-            this.lvwHolidays.Sort();
+            lvwHolidays.Sort();
         }
 
         private void lvwHolidays_DoubleClick(object sender, EventArgs e)
