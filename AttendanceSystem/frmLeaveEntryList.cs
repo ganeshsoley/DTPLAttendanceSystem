@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityObject;
+using EntityObject.Enum;
 using BLL;
 
 namespace AttendanceSystem
@@ -216,8 +217,8 @@ namespace AttendanceSystem
                     }
                     else
                     {
-                        if (objUIRights.ModifyRight)
-                        {
+                        //if (objUIRights.ModifyRight)
+                        //{
                             LeaveApplication objLeaveEntry;
                             frmLeaveEntryProp objFrmProp;
 
@@ -226,11 +227,11 @@ namespace AttendanceSystem
                             objFrmProp.MdiParent = this.MdiParent;
                             objFrmProp.Entry_DataChanged += new frmLeaveEntryProp.LeaveApplicationUpdateHandler(Entry_DataChanged);
                             objFrmProp.Show();
-                        }
-                        else
-                        {
-                            throw new Exception("Not Authorised.");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    throw new Exception("Not Authorised.");
+                        //}
                     }
                 }
             }
@@ -246,8 +247,8 @@ namespace AttendanceSystem
             {
                 if (!IsList)
                 {
-                    if (objUIRights.AddRight)
-                    {
+                    //if (objUIRights.AddRight)
+                    //{
                         LeaveApplication objLeaveEntry;
                         frmLeaveEntryProp objFrmProp;
 
@@ -257,11 +258,11 @@ namespace AttendanceSystem
                         objFrmProp.MdiParent = MdiParent;
                         objFrmProp.Entry_DataChanged += new frmLeaveEntryProp.LeaveApplicationUpdateHandler(Entry_DataChanged);
                         objFrmProp.Show();
-                    }
-                    else
-                    {
-                        throw new Exception("Not Authorised.");
-                    }
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception("Not Authorised.");
+                    //}
                 }
             }
             catch (Exception ex)
@@ -278,8 +279,8 @@ namespace AttendanceSystem
                 {
                     if (!IsList)
                     {
-                        if (objUIRights.DeleteRight)
-                        {
+                        //if (objUIRights.DeleteRight)
+                        //{
                             DialogResult dr = new DialogResult();
                             dr = MessageBox.Show("Do You Really Want to Delete Record ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
@@ -290,11 +291,11 @@ namespace AttendanceSystem
                                 LeaveApplicationManager.Delete(objLeaveEntry);
                                 lvwLeaves.Items.Remove(lvwLeaves.SelectedItems[0]);
                             }
-                        }
-                        else
-                        {
-                            throw new Exception("Not Authorised.");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    throw new Exception("Not Authorised.");
+                        //}
                     }
                 }
             }
@@ -404,5 +405,43 @@ namespace AttendanceSystem
                 newToolStripMenuItem_Click(sender, e);
             }
         }
+
+        private void Entry_DataChanged(object sender, LeaveApplicationUpdateEventArgs e, DataEventType Action)
+        {
+            ListViewItem lvItem;
+            switch (Action)
+            {
+                case DataEventType.INSERT_EVENT:
+
+                    lvItem = new ListViewItem();
+                    lvItem.Name = Convert.ToString(e.DBID);
+                    lvItem.Text = e.FromDate.ToShortDateString();
+                    lvItem.SubItems.Add(e.ToDate.ToShortDateString());
+                    lvItem.SubItems.Add(e.EmpID);
+                    lvItem.SubItems.Add(e.EmpName);
+                    lvItem.SubItems.Add(e.EmpDept);
+                    lvItem.SubItems.Add(e.LeaveType);
+
+
+                    lvwLeaves.Items.Add(lvItem);
+                    lvwLeaves.EnsureVisible(lvItem.Index);
+
+                    break;
+
+                case DataEventType.UPDATE_EVENT:
+                    lvItem = lvwLeaves.Items[lvwLeaves.SelectedItems[0].Index];
+                    lvItem.Text = e.FromDate.ToShortDateString();
+                    lvItem.SubItems[1].Text = e.ToDate.ToShortDateString();
+                    lvItem.SubItems[2].Text = e.EmpID;
+                    lvItem.SubItems[3].Text = e.EmpName;
+                    lvItem.SubItems[4].Text = e.EmpDept;
+                    lvItem.SubItems[5].Text = e.LeaveType;
+
+                    lvwLeaves.EnsureVisible(lvwLeaves.SelectedItems[0].Index);
+
+                    break;
+            }
+        }
     }
+
 }

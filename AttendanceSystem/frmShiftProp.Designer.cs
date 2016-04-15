@@ -40,6 +40,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblShiftMins = new System.Windows.Forms.Label();
+            this.lblShiftHrs = new System.Windows.Forms.Label();
             this.txtShiftMins = new System.Windows.Forms.TextBox();
             this.txtShiftHrs = new System.Windows.Forms.TextBox();
             this.txtShiftEndTime = new System.Windows.Forms.TextBox();
@@ -58,8 +60,6 @@
             this.grbButtons = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblShiftHrs = new System.Windows.Forms.Label();
-            this.lblShiftMins = new System.Windows.Forms.Label();
             this.grbShift.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grbButtons.SuspendLayout();
@@ -93,7 +93,7 @@
             this.txtGraceTime.Location = new System.Drawing.Point(128, 170);
             this.txtGraceTime.Name = "txtGraceTime";
             this.txtGraceTime.Size = new System.Drawing.Size(50, 20);
-            this.txtGraceTime.TabIndex = 18;
+            this.txtGraceTime.TabIndex = 23;
             this.txtGraceTime.TextChanged += new System.EventHandler(this.txtGraceTime_TextChanged);
             this.txtGraceTime.Enter += new System.EventHandler(this.txtGraceTime_Enter);
             this.txtGraceTime.Leave += new System.EventHandler(this.txtGraceTime_Leave);
@@ -103,7 +103,7 @@
             this.txtPunchEnd.Location = new System.Drawing.Point(335, 144);
             this.txtPunchEnd.Name = "txtPunchEnd";
             this.txtPunchEnd.Size = new System.Drawing.Size(50, 20);
-            this.txtPunchEnd.TabIndex = 17;
+            this.txtPunchEnd.TabIndex = 20;
             this.txtPunchEnd.TextChanged += new System.EventHandler(this.txtPunchEnd_TextChanged);
             this.txtPunchEnd.Enter += new System.EventHandler(this.txtPunchEnd_Enter);
             this.txtPunchEnd.Leave += new System.EventHandler(this.txtPunchEnd_Leave);
@@ -113,7 +113,7 @@
             this.txtPunchBegin.Location = new System.Drawing.Point(128, 144);
             this.txtPunchBegin.Name = "txtPunchBegin";
             this.txtPunchBegin.Size = new System.Drawing.Size(50, 20);
-            this.txtPunchBegin.TabIndex = 16;
+            this.txtPunchBegin.TabIndex = 17;
             this.txtPunchBegin.TextChanged += new System.EventHandler(this.txtPunchBegin_TextChanged);
             this.txtPunchBegin.Enter += new System.EventHandler(this.txtPunchBegin_Enter);
             this.txtPunchBegin.Leave += new System.EventHandler(this.txtPunchBegin_Leave);
@@ -124,7 +124,7 @@
             this.label15.Location = new System.Drawing.Point(215, 171);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(245, 13);
-            this.label15.TabIndex = 15;
+            this.label15.TabIndex = 25;
             this.label15.Text = "(Default value comes from Employee Type Setting)";
             // 
             // label13
@@ -133,7 +133,7 @@
             this.label13.Location = new System.Drawing.Point(180, 170);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(29, 13);
-            this.label13.TabIndex = 14;
+            this.label13.TabIndex = 24;
             this.label13.Text = "Mins";
             // 
             // label12
@@ -142,7 +142,7 @@
             this.label12.Location = new System.Drawing.Point(391, 144);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 13);
-            this.label12.TabIndex = 13;
+            this.label12.TabIndex = 21;
             this.label12.Text = "Mins";
             // 
             // chkIsGrace
@@ -151,7 +151,7 @@
             this.chkIsGrace.Location = new System.Drawing.Point(22, 170);
             this.chkIsGrace.Name = "chkIsGrace";
             this.chkIsGrace.Size = new System.Drawing.Size(81, 17);
-            this.chkIsGrace.TabIndex = 12;
+            this.chkIsGrace.TabIndex = 22;
             this.chkIsGrace.Text = "Grace Time";
             this.chkIsGrace.UseVisualStyleBackColor = true;
             this.chkIsGrace.CheckedChanged += new System.EventHandler(this.chkIsGrace_CheckedChanged);
@@ -162,7 +162,7 @@
             this.label11.Location = new System.Drawing.Point(244, 144);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 13);
-            this.label11.TabIndex = 11;
+            this.label11.TabIndex = 19;
             this.label11.Text = "Punch End After";
             // 
             // label10
@@ -171,7 +171,7 @@
             this.label10.Location = new System.Drawing.Point(180, 144);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 13);
-            this.label10.TabIndex = 10;
+            this.label10.TabIndex = 18;
             this.label10.Text = "Mins";
             // 
             // label9
@@ -180,7 +180,7 @@
             this.label9.Location = new System.Drawing.Point(20, 144);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(102, 13);
-            this.label9.TabIndex = 9;
+            this.label9.TabIndex = 16;
             this.label9.Text = "Punch Begin Before";
             // 
             // groupBox1
@@ -204,6 +204,26 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
+            // lblShiftMins
+            // 
+            this.lblShiftMins.BackColor = System.Drawing.SystemColors.Window;
+            this.lblShiftMins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblShiftMins.Location = new System.Drawing.Point(172, 45);
+            this.lblShiftMins.Name = "lblShiftMins";
+            this.lblShiftMins.Size = new System.Drawing.Size(57, 20);
+            this.lblShiftMins.TabIndex = 14;
+            this.lblShiftMins.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // lblShiftHrs
+            // 
+            this.lblShiftHrs.BackColor = System.Drawing.SystemColors.Window;
+            this.lblShiftHrs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblShiftHrs.Location = new System.Drawing.Point(88, 45);
+            this.lblShiftHrs.Name = "lblShiftHrs";
+            this.lblShiftHrs.Size = new System.Drawing.Size(49, 20);
+            this.lblShiftHrs.TabIndex = 12;
+            this.lblShiftHrs.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // txtShiftMins
             // 
             this.txtShiftMins.Location = new System.Drawing.Point(172, 45);
@@ -223,7 +243,7 @@
             this.txtShiftEndTime.Location = new System.Drawing.Point(351, 16);
             this.txtShiftEndTime.Name = "txtShiftEndTime";
             this.txtShiftEndTime.Size = new System.Drawing.Size(74, 20);
-            this.txtShiftEndTime.TabIndex = 12;
+            this.txtShiftEndTime.TabIndex = 9;
             this.txtShiftEndTime.TextChanged += new System.EventHandler(this.txtShiftEndTime_TextChanged);
             this.txtShiftEndTime.Enter += new System.EventHandler(this.txtShiftEndTime_Enter);
             this.txtShiftEndTime.Leave += new System.EventHandler(this.txtShiftEndTime_Leave);
@@ -233,7 +253,7 @@
             this.txtShiftBeginTime.Location = new System.Drawing.Point(87, 16);
             this.txtShiftBeginTime.Name = "txtShiftBeginTime";
             this.txtShiftBeginTime.Size = new System.Drawing.Size(74, 20);
-            this.txtShiftBeginTime.TabIndex = 11;
+            this.txtShiftBeginTime.TabIndex = 6;
             this.txtShiftBeginTime.TextChanged += new System.EventHandler(this.txtShiftBeginTime_TextChanged);
             this.txtShiftBeginTime.Enter += new System.EventHandler(this.txtShiftBeginTime_Enter);
             this.txtShiftBeginTime.Leave += new System.EventHandler(this.txtShiftBeginTime_Leave);
@@ -244,7 +264,7 @@
             this.label14.Location = new System.Drawing.Point(235, 45);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(29, 13);
-            this.label14.TabIndex = 10;
+            this.label14.TabIndex = 15;
             this.label14.Text = "Mins";
             // 
             // label8
@@ -253,7 +273,7 @@
             this.label8.Location = new System.Drawing.Point(143, 45);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 13);
-            this.label8.TabIndex = 9;
+            this.label8.TabIndex = 13;
             this.label8.Text = "Hrs";
             // 
             // label7
@@ -262,7 +282,7 @@
             this.label7.Location = new System.Drawing.Point(11, 45);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 7;
+            this.label7.TabIndex = 11;
             this.label7.Text = "Shift Duration";
             // 
             // label6
@@ -271,7 +291,7 @@
             this.label6.Location = new System.Drawing.Point(431, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 13);
-            this.label6.TabIndex = 6;
+            this.label6.TabIndex = 10;
             this.label6.Text = "HH MM 24 Hr Format";
             // 
             // label5
@@ -280,7 +300,7 @@
             this.label5.Location = new System.Drawing.Point(293, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 5;
+            this.label5.TabIndex = 8;
             this.label5.Text = "End Time";
             // 
             // label4
@@ -289,7 +309,7 @@
             this.label4.Location = new System.Drawing.Point(169, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(108, 13);
-            this.label4.TabIndex = 4;
+            this.label4.TabIndex = 7;
             this.label4.Text = "HH MM 24 Hr Format";
             // 
             // label3
@@ -298,7 +318,7 @@
             this.label3.Location = new System.Drawing.Point(10, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Begin Time";
             // 
             // txtShiftCode
@@ -369,26 +389,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblShiftHrs
-            // 
-            this.lblShiftHrs.BackColor = System.Drawing.SystemColors.Window;
-            this.lblShiftHrs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblShiftHrs.Location = new System.Drawing.Point(88, 45);
-            this.lblShiftHrs.Name = "lblShiftHrs";
-            this.lblShiftHrs.Size = new System.Drawing.Size(49, 20);
-            this.lblShiftHrs.TabIndex = 15;
-            this.lblShiftHrs.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lblShiftMins
-            // 
-            this.lblShiftMins.BackColor = System.Drawing.SystemColors.Window;
-            this.lblShiftMins.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblShiftMins.Location = new System.Drawing.Point(172, 45);
-            this.lblShiftMins.Name = "lblShiftMins";
-            this.lblShiftMins.Size = new System.Drawing.Size(57, 20);
-            this.lblShiftMins.TabIndex = 16;
-            this.lblShiftMins.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // frmShiftProp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,6 +400,7 @@
             this.MinimizeBox = false;
             this.Name = "frmShiftProp";
             this.Text = "Shift";
+            this.Load += new System.EventHandler(this.frmShiftProp_Load);
             this.grbShift.ResumeLayout(false);
             this.grbShift.PerformLayout();
             this.groupBox1.ResumeLayout(false);

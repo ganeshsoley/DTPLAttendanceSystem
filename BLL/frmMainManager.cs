@@ -24,7 +24,7 @@ namespace BLL
             return objList;
         }
 
-        public static UserCompany LoadCompany(Int32 CurrentCompID)
+        public static UserCompany LoadCompany(int CurrentCompID)
         {
             UserCompany objCompany;
             objCompany = General.LoadCompany(CurrentCompID);

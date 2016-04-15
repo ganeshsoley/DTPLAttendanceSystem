@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grbFilter = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.cboLeaveType = new System.Windows.Forms.ComboBox();
             this.cboEmpType = new System.Windows.Forms.ComboBox();
             this.cboDept = new System.Windows.Forms.ComboBox();
@@ -62,7 +63,6 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.grbFilter.SuspendLayout();
             this.grbList.SuspendLayout();
             this.grbButtons.SuspendLayout();
@@ -92,6 +92,15 @@
             this.grbFilter.TabIndex = 0;
             this.grbFilter.TabStop = false;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(737, 27);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(67, 24);
+            this.btnSearch.TabIndex = 14;
+            this.btnSearch.Text = "&Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            // 
             // cboLeaveType
             // 
             this.cboLeaveType.FormattingEnabled = true;
@@ -99,6 +108,7 @@
             this.cboLeaveType.Name = "cboLeaveType";
             this.cboLeaveType.Size = new System.Drawing.Size(79, 21);
             this.cboLeaveType.TabIndex = 13;
+            this.cboLeaveType.Visible = false;
             // 
             // cboEmpType
             // 
@@ -107,6 +117,7 @@
             this.cboEmpType.Name = "cboEmpType";
             this.cboEmpType.Size = new System.Drawing.Size(94, 21);
             this.cboEmpType.TabIndex = 12;
+            this.cboEmpType.Visible = false;
             // 
             // cboDept
             // 
@@ -172,6 +183,7 @@
             this.label5.Size = new System.Drawing.Size(64, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Leave Type";
+            this.label5.Visible = false;
             // 
             // label4
             // 
@@ -181,6 +193,7 @@
             this.label4.Size = new System.Drawing.Size(80, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Employee Type";
+            this.label4.Visible = false;
             // 
             // label3
             // 
@@ -233,6 +246,7 @@
             this.lvwLeaves.Size = new System.Drawing.Size(810, 375);
             this.lvwLeaves.TabIndex = 0;
             this.lvwLeaves.UseCompatibleStateImageBehavior = false;
+            this.lvwLeaves.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -261,6 +275,7 @@
             // columnHeader6
             // 
             this.columnHeader6.Text = "Emp Type";
+            this.columnHeader6.Width = 0;
             // 
             // columnHeader7
             // 
@@ -343,15 +358,6 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.deleteToolStripMenuItem.Text = "&Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(737, 27);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(67, 24);
-            this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "&Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // frmLeaveEntryList
             // 

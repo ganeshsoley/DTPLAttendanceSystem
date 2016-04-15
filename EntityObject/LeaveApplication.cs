@@ -20,6 +20,7 @@ namespace EntityObject
         private long employeeID;
         private string empID;
         private string empName;
+        private string empType;
         private string empDept;
         private string leaveReason;
         private DateTime dtFromDate;
@@ -46,6 +47,7 @@ namespace EntityObject
             employeeID = 0;
             empName = string.Empty;
             empDept = string.Empty;
+            empType = string.Empty;
             leaveReason = string.Empty;
             dtFromDate = DateTime.MinValue;
             dtToDate = DateTime.MinValue;
@@ -202,6 +204,19 @@ namespace EntityObject
             set
             {
                 empDept = value.Trim().ToUpper();
+                flgEdited = true;
+            }
+        }
+
+        public string EmpType
+        {
+            get
+            {
+                return empType;
+            }
+            set
+            {
+                empType = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }

@@ -54,8 +54,8 @@ namespace DAL
                 strQry = "SELECT DBID" +
                     " FROM USERPROFILE " +
                     " WHERE ISACTIVE = 1 " +
-                    " AND LOGINNAME = @Login " +
-                    " AND PASSWORD = @Pwd ";
+                    " AND LOGINNAME = @Login ";
+                    //" AND PASSWORD = @Pwd ";
 
                 using (SqlConnection Conn = new SqlConnection(General.GetSQLConnectionString()))
                 {
@@ -65,7 +65,7 @@ namespace DAL
                         objCmd.CommandType = CommandType.Text;
                         objCmd.CommandText = strQry;
                         objCmd.Parameters.AddWithValue("@Login", strUserName);
-                        objCmd.Parameters.AddWithValue("@Pwd", strPwd);
+                        //objCmd.Parameters.AddWithValue("@Pwd", strPwd);
 
                         if (Conn.State != ConnectionState.Open)
                         {

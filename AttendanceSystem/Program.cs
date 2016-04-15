@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using AttendanceSystem;
 
 namespace AttendanceSystem
 {
@@ -19,21 +20,21 @@ namespace AttendanceSystem
             Process[] process = Process.GetProcessesByName(Application.ProductName);
             if (process.Length > 1)
             {
-                MessageBox.Show("{Application Name} is already running. This instance will now close.",
-                    "{Application Name}", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Application.ProductName + " is already running. This instance will now close.",
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
             }
             else
             {
-                //frmLogin objLogin = new frmLogin();
-                ////objLogin.ShowDialog();
-                //while (!(objLogin.UserID > 0 & objLogin.SelectedComID > 0))
-                //{
-                //    objLogin.ShowDialog();
-                //}
-                //Application.Run(new frmMain(objLogin.UserID, objLogin.SelectedComID));
-                FrmMain objFrmMain = new FrmMain();
-                objFrmMain.Show();
+                frmLogin objLogin = new frmLogin();
+                //objLogin.ShowDialog();
+                while (!(objLogin.UserID > 0 )) //& objLogin.SelectedComID > 0
+                {
+                    objLogin.ShowDialog();
+                }
+                Application.Run(new FrmMain(objLogin.UserID, objLogin.SelectedComID));
+                //FrmMain objFrmMain = new FrmMain();
+                //objFrmMain.Show();
             };
         }
     }

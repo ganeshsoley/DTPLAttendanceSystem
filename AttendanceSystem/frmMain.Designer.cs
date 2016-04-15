@@ -43,12 +43,12 @@
             this.departmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.designationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leaveEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attendanceLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.calculateAttendaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userMasterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
@@ -118,8 +118,8 @@
             // employeeCategoriesToolStripMenuItem
             // 
             this.employeeCategoriesToolStripMenuItem.Name = "employeeCategoriesToolStripMenuItem";
-            this.employeeCategoriesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.employeeCategoriesToolStripMenuItem.Text = "Employee Categories";
+            this.employeeCategoriesToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.employeeCategoriesToolStripMenuItem.Text = "Employee Types";
             this.employeeCategoriesToolStripMenuItem.Click += new System.EventHandler(this.employeeCategoriesToolStripMenuItem_Click);
             // 
             // holidaysToolStripMenuItem
@@ -162,6 +162,20 @@
             this.bankMasterToolStripMenuItem.Text = "Bank Master";
             this.bankMasterToolStripMenuItem.Click += new System.EventHandler(this.bankMasterToolStripMenuItem_Click);
             // 
+            // userMasterToolStripMenuItem
+            // 
+            this.userMasterToolStripMenuItem.Name = "userMasterToolStripMenuItem";
+            this.userMasterToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.userMasterToolStripMenuItem.Text = "User Master";
+            this.userMasterToolStripMenuItem.Click += new System.EventHandler(this.userMasterToolStripMenuItem_Click);
+            // 
+            // userRightsToolStripMenuItem
+            // 
+            this.userRightsToolStripMenuItem.Name = "userRightsToolStripMenuItem";
+            this.userRightsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.userRightsToolStripMenuItem.Text = "User Rights";
+            this.userRightsToolStripMenuItem.Click += new System.EventHandler(this.userRightsToolStripMenuItem_Click);
+            // 
             // transactionsToolStripMenuItem
             // 
             this.transactionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -193,20 +207,6 @@
             this.calculateAttendaneToolStripMenuItem.Text = "Calculate Attendance";
             this.calculateAttendaneToolStripMenuItem.Click += new System.EventHandler(this.calculateAttendaneToolStripMenuItem_Click);
             // 
-            // userMasterToolStripMenuItem
-            // 
-            this.userMasterToolStripMenuItem.Name = "userMasterToolStripMenuItem";
-            this.userMasterToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.userMasterToolStripMenuItem.Text = "User Master";
-            this.userMasterToolStripMenuItem.Click += new System.EventHandler(this.userMasterToolStripMenuItem_Click);
-            // 
-            // userRightsToolStripMenuItem
-            // 
-            this.userRightsToolStripMenuItem.Name = "userRightsToolStripMenuItem";
-            this.userRightsToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.userRightsToolStripMenuItem.Text = "User Rights";
-            this.userRightsToolStripMenuItem.Click += new System.EventHandler(this.userRightsToolStripMenuItem_Click);
-            // 
             // utilityToolStripMenuItem
             // 
             this.utilityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -218,7 +218,7 @@
             // backUpToolStripMenuItem
             // 
             this.backUpToolStripMenuItem.Name = "backUpToolStripMenuItem";
-            this.backUpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backUpToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.backUpToolStripMenuItem.Text = "Back Up";
             // 
             // FrmMain
@@ -231,7 +231,9 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.mnuMainMenu;
             this.Name = "FrmMain";
-            this.Text = "FrmMain";
+            this.Text = "DTPL Attendance System";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.mnuMainMenu.ResumeLayout(false);

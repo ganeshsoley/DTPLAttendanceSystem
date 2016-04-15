@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityObject;
 using BLL;
+using System.Drawing;
 
 namespace AttendanceSystem
 {
     public partial class FrmMain : Form
     {
         #region Private Variable(s)
-        private int childFormNumber = 0;
+        //private int childFormNumber = 0;
         private Int32 curUserID;
         private string[] curUserRights;
         private User CurrentUser;
@@ -133,16 +127,41 @@ namespace AttendanceSystem
         }
         #endregion
 
+        #region Constructor(s)
         public FrmMain()
         {
             InitializeComponent();
+        }
+        public FrmMain(Int32 userID, Int32 companyID)
+        {
+            //Int32 appUserID, currentCompanyID;
+            //appUserID = userID;
+            //currentCompanyID = companyID;
+            CurrentCompany = frmMainManager.LoadCompany(companyID);
+            CurrentUser = UserManager.GetItem(userID);
+            //curUserRights = UserRightsManager.GetUserRights(userID);
+            InitializeComponent();
+        }
+        #endregion
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            Icon = new Icon("Images/DTPL.ico");
+
+            DateTime now = DateTime.Now;
+            string date = now.GetDateTimeFormats('d')[0];
+            string time = now.GetDateTimeFormats('t')[0];
+
+            string fd = CurrentCompany.m_FromDate.ToShortDateString();
+            string td = CurrentCompany.m_ToDate.ToShortDateString();
+
+            //DisableMenus();
         }
 
         private void departmentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
                 frmDeptList objFrmList = new frmDeptList(CurrentCompany, CurrentUser);
                 objFrmList.MdiParent = this;
                 objFrmList.Show();
@@ -157,7 +176,6 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
                 frmShiftList objFrmList = new frmShiftList(CurrentCompany, CurrentUser);
                 objFrmList.MdiParent = this;
                 objFrmList.Show();
@@ -172,7 +190,6 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
                 frmLeaveTypeList objFrmList = new frmLeaveTypeList(CurrentCompany, CurrentUser);
                 objFrmList.MdiParent = this;
                 objFrmList.Show();
@@ -187,8 +204,7 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
-                frmEmployeeList objFrmList = new frmEmployeeList(CurrentCompany, CurrentUser);
+                frmEmpTypeList objFrmList = new frmEmpTypeList(CurrentCompany, CurrentUser);
                 objFrmList.MdiParent = this;
                 objFrmList.Show();
             }
@@ -202,7 +218,6 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
                 frmHolidayList objFrmList = new frmHolidayList(CurrentCompany, CurrentUser);
                 objFrmList.MdiParent = this;
                 objFrmList.Show();
@@ -217,7 +232,6 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
                 frmEmployeeList objFrmList = new frmEmployeeList(CurrentCompany, CurrentUser);
                 objFrmList.MdiParent = this;
                 objFrmList.Show();
@@ -232,7 +246,6 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
                 frmDesignationList objFrmList = new frmDesignationList(CurrentCompany, CurrentUser);
                 objFrmList.MdiParent = this;
                 objFrmList.Show();
@@ -247,10 +260,9 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
-                //frmDeptList objFrmList = new frmDeptList(CurrentCompany, CurrentUser);
-                //objFrmList.MdiParent = this;
-                //objFrmList.Show();
+                frmBankList objFrmList = new frmBankList(CurrentCompany, CurrentUser);
+                objFrmList.MdiParent = this;
+                objFrmList.Show();
             }
             catch (Exception ex)
             {
@@ -262,10 +274,9 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
-                //frmDeptList objFrmList = new frmDeptList(CurrentCompany, CurrentUser);
-                //objFrmList.MdiParent = this;
-                //objFrmList.Show();
+                frmUserList objFrmList = new frmUserList(CurrentCompany, CurrentUser);
+                objFrmList.MdiParent = this;
+                objFrmList.Show();
             }
             catch (Exception ex)
             {
@@ -277,10 +288,9 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
-                //frmDeptList objFrmList = new frmDeptList(CurrentCompany, CurrentUser);
-                //objFrmList.MdiParent = this;
-                //objFrmList.Show();
+                frmUserAuthority objfrmlist = new frmUserAuthority();
+                objfrmlist.MdiParent = this;
+                objfrmlist.Show();
             }
             catch (Exception ex)
             {
@@ -292,10 +302,10 @@ namespace AttendanceSystem
         {
             try
             {
-                //frmDeptList objFrmList = new frmDeptList();
-                //frmDeptList objFrmList = new frmDeptList(CurrentCompany, CurrentUser);
-                //objFrmList.MdiParent = this;
-                //objFrmList.Show();
+                frmLeaveEntryList objFrmList;
+                objFrmList =  new frmLeaveEntryList(CurrentCompany, CurrentUser);
+                objFrmList.MdiParent = this;
+                objFrmList.Show();
             }
             catch (Exception ex)
             {
@@ -332,5 +342,7 @@ namespace AttendanceSystem
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
+        
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace AttendanceSystem
 {
-    partial class frmDeptList
+    partial class frmBankList
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lvwDepts = new System.Windows.Forms.ListView();
+            this.lvwBanks = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grbButtons = new System.Windows.Forms.GroupBox();
-            this.btnNew = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
+            this.btnNew = new System.Windows.Forms.Button();
             this.conMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,19 +45,19 @@
             this.conMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lvwDepts
+            // lvwBanks
             // 
-            this.lvwDepts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvwBanks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.lvwDepts.Location = new System.Drawing.Point(5, 5);
-            this.lvwDepts.Name = "lvwDepts";
-            this.lvwDepts.Size = new System.Drawing.Size(342, 253);
-            this.lvwDepts.TabIndex = 0;
-            this.lvwDepts.UseCompatibleStateImageBehavior = false;
-            this.lvwDepts.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwDepts_ColumnClick);
-            this.lvwDepts.DoubleClick += new System.EventHandler(this.lvwDepts_DoubleClick);
-            this.lvwDepts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvwDepts_KeyPress);
+            this.lvwBanks.Location = new System.Drawing.Point(5, 4);
+            this.lvwBanks.Name = "lvwBanks";
+            this.lvwBanks.Size = new System.Drawing.Size(342, 253);
+            this.lvwBanks.TabIndex = 0;
+            this.lvwBanks.UseCompatibleStateImageBehavior = false;
+            this.lvwBanks.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwBanks_ColumnClick);
+            this.lvwBanks.DoubleClick += new System.EventHandler(this.lvwBanks_DoubleClick);
+            this.lvwBanks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvwBanks_KeyPress);
             // 
             // columnHeader1
             // 
@@ -71,24 +71,14 @@
             // 
             // grbButtons
             // 
-            this.grbButtons.Controls.Add(this.btnNew);
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnOk);
-            this.grbButtons.Location = new System.Drawing.Point(5, 264);
+            this.grbButtons.Controls.Add(this.btnNew);
+            this.grbButtons.Location = new System.Drawing.Point(5, 263);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(342, 58);
             this.grbButtons.TabIndex = 1;
             this.grbButtons.TabStop = false;
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(258, 18);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(75, 23);
-            this.btnNew.TabIndex = 2;
-            this.btnNew.Text = "&New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnCancel
             // 
@@ -110,6 +100,16 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(258, 18);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(75, 23);
+            this.btnNew.TabIndex = 2;
+            this.btnNew.Text = "&New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // conMenu
             // 
             this.conMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -119,21 +119,18 @@
             this.deleteToolStripMenuItem});
             this.conMenu.Name = "conMenu";
             this.conMenu.Size = new System.Drawing.Size(113, 76);
-            this.conMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
             // 
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
             this.modifyToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.modifyToolStripMenuItem.Text = "&Modify";
-            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.newToolStripMenuItem.Text = "&New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -145,23 +142,21 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.deleteToolStripMenuItem.Text = "&Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // frmDeptList
+            // frmBankList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 322);
+            this.ClientSize = new System.Drawing.Size(353, 323);
+            this.Controls.Add(this.lvwBanks);
             this.Controls.Add(this.grbButtons);
-            this.Controls.Add(this.lvwDepts);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmDeptList";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Department List";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDeptList_FormClosing);
-            this.Load += new System.EventHandler(this.frmDeptList_Load);
+            this.Name = "frmBankList";
+            this.Text = "Bank List";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmBankList_FormClosing);
+            this.Load += new System.EventHandler(this.frmBankList_Load);
             this.grbButtons.ResumeLayout(false);
             this.conMenu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -170,13 +165,13 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView lvwDepts;
-        private System.Windows.Forms.GroupBox grbButtons;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.ListView lvwBanks;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.GroupBox grbButtons;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.ContextMenuStrip conMenu;
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
@@ -184,4 +179,3 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }
-

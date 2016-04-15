@@ -1,4 +1,4 @@
-﻿namespace UI
+﻿namespace AttendanceSystem
 {
     partial class frmLogin
     {

@@ -22,9 +22,9 @@ namespace AttendanceSystem
         private int carryFwdLimit;
 
         private ListViewColumnSorter lvwColSorter;
-        //private UserCompany objUserCompany;
-        //private User objCurUser;
-        //private UIRights objUIRights;
+        private UserCompany objUserCompany;
+        private User objCurUser;
+        private UIRights objUIRights;
         #endregion
 
         #region Public Properties
@@ -177,23 +177,23 @@ namespace AttendanceSystem
             InitializeComponent();
             InitializeListView();
         }
-        //public frmHolidayList(UserCompany objCompany, User objUser)
-        //{
-        //    this.objCurUser = objUser;
-        //    this.objUserCompany = objCompany;
+        public frmLeaveTypeList(UserCompany objCompany, User objUser)
+        {
+            this.objCurUser = objUser;
+            this.objUserCompany = objCompany;
 
-        //    objUIRights = new UIRights();
+            objUIRights = new UIRights();
 
-        //    InitializeComponent();
-        //    InitializeListView();
-        //    GeneralMethods.FormAuthenticate(this.Name, objUserCompany, objCurUser);
+            InitializeComponent();
+            InitializeListView();
+            GeneralMethods.FormAuthenticate(this.Name, objUserCompany, objCurUser);
 
-        //    objUIRights.AddRight = GeneralMethods.frmAddRight;
-        //    objUIRights.ModifyRight = GeneralMethods.frmModifyRight;
-        //    objUIRights.ViewRight = GeneralMethods.frmViewRight;
-        //    objUIRights.DeleteRight = GeneralMethods.frmDeleteRight;
-        //    objUIRights.PrintRight = GeneralMethods.repPrintRight;
-        //}
+            objUIRights.AddRight = GeneralMethods.frmAddRight;
+            objUIRights.ModifyRight = GeneralMethods.frmModifyRight;
+            objUIRights.ViewRight = GeneralMethods.frmViewRight;
+            objUIRights.DeleteRight = GeneralMethods.frmDeleteRight;
+            objUIRights.PrintRight = GeneralMethods.repPrintRight;
+        }
         #endregion
 
         #region Context Menu

@@ -34,8 +34,8 @@ namespace DAL
 
         public static string GetSqlServerPCName()
         {
-            //return "ITPROJECT";
-            return "GATE-PC";
+            return "ITPROJECT";
+            //return "GATE-PC";
         }
 
         public static int GetSQLPort()

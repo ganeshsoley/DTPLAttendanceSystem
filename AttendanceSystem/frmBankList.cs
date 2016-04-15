@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using EntityObject;
 using EntityObject.Enum;
@@ -11,7 +13,7 @@ using BLL;
 
 namespace AttendanceSystem
 {
-    public partial class frmEmployeeList : Form
+    public partial class frmBankList : Form
     {
         #region Private Variable(s)
         private bool flgLoading;
@@ -19,14 +21,13 @@ namespace AttendanceSystem
         private bool flgListCancel;
 
         private int dbid;
-        private string initials;
-        private string empCode;
-        private string deptName;
-        private string empPlant;
+        private string bankName;
+        private string branch;
+        private string ifscCode;
 
         private ListViewColumnSorter lvwColSorter;
-        private UserCompany currentCompany;
-        private User currentUser;
+        private UserCompany objUserCompany;
+        private User objCurUser;
         private UIRights objUIRights;
         #endregion
 
@@ -79,77 +80,68 @@ namespace AttendanceSystem
             }
         }
 
-        public string Initials
+        public string BankName
         {
             get
             {
-                return initials;
+                return bankName;
             }
             set
             {
-                initials = value;
+                bankName = value;
             }
         }
 
-        public string EmpCode
+        public string Branch
         {
             get
             {
-                return empCode;
+                return branch;
             }
             set
             {
-                empCode = value;
+                branch = value;
             }
         }
 
-        public string DeptName
+        public string IFSCCode
         {
             get
             {
-                return deptName;
+                return ifscCode;
             }
             set
             {
-                deptName = value;
-            }
-        }
-
-        public string EmpPlant
-        {
-            get
-            {
-                return empPlant;
-            }
-            set
-            {
-                empPlant = value;
+                ifscCode = value;
             }
         }
         #endregion
 
-        public frmEmployeeList()
+        #region Constructor(s)
+        public frmBankList()
         {
             InitializeComponent();
             InitializeListView();
         }
 
-        public frmEmployeeList(UserCompany currentCompany, User currentUser)
+        public frmBankList(UserCompany objCompany, User objUser)
         {
-            this.currentCompany = currentCompany;
-            this.currentUser = currentUser;
+            this.objCurUser = objUser;
+            this.objUserCompany = objCompany;
 
             objUIRights = new UIRights();
+
             InitializeComponent();
             InitializeListView();
+            GeneralMethods.FormAuthenticate(this.Name, objUserCompany, objCurUser);
 
-            GeneralMethods.FormAuthenticate(this.Name, currentCompany, currentUser);
             objUIRights.AddRight = GeneralMethods.frmAddRight;
             objUIRights.ModifyRight = GeneralMethods.frmModifyRight;
             objUIRights.ViewRight = GeneralMethods.frmViewRight;
             objUIRights.DeleteRight = GeneralMethods.frmDeleteRight;
             objUIRights.PrintRight = GeneralMethods.repPrintRight;
         }
+        #endregion
 
         #region Private Method(s)
         private void InitializeListView()
@@ -158,33 +150,32 @@ namespace AttendanceSystem
             // to the ListView control.
             lvwColSorter = new ListViewColumnSorter();
 
-            this.lvwEmployees.ContextMenuStrip = conMnu;
-            this.lvwEmployees.FullRowSelect = true;
-            this.lvwEmployees.GridLines = true;
-            this.lvwEmployees.ListViewItemSorter = lvwColSorter;
-            this.lvwEmployees.MultiSelect = false;
-            this.lvwEmployees.View = View.Details;
+            lvwBanks.ContextMenuStrip = conMenu;
+            lvwBanks.FullRowSelect = true;
+            lvwBanks.GridLines = true;
+            lvwBanks.ListViewItemSorter = lvwColSorter;
+            lvwBanks.MultiSelect = false;
+            lvwBanks.View = View.Details;
         }
 
         private void FillList()
         {
-            EmployeeList objList = new EmployeeList();
-            objList = EmployeeManager.GetList("");
+            BankList objList = new BankList();
+            objList = BankManager.GetList("");
 
-            lvwEmployees.Items.Clear();
+            lvwBanks.Items.Clear();
 
             if (objList != null)
             {
-                foreach (Employee objEmp in objList)
+                foreach (Bank objBank in objList)
                 {
                     ListViewItem objLvwItem = new ListViewItem();
-                    objLvwItem.Name = Convert.ToString(objEmp.DBID);
-                    objLvwItem.Text = Convert.ToString(objEmp.Initials);
-                    objLvwItem.SubItems.Add(objEmp.EmpCode);
-                    objLvwItem.SubItems.Add(objEmp.DeptName);
-                    objLvwItem.SubItems.Add(objEmp.EmpPlant);
+                    objLvwItem.Name = Convert.ToString(objBank.DBID);
+                    objLvwItem.Text = Convert.ToString(objBank.BankName);
+                    objLvwItem.SubItems.Add(objBank.Branch);
+                    objLvwItem.SubItems.Add(objBank.IFSCCode);
 
-                    lvwEmployees.Items.Add(objLvwItem);
+                    lvwBanks.Items.Add(objLvwItem);
                 }
             }
         }
@@ -198,9 +189,9 @@ namespace AttendanceSystem
         #endregion
 
         #region UI Control Logic
-        private void frmEmployeeList_Load(object sender, EventArgs e)
+        private void frmBankList_Load(object sender, EventArgs e)
         {
-            this.Icon = new Icon("Images/DTPL.ico");
+            Icon = new Icon("Images/DTPL.ico");
             flgLoading = true;
             FillList();
             SetButtonVisibility();
@@ -211,13 +202,13 @@ namespace AttendanceSystem
             flgLoading = false;
         }
 
-        private void frmEmployeeList_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmBankList_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (dbid == 0)
                 flgListCancel = true;
         }
 
-        private void lvwEmployees_ColumnClick(object sender, ColumnClickEventArgs e)
+        private void lvwBanks_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             // Determine if clicked column is already the column that is being sorted.
             if (e.Column == lvwColSorter.SortColumn)
@@ -240,20 +231,20 @@ namespace AttendanceSystem
             }
 
             // Perform the sort with these new sort options.
-            this.lvwEmployees.Sort();
+            this.lvwBanks.Sort();
         }
 
-        private void lvwEmployees_DoubleClick(object sender, EventArgs e)
+        private void lvwBanks_DoubleClick(object sender, EventArgs e)
         {
-            if (lvwEmployees.SelectedItems != null && lvwEmployees.SelectedItems.Count != 0)
+            if (lvwBanks.SelectedItems != null && lvwBanks.SelectedItems.Count != 0)
             {
                 modifyToolStripMenuItem_Click(sender, e);
             }
         }
 
-        private void lvwEmployees_KeyPress(object sender, KeyPressEventArgs e)
+        private void lvwBanks_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (lvwEmployees.SelectedItems.Count == 1 && e.KeyChar == (char)13)
+            if (lvwBanks.SelectedItems.Count == 1 && e.KeyChar == (char)Keys.Enter)
             {
                 modifyToolStripMenuItem_Click(sender, e);
             }
@@ -263,41 +254,18 @@ namespace AttendanceSystem
         {
             try
             {
-                if (IsList && lvwEmployees.SelectedItems != null && lvwEmployees.SelectedItems.Count == 1)
+                if (IsList && lvwBanks.SelectedItems != null && lvwBanks.SelectedItems.Count == 1)
                 {
-                    dbid = Convert.ToInt32(lvwEmployees.SelectedItems[0].Name);
-                    initials = lvwEmployees.SelectedItems[0].Text;
-                    empCode = lvwEmployees.SelectedItems[0].SubItems[1].Text;
-                    deptName = lvwEmployees.SelectedItems[0].SubItems[2].Text;
-                    empPlant = lvwEmployees.SelectedItems[0].SubItems[3].Text;
+                    dbid = Convert.ToInt32(lvwBanks.SelectedItems[0].Name);
+                    bankName = lvwBanks.SelectedItems[0].Text;
+                    branch = lvwBanks.SelectedItems[0].SubItems[1].Text;
+                    ifscCode = lvwBanks.SelectedItems[0].SubItems[2].Text;
 
                     flgListCancel = false;
                 }
                 else
                 {
                     btnCancel_Click(sender, e);
-                }
-                this.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (IsList)
-                {
-                    dbid = 0;
-                    initials = string.Empty;
-                    empCode = string.Empty;
-                    deptName = string.Empty;
-                    empPlant = string.Empty;
-
-                    flgListCancel = true;
                 }
                 this.Close();
             }
@@ -314,14 +282,35 @@ namespace AttendanceSystem
                 newToolStripMenuItem_Click(sender, e);
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (IsList)
+                {
+                    dbid = 0;
+                    bankName = string.Empty;
+                    branch = string.Empty;
+                    ifscCode = string.Empty;
+
+                    flgListCancel = true;
+                }
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
         #endregion
 
         #region Context Menu
-        private void conMnu_Opening(object sender, CancelEventArgs e)
+        private void contextMenu_Opening(object sender, CancelEventArgs e)
         {
             if (!IsList)
             {
-                if (lvwEmployees.SelectedItems != null && lvwEmployees.SelectedItems.Count != 0)
+                if (lvwBanks.SelectedItems != null && lvwBanks.SelectedItems.Count != 0)
                 {
                     modifyToolStripMenuItem.Visible = true;
                     newToolStripMenuItem.Enabled = false;
@@ -342,7 +331,7 @@ namespace AttendanceSystem
         {
             try
             {
-                if (lvwEmployees.SelectedItems != null && lvwEmployees.SelectedItems.Count != 0)
+                if (lvwBanks.SelectedItems != null && lvwBanks.SelectedItems.Count != 0)
                 {
                     if (IsList)
                     {
@@ -352,13 +341,13 @@ namespace AttendanceSystem
                     {
                         //if (objUIRights.ModifyRight)
                         //{
-                            Employee objEmp;
-                            frmEmpProp objFrmProp;
+                            Bank objBank;
+                            frmBankProp objFrmProp;
 
-                            objEmp = EmployeeManager.GetItem(Convert.ToInt32(lvwEmployees.SelectedItems[0].Name));
-                            objFrmProp = new frmEmpProp(objEmp);
+                            objBank = BankManager.GetItem(Convert.ToInt32(lvwBanks.SelectedItems[0].Name));
+                            objFrmProp = new frmBankProp(objBank);
                             objFrmProp.MdiParent = this.MdiParent;
-                            objFrmProp.Entry_DataChanged += new frmEmpProp.EmpUpdateHandler(Entry_DataChanged);
+                            objFrmProp.Entry_DataChanged += new frmBankProp.BankUpdateHandler(Entry_DataChanged);
                             objFrmProp.Show();
                         //}
                         //else
@@ -382,14 +371,14 @@ namespace AttendanceSystem
                 {
                     //if (objUIRights.AddRight)
                     //{
-                        Employee objEmp;
-                        frmEmpProp objFrmProp;
+                        Bank objBank;
+                        frmBankProp objFrmProp;
 
-                        objEmp = new Employee();
-                        objFrmProp = new frmEmpProp(objEmp);
+                        objBank = new Bank();
+                        objFrmProp = new frmBankProp(objBank);
                         objFrmProp.IsNew = true;
                         objFrmProp.MdiParent = this.MdiParent;
-                        objFrmProp.Entry_DataChanged += new frmEmpProp.EmpUpdateHandler(Entry_DataChanged);
+                        objFrmProp.Entry_DataChanged += new frmBankProp.BankUpdateHandler(Entry_DataChanged);
                         objFrmProp.Show();
                     //}
                     //else
@@ -408,7 +397,7 @@ namespace AttendanceSystem
         {
             try
             {
-                if (lvwEmployees.SelectedItems != null && lvwEmployees.SelectedItems.Count != 0)
+                if (lvwBanks.SelectedItems != null && lvwBanks.SelectedItems.Count != 0)
                 {
                     if (!IsList)
                     {
@@ -419,10 +408,10 @@ namespace AttendanceSystem
 
                             if (dr == DialogResult.Yes)
                             {
-                                Employee objEmp = new Employee();
-                                objEmp = EmployeeManager.GetItem(Convert.ToInt32(lvwEmployees.SelectedItems[0].Name));
-                                EmployeeManager.Delete(objEmp);
-                                lvwEmployees.Items.Remove(lvwEmployees.SelectedItems[0]);
+                                Bank objBank = new Bank();
+                                objBank = BankManager.GetItem(Convert.ToInt32(lvwBanks.SelectedItems[0].Name));
+                                BankManager.Delete(objBank);
+                                lvwBanks.Items.Remove(lvwBanks.SelectedItems[0]);
                             }
                         //}
                         //else
@@ -439,7 +428,7 @@ namespace AttendanceSystem
         }
         #endregion
 
-        private void Entry_DataChanged(object sender, EmpUpdateEventArgs e, DataEventType Action)
+        private void Entry_DataChanged(object sender, BankUpdateEventArgs e, DataEventType Action)
         {
             ListViewItem lvItem;
             switch (Action)
@@ -448,24 +437,22 @@ namespace AttendanceSystem
 
                     lvItem = new ListViewItem();
                     lvItem.Name = Convert.ToString(e.DBID);
-                    lvItem.Text = e.Initials;
-                    lvItem.SubItems.Add(e.EmpCode);
-                    lvItem.SubItems.Add(e.DeptName);
-                    lvItem.SubItems.Add(e.EmpPlant);
+                    lvItem.Text = e.BankName;
+                    lvItem.SubItems.Add(e.Branch);
+                    lvItem.SubItems.Add(e.IFSCCode);
 
-                    lvwEmployees.Items.Add(lvItem);
-                    lvwEmployees.EnsureVisible(lvItem.Index);
+                    lvwBanks.Items.Add(lvItem);
+                    lvwBanks.EnsureVisible(lvItem.Index);
 
                     break;
 
                 case DataEventType.UPDATE_EVENT:
-                    lvItem = lvwEmployees.Items[lvwEmployees.SelectedItems[0].Index];
-                    lvItem.Text = e.Initials;
-                    lvItem.SubItems[1].Text = e.EmpCode;
-                    lvItem.SubItems[2].Text = e.DeptName;
-                    lvItem.SubItems[3].Text = e.EmpPlant;
+                    lvItem = lvwBanks.Items[lvwBanks.SelectedItems[0].Index];
+                    lvItem.Text = e.BankName;
+                    lvItem.SubItems[1].Text = e.Branch;
+                    lvItem.SubItems[2].Text = e.IFSCCode;
 
-                    lvwEmployees.EnsureVisible(lvwEmployees.SelectedItems[0].Index);
+                    lvwBanks.EnsureVisible(lvwBanks.SelectedItems[0].Index);
 
                     break;
             }

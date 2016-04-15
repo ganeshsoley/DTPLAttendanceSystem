@@ -93,6 +93,43 @@ namespace AttendanceSystem
         }
         #endregion
 
+        #region UI Control Logic
+        private void frmShiftProp_Load(object sender, EventArgs e)
+        {
+            this.Icon = new Icon("Images/DTPL.ico");
+            flgLoading = true;
+            Shift_OnInValid(sender, e);
+
+            if (objShift.IsNew)
+            {
+                this.Text += " [ NEW ]";
+            }
+            else
+            {
+                this.Text += " [ " + objShift.ShiftName + " ]";
+            }
+            txtShiftName.Text = objShift.ShiftName;
+            txtShiftCode.Text = objShift.ShiftCode;
+            txtShiftBeginTime.Text = objShift.ShiftBeginTime;
+            txtShiftEndTime.Text = objShift.ShiftEndTime;
+            txtPunchBegin.Text = objShift.PunchBeginMins.ToString();
+            txtPunchEnd.Text = objShift.PunchEndMins.ToString();
+
+            if (objShift.IsGraceTimeApplicable == 1)
+            {
+                chkIsGrace.Checked = true;
+                txtGraceTime.Text = objShift.GraceTimeMins;
+            }
+            else
+            {
+                chkIsGrace.Checked = false;
+                txtGraceTime.Enabled = false;
+            }
+
+            SubscribeToEvents();
+            flgLoading = false;
+        }
+
         private void txtShiftName_Enter(object sender, EventArgs e)
         {
             txtShiftName.SelectAll();
@@ -145,93 +182,202 @@ namespace AttendanceSystem
 
         private void txtShiftBeginTime_Enter(object sender, EventArgs e)
         {
-
+            txtShiftBeginTime.SelectAll();
         }
 
         private void txtShiftBeginTime_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objShift.ShiftBeginTime = txtShiftBeginTime.Text.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtShiftBeginTime_Leave(object sender, EventArgs e)
         {
-
+            txtShiftBeginTime.Text = objShift.ShiftBeginTime;
         }
 
         private void txtShiftEndTime_Enter(object sender, EventArgs e)
         {
-
+            txtShiftEndTime.SelectAll();
         }
 
         private void txtShiftEndTime_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objShift.ShiftEndTime= txtShiftEndTime.Text.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtShiftEndTime_Leave(object sender, EventArgs e)
         {
-
+            txtShiftEndTime.Text = objShift.ShiftEndTime;
         }
 
         private void txtPunchBegin_Enter(object sender, EventArgs e)
         {
-
+            txtPunchBegin.SelectAll();
         }
 
         private void txtPunchBegin_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objShift.PunchBeginMins = Convert.ToInt32(txtPunchBegin.Text.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtPunchBegin_Leave(object sender, EventArgs e)
         {
-
+            txtPunchBegin.Text = objShift.PunchBeginMins.ToString();
         }
 
         private void txtPunchEnd_Enter(object sender, EventArgs e)
         {
-
+            txtPunchEnd.SelectAll();
         }
 
         private void txtPunchEnd_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objShift.PunchEndMins = Convert.ToInt32(txtPunchEnd.Text.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtPunchEnd_Leave(object sender, EventArgs e)
         {
-
+            txtPunchEnd.Text = Convert.ToString(objShift.PunchEndMins);
         }
 
         private void chkIsGrace_CheckedChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    if (chkIsGrace.Checked)
+                    {
+                        objShift.IsGraceTimeApplicable = 1;
+                        txtGraceTime.Enabled = true;
+                    }
+                    else
+                    {
+                        objShift.IsGraceTimeApplicable = 0;
+                        txtGraceTime.Enabled = false;
+                        objShift.GraceTimeMins = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtGraceTime_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (!IsLoading)
+                {
+                    objShift.GraceTimeMins = txtGraceTime.Text.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void txtGraceTime_Enter(object sender, EventArgs e)
         {
-
+            txtGraceTime.SelectAll();
         }
 
         private void txtGraceTime_Leave(object sender, EventArgs e)
         {
-
+            txtGraceTime.Text = objShift.GraceTimeMins;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                bool flgApplyEdit;
+                flgApplyEdit = ShiftManager.Save(objShift);
+                if (flgApplyEdit)
+                {
+                    // instance the event args and pass it value
+                    ShiftUpdateEventArgs args = new ShiftUpdateEventArgs(objShift.DBID, objShift.ShiftCode, objShift.ShiftName, objShift.ShiftBeginTime, objShift.ShiftEndTime);
 
+                    // raise event wtth  updated 
+                    if (Entry_DataChanged != null)
+                    {
+                        if (this.IsNew)
+                        {
+                            Entry_DataChanged(this, args, DataEventType.INSERT_EVENT);
+                        }
+                        else
+                        {
+                            Entry_DataChanged(this, args, DataEventType.UPDATE_EVENT);
+                        }
+                    }
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Record Not Saved.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
+        #endregion
     }
 
     public class ShiftUpdateEventArgs : EventArgs

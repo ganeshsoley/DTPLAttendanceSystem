@@ -116,13 +116,20 @@ namespace AttendanceSystem
             txtReason.Text = objLeaveApplication.LeaveReason;
             if (objLeaveApplication.IsHalfDay == 1)
                 chkHalfDay.Checked = true;
-            else chkHalfDay.Checked = false;
+            else
+            {
+                chkHalfDay.Checked = false;
+            }
+
             if (objLeaveApplication.IsCOff == 1)
             {
                 chkIsCoff.Checked = true;
                 txtCOffDt.Text = objLeaveApplication.COffDate;
             }
-            else chkIsCoff.Checked = false;
+            else
+            {
+                chkIsCoff.Checked = false;
+            }
 
             SubscribeToEvents();
             flgLoading = false;
@@ -130,12 +137,41 @@ namespace AttendanceSystem
 
         private void btnEmpList_Click(object sender, EventArgs e)
         {
+            frmEmployeeList frmList = new frmEmployeeList();
+            frmList.IsList = true;
+            frmList.ShowDialog();
 
+            if (!frmList.IsListCancel)
+            {
+                objLeaveApplication.EmployeeID = frmList.DBID;
+                objLeaveApplication.EmpName = frmList.Initials;
+                objLeaveApplication.EmpDept = frmList.DeptName;
+
+                txtEmpID.Text = objLeaveApplication.EmpID;
+                txtEmpName.Text = objLeaveApplication.EmpName;
+                txtEmpDept.Text = objLeaveApplication.EmpDept;
+
+                SendKeys.Send("TAB");
+            }
+            frmList.Dispose();
         }
 
         private void btnLeaveTypeList_Click(object sender, EventArgs e)
         {
+            frmLeaveTypeList frmList = new frmLeaveTypeList();
+            frmList.IsList = true;
+            frmList.ShowDialog();
 
+            if (!frmList.IsListCancel)
+            {
+                objLeaveApplication.LeaveTypeID = frmList.DBID;
+                objLeaveApplication.LeaveType = frmList.LeaveCode;
+
+                txtLeaveType.Text = objLeaveApplication.LeaveType;
+                SendKeys.Send("TAB");
+            }
+            frmList.Dispose();
+            
         }
 
         private void dtpFromDate_ValueChanged(object sender, EventArgs e)
@@ -218,9 +254,16 @@ namespace AttendanceSystem
                 if (!IsLoading)
                 {
                     if (chkIsCoff.Checked)
+                    {
                         objLeaveApplication.IsCOff = 1;
+                        txtCOffDt.Enabled = true;
+                    }
                     else
+                    {
                         objLeaveApplication.IsCOff = 0;
+                        txtCOffDt.Enabled = false;
+                        txtCOffDt.Text = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -263,7 +306,7 @@ namespace AttendanceSystem
                 if (flgApplyEdit)
                 {
                     // instance the event args and pass it value
-                    LeaveApplicationUpdateEventArgs args = new LeaveApplicationUpdateEventArgs(objLeaveApplication.DBID, objLeaveApplication.EmpID, objLeaveApplication.EmpName, objLeaveApplication.EmpDept, objLeaveApplication.FromDate, objLeaveApplication.ToDate);
+                    LeaveApplicationUpdateEventArgs args = new LeaveApplicationUpdateEventArgs(objLeaveApplication.DBID, objLeaveApplication.EmpID, objLeaveApplication.EmpName, objLeaveApplication.EmpDept, objLeaveApplication.FromDate, objLeaveApplication.ToDate, objLeaveApplication.LeaveType);
 
                     // raise event wtth  updated 
                     if (Entry_DataChanged != null)
@@ -312,8 +355,9 @@ namespace AttendanceSystem
         private string mEmpDept;
         private DateTime mFromDate;
         private DateTime mToDate;
+        private string mLeaveType;
 
-        public LeaveApplicationUpdateEventArgs(long sDBID, string sEmpID, string sEmpName, string sEmpDept, DateTime sFromDate, DateTime sToDate)
+        public LeaveApplicationUpdateEventArgs(long sDBID, string sEmpID, string sEmpName, string sEmpDept, DateTime sFromDate, DateTime sToDate, string sLeaveType)
         {
             mDBID = sDBID;
             mEmpID = sEmpID;
@@ -321,6 +365,7 @@ namespace AttendanceSystem
             mEmpDept = sEmpDept;
             mFromDate = sFromDate;
             mToDate = sToDate;
+            mLeaveType = sLeaveType;
         }
 
         public long DBID
@@ -368,6 +413,14 @@ namespace AttendanceSystem
             get
             {
                 return mToDate;
+            }
+        }
+
+        public string LeaveType
+        {
+            get
+            {
+                return mLeaveType;
             }
         }
     }

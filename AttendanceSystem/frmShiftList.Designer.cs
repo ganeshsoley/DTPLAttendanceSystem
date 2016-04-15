@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.grbList = new System.Windows.Forms.GroupBox();
             this.lvwShifts = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,8 +39,14 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
+            this.conMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grbList.SuspendLayout();
             this.grbButtons.SuspendLayout();
+            this.conMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // grbList
@@ -64,7 +71,9 @@
             this.lvwShifts.TabIndex = 0;
             this.lvwShifts.UseCompatibleStateImageBehavior = false;
             this.lvwShifts.View = System.Windows.Forms.View.Details;
-            this.lvwShifts.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.lvwShifts.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwShifts_ColumnClick);
+            this.lvwShifts.DoubleClick += new System.EventHandler(this.lvwShifts_DoubleClick);
+            this.lvwShifts.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvwShifts_KeyPress);
             // 
             // columnHeader1
             // 
@@ -105,6 +114,7 @@
             this.btnNew.TabIndex = 5;
             this.btnNew.Text = "&New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnCancel
             // 
@@ -114,6 +124,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOk
             // 
@@ -123,6 +134,44 @@
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "&OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // conMenu
+            // 
+            this.conMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifyToolStripMenuItem,
+            this.newToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.deleteToolStripMenuItem});
+            this.conMenu.Name = "conMenu";
+            this.conMenu.Size = new System.Drawing.Size(113, 76);
+            this.conMenu.Opening += new System.ComponentModel.CancelEventHandler(this.conMenu_Opening);
+            // 
+            // modifyToolStripMenuItem
+            // 
+            this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.modifyToolStripMenuItem.Text = "&Modify";
+            this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.newToolStripMenuItem.Text = "&New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(109, 6);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.deleteToolStripMenuItem.Text = "&Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // frmShiftList
             // 
@@ -136,8 +185,11 @@
             this.MinimizeBox = false;
             this.Name = "frmShiftList";
             this.Text = "Shift List";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmShiftList_FormClosing);
+            this.Load += new System.EventHandler(this.frmShiftList_Load);
             this.grbList.ResumeLayout(false);
             this.grbButtons.ResumeLayout(false);
+            this.conMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -154,5 +206,10 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ContextMenuStrip conMenu;
+        private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

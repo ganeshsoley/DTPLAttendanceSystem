@@ -46,6 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBankList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBankList.Designer.cs">
+      <DependentUpon>frmBankList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBankProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBankProp.Designer.cs">
+      <DependentUpon>frmBankProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCalAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCalAttendance.Designer.cs">
+      <DependentUpon>frmCalAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDeptList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,10 +172,37 @@
     <Compile Include="frmShiftProp.designer.cs">
       <DependentUpon>frmShiftProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserAuthority.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserAuthority.designer.cs">
+      <DependentUpon>frmUserAuthority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserList.designer.cs">
+      <DependentUpon>frmUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserProp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserProp.designer.cs">
+      <DependentUpon>frmUserProp.cs</DependentUpon>
+    </Compile>
     <Compile Include="GeneralMethods.cs" />
     <Compile Include="ListViewColumnSorter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBankList.resx">
+      <DependentUpon>frmBankList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBankProp.resx">
+      <DependentUpon>frmBankProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalAttendance.resx">
+      <DependentUpon>frmCalAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDeptList.resx">
       <DependentUpon>frmDeptList.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +256,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmShiftProp.resx">
       <DependentUpon>frmShiftProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserAuthority.resx">
+      <DependentUpon>frmUserAuthority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserList.resx">
+      <DependentUpon>frmUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserProp.resx">
+      <DependentUpon>frmUserProp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

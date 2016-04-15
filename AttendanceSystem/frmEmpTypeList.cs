@@ -297,8 +297,8 @@ namespace AttendanceSystem
                     }
                     else
                     {
-                        if (objUIRights.ModifyRight)
-                        {
+                        //if (objUIRights.ModifyRight)
+                        //{
                             EmpType objEmpType;
                             frmEmpTypeProp objFrmProp;
 
@@ -307,11 +307,11 @@ namespace AttendanceSystem
                             objFrmProp.MdiParent = this.MdiParent;
                             objFrmProp.Entry_DataChanged += new frmEmpTypeProp.EmpTypeUpdateHandler(Entry_DataChanged);
                             objFrmProp.Show();
-                        }
-                        else
-                        {
-                            throw new Exception("Not Authorised.");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    throw new Exception("Not Authorised.");
+                        //}
                     }
                 }
             }
@@ -327,8 +327,8 @@ namespace AttendanceSystem
             {
                 if (!IsList)
                 {
-                    if (objUIRights.AddRight)
-                    {
+                    //if (objUIRights.AddRight)
+                    //{
                         EmpType objEmpType;
                         frmEmpTypeProp objFrmProp;
 
@@ -338,11 +338,11 @@ namespace AttendanceSystem
                         objFrmProp.MdiParent = MdiParent;
                         objFrmProp.Entry_DataChanged += new frmEmpTypeProp.EmpTypeUpdateHandler(Entry_DataChanged);
                         objFrmProp.Show();
-                    }
-                    else
-                    {
-                        throw new Exception("Not Authorised.");
-                    }
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception("Not Authorised.");
+                    //}
                 }
             }
             catch (Exception ex)
@@ -359,8 +359,8 @@ namespace AttendanceSystem
                 {
                     if (!IsList)
                     {
-                        if (objUIRights.DeleteRight)
-                        {
+                        //if (objUIRights.DeleteRight)
+                        //{
                             DialogResult dr = new DialogResult();
                             dr = MessageBox.Show("Do You Really Want to Delete Record ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
@@ -371,11 +371,11 @@ namespace AttendanceSystem
                                 EmpTypeManager.Delete(objEmpType);
                                 lvwEmpTypes.Items.Remove(lvwEmpTypes.SelectedItems[0]);
                             }
-                        }
-                        else
-                        {
-                            throw new Exception("Not Authorised.");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    throw new Exception("Not Authorised.");
+                        //}
                     }
                 }
             }

@@ -181,8 +181,8 @@ namespace AttendanceSystem
                     }
                     else
                     {
-                        if (objUIRights.ModifyRight)
-                        {
+                        //if (objUIRights.ModifyRight)
+                        //{
                             Holiday objHoliday;
                             frmHolidayProp objFrmProp;
 
@@ -191,11 +191,11 @@ namespace AttendanceSystem
                             objFrmProp.MdiParent = this.MdiParent;
                             objFrmProp.Entry_DataChanged += new frmHolidayProp.HolidayUpdateHandler(Entry_DataChanged);
                             objFrmProp.Show();
-                        }
-                        else
-                        {
-                            throw new Exception("Not Authorised.");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    throw new Exception("Not Authorised.");
+                        //}
                     }
                 }
             }
@@ -211,8 +211,8 @@ namespace AttendanceSystem
             {
                 if (!IsList)
                 {
-                    if (objUIRights.AddRight)
-                    {
+                    //if (objUIRights.AddRight)
+                    //{
                         Holiday objHoliday;
                         frmHolidayProp objFrmProp;
 
@@ -222,11 +222,11 @@ namespace AttendanceSystem
                         objFrmProp.MdiParent = this.MdiParent;
                         objFrmProp.Entry_DataChanged += new frmHolidayProp.HolidayUpdateHandler(Entry_DataChanged);
                         objFrmProp.Show();
-                    }
-                    else
-                    {
-                        throw new Exception("Not Authorised.");
-                    }
+                    //}
+                    //else
+                    //{
+                    //    throw new Exception("Not Authorised.");
+                    //}
                 }
             }
             catch (Exception ex)
@@ -243,8 +243,8 @@ namespace AttendanceSystem
                 {
                     if (!IsList)
                     {
-                        if (objUIRights.DeleteRight)
-                        {
+                        //if (objUIRights.DeleteRight)
+                        //{
                             DialogResult dr = new DialogResult();
                             dr = MessageBox.Show("Do You Really Want to Delete Record ?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
@@ -255,11 +255,11 @@ namespace AttendanceSystem
                                 HolidayManager.Delete(objHoliday);
                                 lvwHolidays.Items.Remove(lvwHolidays.SelectedItems[0]);
                             }
-                        }
-                        else
-                        {
-                            throw new Exception("Not Authorised.");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    throw new Exception("Not Authorised.");
+                        //}
                     }
                 }
             }

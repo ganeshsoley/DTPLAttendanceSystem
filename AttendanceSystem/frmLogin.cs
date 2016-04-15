@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using BLL;
 
-namespace UI
+namespace AttendanceSystem
 {
     public partial class frmLogin : Form
     {
@@ -133,14 +133,14 @@ namespace UI
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            this.Icon = new Icon("Images/DTPL.ico");
+            //this.Icon = new Icon("Images/DTPL.ico");
             try
             {
-                FillCompFinYear();
+                //FillCompFinYear();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "VMS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -216,26 +216,26 @@ namespace UI
             try
             {
                 int TMPuserID;
-                if (cboCompany.SelectedIndex < 0)
-                {
-                    MessageBox.Show("Select Financial Year", "VMS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtUserName.Focus();
+                //if (cboCompany.SelectedIndex < 0)
+                //{
+                //    MessageBox.Show("Select Financial Year", "VMS", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    txtUserName.Focus();
 
-                    return;
-                }
+                //    return;
+                //}
 
                 TMPuserID = LoginManager.CheckLogin(txtUserName.Text.Trim().ToUpper(), txtPassword.Text.Trim());
                 if (TMPuserID > 0)
                 {
                     UserID = TMPuserID;
                     UserName = txtUserName.Text.Trim().ToUpper();
-                    SelectedComID = Convert.ToInt32(cboCompany.SelectedValue);
+                    //SelectedComID = Convert.ToInt32(cboCompany.SelectedValue);
 
                     return;
                 }
                 else
                 {
-                    MessageBox.Show("Invalid UserName or Password. Please Try Again.", "VMS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Invalid UserName or Password. Please Try Again.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtUserName.Focus();
 
                     return;
@@ -243,7 +243,7 @@ namespace UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "VMS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
