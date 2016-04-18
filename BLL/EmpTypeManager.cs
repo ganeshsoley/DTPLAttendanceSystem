@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,6 +92,19 @@ namespace BLL
         public static bool IsEmpTypeUsed(long dbid)
         {
             return EmpTypeDAL.IsEmpTypeUsed(dbid);
+        }
+
+        public static string[] GetEmpTypes()
+        {
+            DataTable dTable = null;
+            string[] objEmpTypeList = null;
+            dTable = EmpTypeDAL.GetEmpTypes();
+
+            if (dTable.Rows.Count > 0)
+            {
+                objEmpTypeList = dTable.AsEnumerable().Select(row => row.Field<string>("EMPTYPE")).ToArray();
+            }
+            return objEmpTypeList;
         }
     }
 }

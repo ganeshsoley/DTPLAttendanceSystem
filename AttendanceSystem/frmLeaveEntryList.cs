@@ -27,6 +27,7 @@ namespace AttendanceSystem
         private string leaveTypeName;
         private string fromDate;
         private string toDate;
+        private string strCondition;
 
         private ListViewColumnSorter lvwColSorter;
         private UserCompany objUserCompany;
@@ -145,10 +146,10 @@ namespace AttendanceSystem
             lvwLeaves.View = View.Details;
         }
 
-        private void FillList()
+        private void FillList(string strWhere)
         {
             LeaveApplicationList objList = new LeaveApplicationList();
-            objList = LeaveApplicationManager.GetList("");
+            objList = LeaveApplicationManager.GetList(strWhere);
 
             lvwLeaves.Items.Clear();
 
@@ -175,6 +176,19 @@ namespace AttendanceSystem
             btnOk.Visible = IsList;
             btnCancel.Visible = IsList;
             btnNew.Visible = !IsList;
+        }
+
+        private string GetConditionString()
+        {
+            string strString;
+            strString = " FROMDATE >= '" + dtpFromDate.Value.ToString("dd-MMM-yyyy") +
+                "' AND TODATE <= '" + dtpToDate.Value.ToString("dd-MMM-yyyy") + "'";
+            if (txtEmpID.Text.Trim().Length > 0)
+                strCondition += " AND EMPID LIKE '%" + txtEmpID.Text.ToUpper() + "%' ";
+            if (txtEmpName.Text.Trim().Length > 0)
+                strCondition += " AND EMPNAME LIKE '%" + txtEmpName.Text.ToUpper() + "%' ";
+
+            return strString;
         }
         #endregion
 
@@ -331,7 +345,8 @@ namespace AttendanceSystem
         {
             Icon = new Icon("Images/DTPL.ico");
             flgLoading = true;
-            FillList();
+            strCondition = GetConditionString();
+            FillList(strCondition);
             SetButtonVisibility();
             if (IsList)
             {
@@ -404,6 +419,17 @@ namespace AttendanceSystem
             {
                 newToolStripMenuItem_Click(sender, e);
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToDateTime(dtpToDate.Value.ToShortDateString()) < Convert.ToDateTime(dtpFromDate.Value.ToShortDateString()))
+            {
+                MessageBox.Show("Enter valid Date Range.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            strCondition = GetConditionString();
+            FillList(strCondition);
         }
 
         private void Entry_DataChanged(object sender, LeaveApplicationUpdateEventArgs e, DataEventType Action)

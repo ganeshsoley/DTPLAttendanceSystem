@@ -41,10 +41,10 @@ namespace DAL
         #endregion
 
         /// <summary>
-        /// This method retrieves "Holiday" Record, from Database.
+        /// This method retrieves "EmpLeave" Record, from Database.
         /// </summary>
         /// <param name="dbid">Unique ID value based on which Record will be fetched.</param>
-        /// <returns>Object "Holiday" containing Data Values.</returns>
+        /// <returns>Object "EmpLeave" containing Data Values.</returns>
         public static EmployeeLeave GetItem(long dbid)
         {
             EmployeeLeave objEmpLeave = null;
@@ -174,11 +174,11 @@ namespace DAL
                     if (objEmpLeave.IsNew)
                     {
                         objCmd.Parameters.AddWithValue("@StDate", DateTime.Now);
-                        objCmd.Parameters.AddWithValue("@CrBy", CurrentCompany.m_UserName);
+                        objCmd.Parameters.AddWithValue("@CrBy", "");        //CurrentCompany.m_UserName
                         objEmpLeave.DBID = General.GenerateDBID("SEQEMPLEAVEID", Conn);
                     }
                     objCmd.Parameters.AddWithValue("@ModifyDate", DateTime.Now);
-                    objCmd.Parameters.AddWithValue("@ModBy", CurrentCompany.m_UserName);
+                    objCmd.Parameters.AddWithValue("@ModBy", "");       //CurrentCompany.m_UserName
                     objCmd.Parameters.AddWithValue("@MachineName", General.GetMachineName());
                     objCmd.Parameters.AddWithValue("@dbID", objEmpLeave.DBID);
 

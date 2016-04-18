@@ -93,6 +93,7 @@ namespace AttendanceSystem
         }
         #endregion
 
+        #region UI Control Logic
         private void frmLeaveEntryProp_Load(object sender, EventArgs e)
         {
             Icon = new Icon("Images/DTPL.ico");
@@ -171,7 +172,6 @@ namespace AttendanceSystem
                 SendKeys.Send("TAB");
             }
             frmList.Dispose();
-            
         }
 
         private void dtpFromDate_ValueChanged(object sender, EventArgs e)
@@ -345,6 +345,8 @@ namespace AttendanceSystem
                 MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+        #endregion
+
     }
 
     public class LeaveApplicationUpdateEventArgs : EventArgs

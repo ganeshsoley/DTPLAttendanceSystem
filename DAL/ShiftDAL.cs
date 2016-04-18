@@ -188,12 +188,12 @@ namespace DAL
                     if (objShift.IsNew)
                     {
                         objCmd.Parameters.AddWithValue("@StDate", DateTime.Now);
-                        objCmd.Parameters.AddWithValue("@CrBy", CurrentCompany.m_UserName);
+                        objCmd.Parameters.AddWithValue("@CrBy", "" );       //CurrentCompany.m_UserName
                         //objEmp.DBID = General.GenerateDBID(Conn, "EMPMAST");
-                        objShift.DBID = General.GenerateDBID("SEQEMPID", Conn);
+                        objShift.DBID = General.GenerateDBID("SEQSHIFTID", Conn);
                     }
                     objCmd.Parameters.AddWithValue("@ModifyDate", DateTime.Now);
-                    objCmd.Parameters.AddWithValue("@ModBy", CurrentCompany.m_UserName);
+                    objCmd.Parameters.AddWithValue("@ModBy", "");       //CurrentCompany.m_UserName
                     objCmd.Parameters.AddWithValue("@MachineName", General.GetMachineName());
                     objCmd.Parameters.AddWithValue("@dbID", objShift.DBID);
 

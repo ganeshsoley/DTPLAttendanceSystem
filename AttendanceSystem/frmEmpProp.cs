@@ -442,6 +442,7 @@ namespace AttendanceSystem
             cboPlant.Items.Add("DTPL 102");
             cboPlant.Items.Add("DTPL 103");
         }
+
     }
 
     public class EmpUpdateEventArgs : System.EventArgs

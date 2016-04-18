@@ -24,11 +24,8 @@ namespace DAL
             objDept.DeptName = Convert.ToString(myDataRec["DEPTNAME"]);
             objDept.Description = Convert.ToString(myDataRec["DESCRIPTION"]);
             objDept.IsActive = Convert.ToBoolean(myDataRec["ISACTIVE"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("DEPTCODE")))
-                objDept.DeptCode = Convert.ToString(myDataRec["DEPTCODE"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("SRNO")))
                 objDept.SrNo = Convert.ToInt32(myDataRec["SRNO"]);
-
 
             objDept.IsNew = false;
             objDept.IsEdited = false;
@@ -143,16 +140,16 @@ namespace DAL
                 if (objDept.IsNew)
                 {
                     strSaveQry = "INSERT INTO DEPTMAST(DBID, DEPTNAME, DESCRIPTION, ISACTIVE, " +
-                        " ST_DATE, MODIFY_DATE, CRBY, MODBY, MACHINENAME, DEPTCODE, SRNO) " +
+                        " ST_DATE, MODIFY_DATE, CRBY, MODBY, MACHINENAME, SRNO) " +
                         "VALUES (@dbId, @DeptName, @Descr, @IsActive, " +
-                        " @STDate, @ModifyDate, @CrBy, @ModBy, @MachineName, @DeptCode, @SrNo )";
+                        " @STDate, @ModifyDate, @CrBy, @ModBy, @MachineName, @SrNo )";
                 }
                 else
                 {
                     strSaveQry = "UPDATE DEPTMAST " +
                         "SET DEPTNAME = @DeptName, DESCRIPTION = @Descr, ISACTIVE = @IsActive, " +
-                        "MODIFY_DATE = @ModifyDate, MODBY = @ModBy, MACHINENAME = @MachineName, " +
-                        "DEPTCODE= @DeptCode, SRNO = @srNo " +
+                        " MODIFY_DATE = @ModifyDate, MODBY = @ModBy, MACHINENAME = @MachineName, " +
+                        " SRNO = @srNo " +
                         " WHERE DBID = @dbId";
                 }
 
@@ -169,13 +166,12 @@ namespace DAL
                     if (objDept.IsNew)
                     {
                         objCmd.Parameters.AddWithValue("@StDate", DateTime.Now);
-                        objCmd.Parameters.AddWithValue("@CrBy", CurrentCompany.m_UserName);
+                        objCmd.Parameters.AddWithValue("@CrBy", "");        //CurrentCompany.m_UserName
                         objDept.DBID = General.GenerateDBID(Conn, "DEPTMAST");
                     }
                     objCmd.Parameters.AddWithValue("@ModifyDate", DateTime.Now);
-                    objCmd.Parameters.AddWithValue("@ModBy", CurrentCompany.m_UserName);
+                    objCmd.Parameters.AddWithValue("@ModBy", "");           //CurrentCompany.m_UserName
                     objCmd.Parameters.AddWithValue("@MachineName", General.GetMachineName());
-                    objCmd.Parameters.AddWithValue("@DeptCode", objDept.DeptCode);
                     objCmd.Parameters.AddWithValue("@SrNo", objDept.SrNo);
                     objCmd.Parameters.AddWithValue("@dbID", objDept.DBID);
 

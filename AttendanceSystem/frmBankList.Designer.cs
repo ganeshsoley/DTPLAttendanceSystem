@@ -41,6 +41,7 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grbButtons.SuspendLayout();
             this.conMenu.SuspendLayout();
             this.SuspendLayout();
@@ -49,10 +50,11 @@
             // 
             this.lvwBanks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3});
             this.lvwBanks.Location = new System.Drawing.Point(5, 4);
             this.lvwBanks.Name = "lvwBanks";
-            this.lvwBanks.Size = new System.Drawing.Size(342, 253);
+            this.lvwBanks.Size = new System.Drawing.Size(458, 253);
             this.lvwBanks.TabIndex = 0;
             this.lvwBanks.UseCompatibleStateImageBehavior = false;
             this.lvwBanks.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwBanks_ColumnClick);
@@ -61,12 +63,12 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Dept Name";
+            this.columnHeader1.Text = "Bank Name";
             this.columnHeader1.Width = 125;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Description";
+            this.columnHeader2.Text = "Branch";
             this.columnHeader2.Width = 190;
             // 
             // grbButtons
@@ -76,13 +78,13 @@
             this.grbButtons.Controls.Add(this.btnNew);
             this.grbButtons.Location = new System.Drawing.Point(5, 263);
             this.grbButtons.Name = "grbButtons";
-            this.grbButtons.Size = new System.Drawing.Size(342, 58);
+            this.grbButtons.Size = new System.Drawing.Size(458, 58);
             this.grbButtons.TabIndex = 1;
             this.grbButtons.TabStop = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(258, 18);
+            this.btnCancel.Location = new System.Drawing.Point(368, 18);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -92,7 +94,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(177, 18);
+            this.btnOk.Location = new System.Drawing.Point(287, 18);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 0;
@@ -102,7 +104,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(258, 18);
+            this.btnNew.Location = new System.Drawing.Point(368, 18);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(75, 23);
             this.btnNew.TabIndex = 2;
@@ -143,11 +145,16 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.deleteToolStripMenuItem.Text = "&Delete";
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "IFSC CODE";
+            this.columnHeader3.Width = 100;
+            // 
             // frmBankList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 323);
+            this.ClientSize = new System.Drawing.Size(467, 323);
             this.Controls.Add(this.lvwBanks);
             this.Controls.Add(this.grbButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -177,5 +184,6 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

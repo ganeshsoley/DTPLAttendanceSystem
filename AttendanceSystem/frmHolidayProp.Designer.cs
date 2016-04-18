@@ -32,6 +32,9 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.grbHoliday = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.cboApplicableTo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
@@ -40,9 +43,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.grbButtons.SuspendLayout();
             this.grbHoliday.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +54,7 @@
             this.grbButtons.Location = new System.Drawing.Point(6, 192);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(361, 50);
-            this.grbButtons.TabIndex = 2;
+            this.grbButtons.TabIndex = 1;
             this.grbButtons.TabStop = false;
             // 
             // btnCancel
@@ -93,8 +93,38 @@
             this.grbHoliday.Location = new System.Drawing.Point(6, -1);
             this.grbHoliday.Name = "grbHoliday";
             this.grbHoliday.Size = new System.Drawing.Size(361, 194);
-            this.grbHoliday.TabIndex = 3;
+            this.grbHoliday.TabIndex = 0;
             this.grbHoliday.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(257, 81);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(11, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(208, 53);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(11, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "*";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(341, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "*";
             // 
             // cboApplicableTo
             // 
@@ -122,7 +152,7 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(239, 76);
-            this.txtDescription.TabIndex = 5;
+            this.txtDescription.TabIndex = 10;
             this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
             this.txtDescription.Enter += new System.EventHandler(this.txtDescription_Enter);
             this.txtDescription.Leave += new System.EventHandler(this.txtDescription_Leave);
@@ -143,7 +173,7 @@
             this.txtHolidayName.Location = new System.Drawing.Point(96, 23);
             this.txtHolidayName.Name = "txtHolidayName";
             this.txtHolidayName.Size = new System.Drawing.Size(239, 20);
-            this.txtHolidayName.TabIndex = 3;
+            this.txtHolidayName.TabIndex = 1;
             this.txtHolidayName.TextChanged += new System.EventHandler(this.txtHolidayName_TextChanged);
             this.txtHolidayName.Enter += new System.EventHandler(this.txtHolidayName_Enter);
             this.txtHolidayName.Leave += new System.EventHandler(this.txtHolidayName_Leave);
@@ -154,7 +184,7 @@
             this.label3.Location = new System.Drawing.Point(17, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 9;
             this.label3.Text = "Description";
             // 
             // label2
@@ -163,7 +193,7 @@
             this.label2.Location = new System.Drawing.Point(17, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Date";
             // 
             // label1
@@ -174,36 +204,6 @@
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Holiday Name";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(341, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(11, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "*";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(208, 53);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(11, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "*";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(257, 81);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(11, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "*";
             // 
             // frmHolidayProp
             // 

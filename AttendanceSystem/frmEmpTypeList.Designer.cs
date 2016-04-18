@@ -80,9 +80,9 @@
             // 
             // grbButtons
             // 
-            this.grbButtons.Controls.Add(this.btnNew);
             this.grbButtons.Controls.Add(this.btnCancel);
             this.grbButtons.Controls.Add(this.btnOk);
+            this.grbButtons.Controls.Add(this.btnNew);
             this.grbButtons.Location = new System.Drawing.Point(5, 271);
             this.grbButtons.Name = "grbButtons";
             this.grbButtons.Size = new System.Drawing.Size(383, 52);

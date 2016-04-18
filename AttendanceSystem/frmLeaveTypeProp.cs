@@ -100,6 +100,7 @@ namespace AttendanceSystem
             flgLoading = true;
             LeaveType_OnInValid(sender, e);
 
+            FillConsiderAs();
             if (objLeaveType.IsNew)
             {
                 this.Text += " [ NEW ]";
@@ -110,7 +111,7 @@ namespace AttendanceSystem
             }
 
             txtLeaveTypeName.Text = objLeaveType.LeaveTypeName;
-            txtLeaveTypeCode.Text = objLeaveType.LeaveTypeName;
+            txtLeaveTypeCode.Text = objLeaveType.LeaveTypeCode;
             txtYearlyLimit.Text = objLeaveType.YearlyLimit;
             txtCarryFwdLimit.Text = Convert.ToString(objLeaveType.CarryFwdLimit);
             if (objLeaveType.IsAddMonthly == 1)
@@ -150,7 +151,7 @@ namespace AttendanceSystem
             {
                 if (!IsLoading)
                 {
-                    objLeaveType.LeaveTypeName = txtLeaveTypeCode.Text.Trim();
+                    objLeaveType.LeaveTypeName = txtLeaveTypeName.Text.Trim();
                 }
             }
             catch (Exception ex)

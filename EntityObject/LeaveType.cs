@@ -44,7 +44,7 @@ namespace EntityObject
             considerAs = string.Empty;
             isAllowNegativeBal = 0;
 
-            RuleBroken("LeaveType", true);
+            RuleBroken("LeaveTypeCode", true);
             RuleBroken("LeaveTypeName", true);
             RuleBroken("YearlyLimit", true);
             RuleBroken("ConsiderAs", true);
@@ -258,6 +258,7 @@ namespace EntityObject
                         throw new Exception("Length can not be greater than 255 character(s).");
                     }
                 }
+                RuleBroken("ConsiderAs", (value.Trim().Length == 0));
                 considerAs = value.Trim().ToUpper();
                 flgEdited = true;
             }

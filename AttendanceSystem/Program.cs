@@ -32,7 +32,7 @@ namespace AttendanceSystem
                 {
                     objLogin.ShowDialog();
                 }
-                Application.Run(new FrmMain(objLogin.UserID, objLogin.SelectedComID));
+                Application.Run(new FrmMain(objLogin.UserID, 2));   //objLogin.SelectedComID
                 //FrmMain objFrmMain = new FrmMain();
                 //objFrmMain.Show();
             };

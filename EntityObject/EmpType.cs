@@ -26,7 +26,6 @@ namespace EntityObject
         private int calculateAbsentDay;
         private string absentDayMins;
         private int markWOHasBothDayAbsent;
-
         #endregion
 
         public EmpType()
@@ -51,9 +50,6 @@ namespace EntityObject
             RuleBroken("EmpTypeCode", true);
             RuleBroken("EmpType", true);
             RuleBroken("OTFormula", true);
-            RuleBroken("CalHalfDay", true);
-            RuleBroken("CalAbsentDay", true);
-            RuleBroken("MarkWOHAbsentBothDays", true);
         }
 
         #region Public Properties

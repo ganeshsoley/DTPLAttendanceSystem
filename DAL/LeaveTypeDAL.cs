@@ -187,11 +187,11 @@ namespace DAL
                     if (objLeaveType.IsNew)
                     {
                         objCmd.Parameters.AddWithValue("@StDate", DateTime.Now);
-                        objCmd.Parameters.AddWithValue("@CrBy", CurrentCompany.m_UserName);
+                        objCmd.Parameters.AddWithValue("@CrBy", "");        //CurrentCompany.m_UserName
                         objLeaveType.DBID = General.GenerateDBID("SEQLEAVETYPEID", Conn);
                     }
                     objCmd.Parameters.AddWithValue("@ModifyDate", DateTime.Now);
-                    objCmd.Parameters.AddWithValue("@ModBy", CurrentCompany.m_UserName);
+                    objCmd.Parameters.AddWithValue("@ModBy", "");           //CurrentCompany.m_UserName
                     objCmd.Parameters.AddWithValue("@MachineName", General.GetMachineName());
                     objCmd.Parameters.AddWithValue("@dbID", objLeaveType.DBID);
 

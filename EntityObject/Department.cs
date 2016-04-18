@@ -18,7 +18,6 @@ namespace EntityObject
         private string deptName;
         private string description;
         private bool isActive;
-        private string deptCode;
         private int srNo;
         #endregion
 
@@ -33,7 +32,6 @@ namespace EntityObject
             deptName = string.Empty;
             description = string.Empty;
             isActive = true;
-            deptCode = string.Empty;
             srNo = 0;
 
             RuleBroken("DeptName", true);
@@ -168,26 +166,6 @@ namespace EntityObject
                 {
                 }
                 isActive = value;
-                flgEdited = true;
-            }
-        }
-
-        public string DeptCode
-        {
-            get
-            {
-                return deptCode;
-            }
-            set
-            {
-                if (!flgLoading)
-                {
-                    if (value.Trim().Length > 30)
-                    {
-                        throw new Exception("Length can not be greater than 30 character(s).");
-                    }
-                }
-                deptCode = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }

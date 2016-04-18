@@ -100,6 +100,7 @@
             this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "&Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cboLeaveType
             // 
@@ -126,6 +127,7 @@
             this.cboDept.Name = "cboDept";
             this.cboDept.Size = new System.Drawing.Size(127, 21);
             this.cboDept.TabIndex = 11;
+            this.cboDept.Visible = false;
             // 
             // txtEmpName
             // 
@@ -203,6 +205,7 @@
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Department";
+            this.label3.Visible = false;
             // 
             // label2
             // 

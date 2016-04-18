@@ -85,6 +85,22 @@ namespace AttendanceSystem
             objHoliday.OnValid += new Holiday.EventHandler(Holiday_OnValid);
             objHoliday.OnInvalid += new Holiday.EventHandler(Holiday_OnInValid);
         }
+
+        private void FillApplicableTo()
+        {
+            string[] EmpTypeList = EmpTypeManager.GetEmpTypes();
+
+            cboApplicableTo.Items.Clear();
+            if (EmpTypeList != null)
+            {
+                cboApplicableTo.Items.Add("ALL");
+                foreach (string str in EmpTypeList)
+                {
+                    cboApplicableTo.Items.Add(str);
+                }
+                cboApplicableTo.Text = "ALL";
+            }
+        }
         #endregion
 
         #region UI Control Logic
@@ -94,6 +110,7 @@ namespace AttendanceSystem
             flgLoading = true;
             Holiday_OnInValid(sender, e);
 
+            FillApplicableTo();
             if (objHoliday.IsNew)
             {
                 this.Text += " [ NEW ]";
@@ -102,8 +119,9 @@ namespace AttendanceSystem
             {
                 this.Text += " [ " + objHoliday.HolidayName + " ]";
             }
-            dtpHoliday.Value = objHoliday.HolidayDate;
             txtHolidayName.Text = objHoliday.HolidayName;
+            if (objHoliday.HolidayDate != DateTime.MinValue)
+                dtpHoliday.Value = objHoliday.HolidayDate;
             cboApplicableTo.Text = objHoliday.ApplicableTo;
             txtDescription.Text = objHoliday.Description;
 

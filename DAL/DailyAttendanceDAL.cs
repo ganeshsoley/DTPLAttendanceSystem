@@ -223,11 +223,11 @@ namespace DAL
                     if (objDailyAtt.IsNew)
                     {
                         objCmd.Parameters.AddWithValue("@StDate", DateTime.Now);
-                        objCmd.Parameters.AddWithValue("@CrBy", CurrentCompany.m_UserName);
+                        objCmd.Parameters.AddWithValue("@CrBy", "");        //CurrentCompany.m_UserName
                         objDailyAtt.DBID = General.GenerateDBID("SEQDAILYATTID", Conn);
                     }
                     objCmd.Parameters.AddWithValue("@ModifyDate", DateTime.Now);
-                    objCmd.Parameters.AddWithValue("@ModBy", CurrentCompany.m_UserName);
+                    objCmd.Parameters.AddWithValue("@ModBy", "");           //CurrentCompany.m_UserName
                     objCmd.Parameters.AddWithValue("@MachineName", General.GetMachineName());
                     objCmd.Parameters.AddWithValue("@dbID", objDailyAtt.DBID);
 
@@ -244,7 +244,6 @@ namespace DAL
             }
             return (result > 0);
         }
-
 
         /// <summary>
         /// This Method Deletes the record from Database based on ID Specified.

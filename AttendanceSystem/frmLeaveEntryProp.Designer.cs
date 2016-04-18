@@ -90,7 +90,7 @@
             this.label10.Location = new System.Drawing.Point(227, 107);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(11, 13);
-            this.label10.TabIndex = 25;
+            this.label10.TabIndex = 10;
             this.label10.Text = "*";
             // 
             // label9
@@ -100,7 +100,7 @@
             this.label9.Location = new System.Drawing.Point(227, 29);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(11, 13);
-            this.label9.TabIndex = 24;
+            this.label9.TabIndex = 5;
             this.label9.Text = "*";
             // 
             // btnLeaveTypeList
@@ -109,7 +109,7 @@
             this.btnLeaveTypeList.Location = new System.Drawing.Point(242, 107);
             this.btnLeaveTypeList.Name = "btnLeaveTypeList";
             this.btnLeaveTypeList.Size = new System.Drawing.Size(23, 23);
-            this.btnLeaveTypeList.TabIndex = 23;
+            this.btnLeaveTypeList.TabIndex = 11;
             this.btnLeaveTypeList.UseVisualStyleBackColor = true;
             this.btnLeaveTypeList.Click += new System.EventHandler(this.btnLeaveTypeList_Click);
             // 
@@ -119,7 +119,7 @@
             this.btnEmpList.Location = new System.Drawing.Point(242, 29);
             this.btnEmpList.Name = "btnEmpList";
             this.btnEmpList.Size = new System.Drawing.Size(23, 23);
-            this.btnEmpList.TabIndex = 22;
+            this.btnEmpList.TabIndex = 6;
             this.btnEmpList.UseVisualStyleBackColor = true;
             this.btnEmpList.Click += new System.EventHandler(this.btnEmpList_Click);
             // 
@@ -140,7 +140,7 @@
             this.grbLeave.Location = new System.Drawing.Point(6, 133);
             this.grbLeave.Name = "grbLeave";
             this.grbLeave.Size = new System.Drawing.Size(376, 107);
-            this.grbLeave.TabIndex = 19;
+            this.grbLeave.TabIndex = 12;
             this.grbLeave.TabStop = false;
             // 
             // txtCOffDt
@@ -148,7 +148,7 @@
             this.txtCOffDt.Location = new System.Drawing.Point(254, 72);
             this.txtCOffDt.Name = "txtCOffDt";
             this.txtCOffDt.Size = new System.Drawing.Size(95, 20);
-            this.txtCOffDt.TabIndex = 31;
+            this.txtCOffDt.TabIndex = 24;
             this.txtCOffDt.TextChanged += new System.EventHandler(this.txtCOffDt_TextChanged);
             this.txtCOffDt.Enter += new System.EventHandler(this.txtCOffDt_Enter);
             this.txtCOffDt.Leave += new System.EventHandler(this.txtCOffDt_Leave);
@@ -160,7 +160,7 @@
             this.label12.Location = new System.Drawing.Point(352, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(11, 13);
-            this.label12.TabIndex = 30;
+            this.label12.TabIndex = 18;
             this.label12.Text = "*";
             // 
             // label11
@@ -170,7 +170,7 @@
             this.label11.Location = new System.Drawing.Point(185, 16);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(11, 13);
-            this.label11.TabIndex = 29;
+            this.label11.TabIndex = 15;
             this.label11.Text = "*";
             // 
             // chkHalfDay
@@ -179,7 +179,7 @@
             this.chkHalfDay.Location = new System.Drawing.Point(44, 68);
             this.chkHalfDay.Name = "chkHalfDay";
             this.chkHalfDay.Size = new System.Drawing.Size(67, 17);
-            this.chkHalfDay.TabIndex = 27;
+            this.chkHalfDay.TabIndex = 21;
             this.chkHalfDay.Text = "Half Day";
             this.chkHalfDay.UseVisualStyleBackColor = true;
             this.chkHalfDay.CheckedChanged += new System.EventHandler(this.chkHalfDay_CheckedChanged);
@@ -190,7 +190,7 @@
             this.chkIsCoff.Location = new System.Drawing.Point(126, 68);
             this.chkIsCoff.Name = "chkIsCoff";
             this.chkIsCoff.Size = new System.Drawing.Size(56, 17);
-            this.chkIsCoff.TabIndex = 26;
+            this.chkIsCoff.TabIndex = 22;
             this.chkIsCoff.Text = "C - Off";
             this.chkIsCoff.UseVisualStyleBackColor = true;
             this.chkIsCoff.CheckedChanged += new System.EventHandler(this.chkIsCoff_CheckedChanged);
@@ -200,7 +200,7 @@
             this.txtReason.Location = new System.Drawing.Point(87, 42);
             this.txtReason.Name = "txtReason";
             this.txtReason.Size = new System.Drawing.Size(262, 20);
-            this.txtReason.TabIndex = 25;
+            this.txtReason.TabIndex = 20;
             this.txtReason.TextChanged += new System.EventHandler(this.txtReason_TextChanged);
             this.txtReason.Enter += new System.EventHandler(this.txtReason_Enter);
             this.txtReason.Leave += new System.EventHandler(this.txtReason_Leave);
@@ -211,7 +211,7 @@
             this.dtpToDate.Location = new System.Drawing.Point(254, 16);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(95, 20);
-            this.dtpToDate.TabIndex = 24;
+            this.dtpToDate.TabIndex = 17;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // dtpFromDate
@@ -220,7 +220,7 @@
             this.dtpFromDate.Location = new System.Drawing.Point(87, 16);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(95, 20);
-            this.dtpFromDate.TabIndex = 23;
+            this.dtpFromDate.TabIndex = 14;
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // label8
@@ -229,7 +229,7 @@
             this.label8.Location = new System.Drawing.Point(194, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 13);
-            this.label8.TabIndex = 22;
+            this.label8.TabIndex = 23;
             this.label8.Text = "C-Off Date";
             // 
             // label7
@@ -238,7 +238,7 @@
             this.label7.Location = new System.Drawing.Point(21, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
-            this.label7.TabIndex = 21;
+            this.label7.TabIndex = 19;
             this.label7.Text = "Reason";
             // 
             // label6
@@ -247,7 +247,7 @@
             this.label6.Location = new System.Drawing.Point(202, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 20;
+            this.label6.TabIndex = 16;
             this.label6.Text = "To Date";
             // 
             // label5
@@ -256,7 +256,7 @@
             this.label5.Location = new System.Drawing.Point(21, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 19;
+            this.label5.TabIndex = 13;
             this.label5.Text = "From Date";
             // 
             // txtLeaveType
@@ -265,7 +265,7 @@
             this.txtLeaveType.Location = new System.Drawing.Point(93, 107);
             this.txtLeaveType.Name = "txtLeaveType";
             this.txtLeaveType.Size = new System.Drawing.Size(128, 20);
-            this.txtLeaveType.TabIndex = 11;
+            this.txtLeaveType.TabIndex = 9;
             // 
             // txtEmpDept
             // 
@@ -273,7 +273,7 @@
             this.txtEmpDept.Location = new System.Drawing.Point(93, 81);
             this.txtEmpDept.Name = "txtEmpDept";
             this.txtEmpDept.Size = new System.Drawing.Size(237, 20);
-            this.txtEmpDept.TabIndex = 10;
+            this.txtEmpDept.TabIndex = 8;
             // 
             // txtEmpName
             // 
@@ -281,7 +281,7 @@
             this.txtEmpName.Location = new System.Drawing.Point(93, 55);
             this.txtEmpName.Name = "txtEmpName";
             this.txtEmpName.Size = new System.Drawing.Size(237, 20);
-            this.txtEmpName.TabIndex = 9;
+            this.txtEmpName.TabIndex = 7;
             // 
             // txtEmpID
             // 
@@ -289,7 +289,7 @@
             this.txtEmpID.Location = new System.Drawing.Point(93, 29);
             this.txtEmpID.Name = "txtEmpID";
             this.txtEmpID.Size = new System.Drawing.Size(128, 20);
-            this.txtEmpID.TabIndex = 7;
+            this.txtEmpID.TabIndex = 4;
             // 
             // label4
             // 

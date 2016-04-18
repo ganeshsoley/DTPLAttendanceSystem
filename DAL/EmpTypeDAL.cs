@@ -26,8 +26,8 @@ namespace DAL
             objEmpType.EmpTypeCode= Convert.ToString(myDataRec["EMPTYPE"]);
             objEmpType.EmpTypeName = Convert.ToString(myDataRec["EMPTYPENAME"]);
             objEmpType.OTFormula = Convert.ToString(myDataRec["OTFORMULA"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("MINOT")))
-                objEmpType.MinOT = Convert.ToString(myDataRec["MINOT"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("MinOT")))
+                objEmpType.MinOT = Convert.ToString(myDataRec["MinOT"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LATECOMINGGRACETIME")))
                 objEmpType.LateComingGraceTime = Convert.ToString(myDataRec["LATECOMINGGRACETIME"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EARLYGOINGGRACETIME")))
@@ -66,7 +66,7 @@ namespace DAL
                         objCmd.Connection = Conn;
                         objCmd.CommandType = CommandType.Text;
                         objCmd.CommandText = "SELECT a.* " +
-                            " FROM EMPType a " +
+                            " FROM EMPTypeMast a " +
                             " WHERE a.DBID = @mDBID";
                         objCmd.Parameters.AddWithValue("@mDBID", dbid);
 
@@ -101,8 +101,8 @@ namespace DAL
         public static EmpTypeList GetList(string strWhere)
         {
             EmpTypeList objList = null;
-            string strSql = "SELECT DBID, EMPTYPE, EMPTYPENAME, OTFORMULA " +
-                " FROM EmpType A ";
+            string strSql = "SELECT A.* " +
+                " FROM EmpTypeMast A ";
 
             if (strWhere != string.Empty)
                 strSql = strSql + " WHERE " + strWhere;
@@ -190,11 +190,11 @@ namespace DAL
                     if (objEmpType.IsNew)
                     {
                         objCmd.Parameters.AddWithValue("@StDate", DateTime.Now);
-                        objCmd.Parameters.AddWithValue("@CrBy", CurrentCompany.m_UserName);
+                        objCmd.Parameters.AddWithValue("@CrBy", "");        //CurrentCompany.m_UserName
                         objEmpType.DBID = General.GenerateDBID("SEQEMPTYPEID", Conn);
                     }
                     objCmd.Parameters.AddWithValue("@ModifyDate", DateTime.Now);
-                    objCmd.Parameters.AddWithValue("@ModBy", CurrentCompany.m_UserName);
+                    objCmd.Parameters.AddWithValue("@ModBy", "");           //CurrentCompany.m_UserName
                     objCmd.Parameters.AddWithValue("@MachineName", General.GetMachineName());
                     objCmd.Parameters.AddWithValue("@dbID", objEmpType.DBID);
 
@@ -336,6 +336,43 @@ namespace DAL
                 }
             }
             return IsRecordUsed;
+        }
+
+        public static DataTable GetEmpTypes()
+        {
+            string strQry;
+            DataTable dTable = null;
+
+            strQry = "SELECT EMPTYPE " +
+                " FROM EMPTYPEMAST " +
+                " ORDER BY EMPTYPE ";
+
+            using (SqlConnection Conn = new SqlConnection(General.GetSQLConnectionString()))
+            {
+                using (SqlCommand cmd = Conn.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = strQry;
+
+                    try
+                    {
+                        if (Conn.State != ConnectionState.Open)
+                        {
+                            Conn.Open();
+                        }
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            dTable = new DataTable();
+                            da.Fill(dTable);
+                        }
+                    }
+                    catch
+                    {
+                        throw;
+                    }
+                }
+            }
+            return dTable;
         }
     }
 }
