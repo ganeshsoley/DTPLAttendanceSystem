@@ -1,0 +1,231 @@
+SQL> desc deptmast
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ DEPTNAME                                           VARCHAR2(30)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+ DESCRIPTION                                        VARCHAR2(30)
+ SRNO                                               NUMBER(2)
+ SUBDEPT                                            NUMBER(8)
+ ISACTIVE                                           NUMBER(1)
+ DEPTCODE                                           VARCHAR2(2)
+
+
+SQL> DESC DESIGMAST
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ DESIGNATION                                        VARCHAR2(15)
+ DESCRIPTION                                        VARCHAR2(30)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+
+
+SQL> DESC EMPTYPEMAST
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ EMPTYPE                                            VARCHAR2(30)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+ FORCONTRACT                                        VARCHAR2(1)
+
+
+
+SQL> DESC LEAVETYPEMAST
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ LEAVETYPECODE                                      VARCHAR2(3)
+ LEAVETYPE                                          VARCHAR2(15)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+
+
+SQL> DESC SHIFTMASTER
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ SHIFT                                              NUMBER(1)
+ SHIFT_NAME                                         VARCHAR2(20)
+ BEGINTIME                                          DATE
+ ENDTIME                                            DATE
+ BREAK1                                             NUMBER(1)
+ BR_BEGINTIME                                       DATE
+ BR_ENDTIME                                         DATE
+ PUNCH_BEGINBEFORE                                  NUMBER(3)
+ PUNCH_ENDAFTER                                     NUMBER(3)
+ GRACETIME                                          NUMBER(3)
+ PARTIALDAYBEGIN                                    VARCHAR2(20)
+ PARTIALDAY_BEGINSAT                                DATE
+ PARTIALDAY_ENDSAT                                  DATE
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+ CRBY                                               VARCHAR2(15)
+ MODBY                                              VARCHAR2(15)
+ MACHINENAME                                        VARCHAR2(30)
+
+
+SQL> DESC LEAVESTATUS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ ENTRYDATE                                          DATE
+ ENTRYTYPE                                          VARCHAR2(20)
+ EMPDBID                                            NUMBER(8)
+ DEPT                                               NUMBER(8)
+ COMPANYDBID                                        NUMBER(8)
+ FROMDATE                                           DATE
+ TODATE                                             DATE
+ TOTALLVS                                           NUMBER(8,2)
+ LVBAL                                              NUMBER(8,2)
+ LVALLOTED                                          NUMBER(8,2)
+ TIMEIN                                             VARCHAR2(10)
+ TIMEOUT                                            VARCHAR2(10)
+ REASON                                             VARCHAR2(50)
+ FROMLOCATION                                       VARCHAR2(25)
+ TOLOCATION                                         VARCHAR2(25)
+ LVCODE                                             VARCHAR2(2)
+ ISHALFDAY                                          NUMBER(1)
+ ISCOFF                                             NUMBER(1)
+ CRBY                                               VARCHAR2(15)
+ MODBY                                              VARCHAR2(15)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+ MACHINENAME                                        VARCHAR2(25)
+ COFFDATE                                           DATE
+ EMPID                                              VARCHAR2(10)
+
+
+
+SQL> DESC EMPDAILYATT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ATTDATE                                            DATE
+ EMPID                                              VARCHAR2(10)
+ EMPNAME                                            VARCHAR2(70)
+ EMPDEPARTMENT                                      VARCHAR2(50)
+ EMPINTIME                                          DATE
+ EMPOUTTIME                                         DATE
+ EMPATTSTATUS                                       VARCHAR2(20)
+ WORKDAYSTATUS                                      VARCHAR2(15)
+ OTTIMESYS                                          NUMBER(10,2)
+ OTTIMECALC                                         NUMBER(10,2)
+ SHIFT                                              VARCHAR2(10)
+ COMPANYDBID                                        NUMBER(8)
+ INTIME                                             VARCHAR2(25)
+ OUTTIME                                            VARCHAR2(25)
+ SHIFTBEGINTIME                                     DATE
+ SHIFTENDTIME                                       DATE
+ WORKINGHRS                                         DATE
+ SHIFTHRS                                           DATE
+ DAILYWAGES                                         NUMBER(7,2)
+ OTWAGES                                            NUMBER(7,2)
+ PIN                                                TIMESTAMP(6)
+ POUT                                               TIMESTAMP(6)
+ SHIFTBEGIN                                         TIMESTAMP(6)
+ SHIFTEND                                           TIMESTAMP(6)
+ OTHRS                                              NUMBER(7,2)
+ DAILYSAL                                           NUMBER(8,2)
+ OTSAL                                              NUMBER(8,2)
+ TOTALSAL                                           NUMBER(10,2)
+ PRESENTY                                           VARCHAR2(1)
+ P_STATUS                                           VARCHAR2(2)
+ LEAVES                                             NUMBER(5,1)
+ PRESENTYNUM                                        NUMBER(3,1)
+ ACTPR                                              NUMBER(3,1)
+ ACTLEAVE                                           NUMBER(3,1)
+ ACTWOFF                                            NUMBER(3,1)
+ ACTHOLIDAY                                         NUMBER(3,1)
+ ABWOFF                                             NUMBER(3,1)
+ ABHOLIDAY                                          NUMBER(3,1)
+ OFFWORKING                                         NUMBER(1)
+ COFF                                               NUMBER(1)
+ PR2                                                NUMBER(3,1)
+ LABOURFLAG                                         NUMBER(1)
+ EMPDBID                                            NUMBER(8)
+ OLDEMPID                                           VARCHAR2(10)
+ DEVICECODE                                         NUMBER(8)
+ DEPTDBID                                           NUMBER(8)
+ SEX                                                VARCHAR2(1)
+ EMPTYPE                                            NUMBER(8)
+
+
+SQL> DESC MONTHSAL
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FORMONTH                                           DATE
+ EMPID                                              VARCHAR2(10)
+ WORKDAYS                                           NUMBER(5,1)
+ GROSSSAL                                           NUMBER(10,2)
+ OTSAL                                              NUMBER(10,2)
+ TOTALSAL                                           NUMBER(10,2)
+ LEAVES                                             NUMBER(5,1)
+ LVOPENBAL                                          NUMBER(5,1)
+ PAYDAYS                                            NUMBER(5,1)
+ LVCLOSING                                          NUMBER(5,1)
+ EMPDBID                                            NUMBER(8)
+ OTHRS                                              NUMBER(7,2)
+ BONUSINCENTIVE                                     NUMBER(10,2)
+ COMPANYDBID                                        NUMBER(8)
+ ABDAYS                                             NUMBER(5,1)
+ WOFF                                               NUMBER(2)
+ HOLIDAYS                                           NUMBER(4,1)
+ PRDAYS                                             NUMBER(4,1)
+ MONTHDAYS                                          NUMBER(2)
+ APPL_DAYS                                          NUMBER(8)
+ PRESENTWOFF                                        NUMBER(2)
+ LEAVEINCENTIVE                                     NUMBER(10,2)
+ ABWOFF                                             NUMBER(4,1)
+ ABHOLIDAY                                          NUMBER(4,1)
+ INCSCHEMEID                                        NUMBER(8)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+ PLCR                                               NUMBER(5,1)
+ PREVYRLVOPENING                                    NUMBER(5,1)
+ PREVYRLVCLOSING                                    NUMBER(5,1)
+ EXTRALEAVE                                         NUMBER(5,1)
+
+
+SQL> desc holidaymaster;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ HOLIDAYREASON                                      VARCHAR2(70)
+ HOLIDAYDATE                                        DATE
+ COMPANYDBID                                        NUMBER(8)
+ COFFDATE                                           DATE
+ FORWORKERS                                         NUMBER(1)
+
+
+SQL> desc ptslabmast;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ MINAMT                                             NUMBER(6)
+ MAXAMT                                             NUMBER(6)
+ TAXRATE                                            NUMBER(5)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+
+
+
+
+
+
+
+alter table compmast
+add (PFFROMDATE    DATETIME,
+ PFTODATE          DATETIME,
+ ISACTIVE          TINYINT,
+ WEEKLYOFF         NVARCHAR(10),
+ DAILYATT_FLAG     TINYINT
+)
+/
+
+
+ALTER TABLE DEPTMAST
+ADD SRNO INT
+/
+

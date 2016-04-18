@@ -1,0 +1,85 @@
+
+alter table compmast
+add (PFFROMDATE    DATETIME,
+ PFTODATE          DATETIME,
+ ISACTIVE          TINYINT,
+ WEEKLYOFF         NVARCHAR(10),
+ DAILYATT_FLAG     TINYINT
+)
+/
+
+
+ALTER TABLE DEPTMAST
+ADD SRNO INT
+/
+
+create tabLe designationmast
+(
+ DBID           LONG, 
+ DESIGNATION    NVARCHAR(15),
+ DESCRIPTION    NVARCHAR(30),
+ ST_DATE        DATETIME,
+ MODIFY_DATE    DATETIME,
+ CRBY 	 	NVARCHAR(30),
+ MODBY 		NVARCHAR(30),
+ MACHINENAME	NVARCHAR(30)
+)
+/
+
+
+CREATE TABLE EMPTYPEMAST
+(
+DBID 		LONG,
+EMPTYPE		NVARCHAR(30),
+FORCONTRACT  	NVARCHAR(1),
+ST_DATE     	DATETIME,
+MODIFY_DATE     DATETIME,
+ CRBY 	 	NVARCHAR(30),
+ MODBY 		NVARCHAR(30),
+ MACHINENAME	NVARCHAR(30)
+)
+/
+
+
+CREATE TABLE LEAVETYPEMAST
+(DBID           LONG,
+ LEAVECODE  	NVARCHAR(5),
+ LEAVETYPE      NVARCHAR(15),
+ YEARLYLIMIT	NUMBER(3),
+ CARRYFWDLIMIT  NUMBER(3),
+ APPLICABLETO   NUMBER(1),
+ CONSIDER
+ ALLOWNEGATIVEVALUE TINYINT ,
+ ST_DATE        DATETIME,
+ MODIFY_DATE    DATETIME,
+ CRBY 	 	NVARCHAR(30),
+ MODBY 		NVARCHAR(30),
+ MACHINENAME	NVARCHAR(30)
+)
+/
+
+
+CREATE TABLE SHIFTMASTER
+(DBID                                               LONG,
+ SHIFT                                              NVARCHAR(10)
+ SHIFT_NAME                                         NVARCHAR(20)
+ BEGINTIME                                          DATETIME
+ ENDTIME                                            DATETIME
+ BREAK1                                             TINYINT
+ BR_BEGINTIME                                       DATETIME
+ BR_ENDTIME                                         DATETIME
+ PUNCH_BEGINBEFORE                                  NUMBER(3)
+ PUNCH_ENDAFTER                                     NUMBER(3)
+ GRACETIME                                          NUMBER(3)
+ PARTIALDAYBEGIN                                    NVARCHAR(20)
+ PARTIALDAY_BEGINSAT                                DATETIME
+ PARTIALDAY_ENDSAT                                  DATETIME
+ ST_DATE                                            DATETIME
+ MODIFY_DATE                                        DATETIME
+ CRBY                                               NVARCHAR(30)
+ MODBY                                              NVARCHAR(30)
+ MACHINENAME                                        NVARCHAR(30)
+)
+
+
+
