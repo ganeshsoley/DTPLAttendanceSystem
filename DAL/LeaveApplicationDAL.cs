@@ -24,20 +24,20 @@ namespace DAL
             objLVApplication.IsLoading = true;
 
             objLVApplication.DBID = Convert.ToInt32(myDataRec["DBID"]);
-            objLVApplication.LeaveTypeID = Convert.ToInt32(myDataRec["LEAVETYPEID"]);
-            objLVApplication.LeaveType = Convert.ToString(myDataRec["LEAVETYPE"]);
             objLVApplication.EmployeeID = Convert.ToInt32(myDataRec["EMPLOYEEID"]);
-            objLVApplication.EmpName = Convert.ToString(myDataRec["EMPNAME"]);
-            objLVApplication.EmpDept = Convert.ToString(myDataRec["EMPDEPT"]);
+            objLVApplication.LeaveTypeID = Convert.ToInt32(myDataRec["LEAVETYPEID"]);
             objLVApplication.FromDate = Convert.ToDateTime(myDataRec["FROMDATE"]);
             objLVApplication.ToDate = Convert.ToDateTime(myDataRec["TODATE"]);
-            objLVApplication.TotalLeaves = Convert.ToInt16(myDataRec["LEAVECOUNT"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LEAVEREASON")))
-                objLVApplication.LeaveReason = Convert.ToString(myDataRec["LEAVEREASON"]);
             objLVApplication.IsLeaveApproved = Convert.ToInt16(myDataRec["ISAPPROVED"]);
             objLVApplication.IsHRApproved = Convert.ToInt16(myDataRec["ISHRAPPROVED"]);
             objLVApplication.IsHalfDay = Convert.ToInt16(myDataRec["ISHALFDAY"]);
             objLVApplication.IsCOff = Convert.ToInt16(myDataRec["ISCOFF"]);
+            objLVApplication.TotalLeaves = Convert.ToInt16(myDataRec["LEAVECOUNT"]);
+            objLVApplication.EmpName = Convert.ToString(myDataRec["EMPNAME"]);
+            objLVApplication.LeaveType = Convert.ToString(myDataRec["LEAVETYPE"]);
+            objLVApplication.EmpDept = Convert.ToString(myDataRec["EMPDEPT"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LEAVEREASON")))
+                objLVApplication.LeaveReason = Convert.ToString(myDataRec["LEAVEREASON"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("COFFDATE")))
                 objLVApplication.COffDate = Convert.ToString(myDataRec["COFFDATE"]);
 
@@ -107,13 +107,14 @@ namespace DAL
         {
             LeaveApplicationList objList = null;
             string strSql = "SELECT A.*, B.INITIALS EMPNAME, C.LEAVETYPE " +
-                " FROM EMPLEAVEENTRIES A, EMPMAST B, LEAVETYPEMAST C " +
+                " FROM EMPLEAVEENTRIES A, EMPMAST B, LEAVETYPEMAST C, DEPTMAST D " +
                 " WHERE A.EMPLOYEEID = B.DBID " +
-                " AND A.LEAVETYPEID = C.DBID ";
+                " AND A.LEAVETYPEID = C.DBID " +
+                " AND B.DEPT = D.DBID ";
 
             if (strWhere != string.Empty)
                 strSql = strSql + " AND " + strWhere;
-            strSql += " ORDER BY ST_DATE, B.EMPNAME ";
+            strSql += " ORDER BY ST_DATE, EMPNAME";
 
             using (SqlConnection Conn = new SqlConnection(General.GetSQLConnectionString()))
             {

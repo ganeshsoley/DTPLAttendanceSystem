@@ -210,11 +210,6 @@ SQL> desc ptslabmast;
  MODIFY_DATE                                        DATE
 
 
-
-
-
-
-
 alter table compmast
 add (PFFROMDATE    DATETIME,
  PFTODATE          DATETIME,
@@ -229,3 +224,20 @@ ALTER TABLE DEPTMAST
 ADD SRNO INT
 /
 
+SQL> DESC CONTRACTORMAST
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DBID                                               NUMBER(8)
+ NAME                                      NOT NULL VARCHAR2(50)
+ ADD1                                      NOT NULL VARCHAR2(35)
+ ADD2                                               VARCHAR2(35)
+ CITY                                      NOT NULL VARCHAR2(35)
+ CONTACTNO                                          VARCHAR2(15)
+ ISACTIVE                                           NUMBER(1)
+ FLGDELETED                                         NUMBER(1)
+ ST_DATE                                            DATE
+ MODIFY_DATE                                        DATE
+ CRBY                                               VARCHAR2(30)
+ MODBY                                              VARCHAR2(30)
+ MACHINENAME                                        VARCHAR2(30)
+ CONTACTPERSON                             NOT NULL VARCHAR2(50)

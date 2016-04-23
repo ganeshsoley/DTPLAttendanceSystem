@@ -47,6 +47,7 @@
     <Compile Include="DesignationDAL.cs" />
     <Compile Include="EmpLeaveDAL.cs" />
     <Compile Include="EmployeeDAL.cs" />
+    <Compile Include="EmployeeStatusDAL.cs" />
     <Compile Include="EmpTypeDAL.cs" />
     <Compile Include="General.cs" />
     <Compile Include="GeneralListDAL.cs" />

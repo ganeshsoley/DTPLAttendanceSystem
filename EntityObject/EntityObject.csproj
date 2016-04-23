@@ -52,6 +52,8 @@
     <Compile Include="DepartmentList.cs" />
     <Compile Include="Designation.cs" />
     <Compile Include="DesignationList.cs" />
+    <Compile Include="EmployeeStatus.cs" />
+    <Compile Include="EmployeeStatusList.cs" />
     <Compile Include="LeaveApplication.cs" />
     <Compile Include="EmpLeavesList.cs" />
     <Compile Include="EmployeeLeave.cs" />

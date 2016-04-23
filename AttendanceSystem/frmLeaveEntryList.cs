@@ -161,7 +161,7 @@ namespace AttendanceSystem
                     objLvwItem.Name = Convert.ToString(objLVAppln.DBID);
                     objLvwItem.Text = Convert.ToString(objLVAppln.FromDate);
                     objLvwItem.SubItems.Add(Convert.ToString(objLVAppln.ToDate));
-                    objLvwItem.SubItems.Add(Convert.ToString(objLVAppln.EmpID));
+                    objLvwItem.SubItems.Add(Convert.ToString(objLVAppln.EmpCode));
                     objLvwItem.SubItems.Add(Convert.ToString(objLVAppln.EmpName));
                     objLvwItem.SubItems.Add(Convert.ToString(objLVAppln.EmpDept));
                     objLvwItem.SubItems.Add(Convert.ToString(objLVAppln.LeaveType));

@@ -20,7 +20,7 @@ namespace EntityObject
         private string empDept;
         private long leaveTypeID;
         private string leaveType;
-        private decimal allowedLeaves;
+        private decimal leavesBalance;
         #endregion
 
         #region Constructor(s)
@@ -36,11 +36,10 @@ namespace EntityObject
             empDept = string.Empty;
             leaveTypeID = 0;
             leaveType = string.Empty;
-            allowedLeaves = 0;
+            leavesBalance = 0;
 
-            RuleBroken("Employee", true);
             RuleBroken("LeaveType", true);
-            RuleBroken("AllowedLeaves", true);
+            RuleBroken("LeavesBalance", true);
         }
         #endregion
 
@@ -176,18 +175,20 @@ namespace EntityObject
             }
         }
 
-        public decimal AllowedLeaves
+        public decimal LeavesBalance
         {
             get
             {
-                return allowedLeaves;
+                return leavesBalance;
             }
             set
             {
-                if (!flgLoading)
+                if (!IsLoading)
                 {
+                    //throw new Exception("Value must not be greater than 12 characters.");
                 }
-                allowedLeaves = value;
+                RuleBroken("LeavesBalance", (value == 0));
+                leavesBalance = value;
                 flgEdited = true;
             }
         }

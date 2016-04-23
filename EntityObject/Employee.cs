@@ -22,19 +22,26 @@ namespace EntityObject
         private string initials;
         private int deptID;
         private string deptName;
-        private DateTime joinDate;
-        private DateTime birthDate;
-        private DateTime leftDate;
-        private string mobile;
-        private string eMail;
-        private int inActive;
-        private string empPlant;
-
-        private string gender;
         private long designationID;
         private string designation;
         private long empTypeID;
         private string empType;
+        private long empStatusID;
+        private string empStatus;
+        private DateTime joinDate;
+        private DateTime birthDate;
+        private string empPlant;
+
+        private string leftDate;
+        private string mobile;
+        private string eMail;
+        private int inActive;
+        private string gender;
+        private long bankID;
+        private string bankName;
+        private string accNo;
+        private string pfNO;
+        private string uanNo;
         private int flgCOff;
         private int flgLWF;
         private int flgCalSalary;
@@ -58,17 +65,27 @@ namespace EntityObject
             initials = string.Empty;
             deptID = 0;
             deptName = string.Empty;
-            joinDate = DateTime.MinValue;
-            birthDate = DateTime.MinValue;
-            leftDate = DateTime.MinValue;
-            mobile = string.Empty;
-            eMail = string.Empty;
-            inActive = 0;
+            designationID = 0;
+            designation = string.Empty;
+            empTypeID = 0;
+            empType = string.Empty;
+            empStatusID = 0;
+            empStatus = string.Empty;
             empPlant = string.Empty;
 
+            joinDate = DateTime.MinValue;
+            birthDate = DateTime.MinValue;
+            leftDate = string.Empty ;
+            eMail = string.Empty;
+            mobile = string.Empty;
+            bankID = 0;
+            bankName = string.Empty;
+            accNo = string.Empty;
+            pfNO = string.Empty;
+            uanNo = string.Empty;
+
+            inActive = 0;
             gender = string.Empty;
-            designationID = 0;
-            empTypeID = 0;
             flgCOff = 0;
             flgLWF = 0;
             flgCalSalary = 0;
@@ -76,12 +93,21 @@ namespace EntityObject
             flgPF = 0;
             flgPT = 0;
 
+            EmpLeaves = new EmpLeavesList();
+
             RuleBroken("EmpCode", true);
             RuleBroken("FirstName", true);
             //RuleBroken("LastName", true);
             RuleBroken("DeptID", true);
+            RuleBroken("DesignationID", true);
+            RuleBroken("EmpTypeID", true);
+            RuleBroken("EmpStatusID", true);
+            RuleBroken("JoinDate", true);
+            RuleBroken("BirthDate", true);
             RuleBroken("Mobile", true);
             RuleBroken("EmpPlant", true);
+            RuleBroken("Gender", true);
+            
         }
         #endregion
 
@@ -306,6 +332,94 @@ namespace EntityObject
             }
         }
 
+        public long DesignationID
+        {
+            get
+            {
+                return designationID;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+
+                }
+                RuleBroken("DesignationID", (value ==0));
+                designationID = value;
+                flgEdited = true;
+            }
+        }
+
+        public string Designation
+        {
+            get
+            {
+                return designation;
+            }
+            set
+            {
+                designation = value.ToUpper();
+            }
+        }
+
+        public long EmpTypeID
+        {
+            get
+            {
+                return empTypeID;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                }
+                RuleBroken("EmpTypeID", (value==0));
+                empTypeID = value;
+                flgEdited = true;
+            }
+        }
+
+        public string EmpType
+        {
+            get
+            {
+                return empType;
+            }
+            set
+            {
+                empType = value.ToUpper();
+            }
+        }
+
+        public long EmpStatusID
+        {
+            get
+            {
+                return empStatusID;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                }
+                RuleBroken("EmpStatusID", (value==0));
+                empStatusID = value;
+                flgEdited = true;
+            }
+        }
+
+        public string EmpStatus
+        {
+            get
+            {
+                return empStatus;
+            }
+            set
+            {
+                empStatus = value.ToUpper();
+            }
+        }
+
         public DateTime JoinDate
         {
             get
@@ -317,6 +431,7 @@ namespace EntityObject
                 if (!flgLoading)
                 {
                 }
+                RuleBroken("JoinDate", (value == DateTime.MinValue));
                 joinDate = value;
                 flgEdited = true;
             }
@@ -334,12 +449,13 @@ namespace EntityObject
                 {
 
                 }
+                RuleBroken("BirthDate", (value == DateTime.MinValue));
                 birthDate = value;
                 flgEdited = true;
             }
         }
 
-        public DateTime LeftDate
+        public string LeftDate
         {
             get
             {
@@ -445,65 +561,97 @@ namespace EntityObject
                         throw new Exception("Length can not be greater than 10 Character(s).");
                     }
                 }
+                RuleBroken("Gender", (value.Trim().Length == 0));
                 gender = value.Trim().ToUpper();
                 flgEdited = true;
             }
         }
 
-        public long DesignationID
+        public long BankID
         {
             get
             {
-                return designationID;
-            }
-            set
-            {
-                if (!flgLoading)
-                {
-
-                }
-                designationID = value;
-                flgEdited = true;
-            }
-        }
-
-        public string Designation
-        {
-            get
-            {
-                return designation;
-            }
-            set
-            {
-                designation = value.ToUpper();
-            }
-        }
-
-        public long EmpTypeID
-        {
-            get
-            {
-                return empTypeID;
+                return bankID;
             }
             set
             {
                 if (!flgLoading)
                 {
                 }
-                empTypeID = value;
+                bankID = value;
                 flgEdited = true;
             }
         }
 
-        public string EmpType
+        public string BankName
         {
             get
             {
-                return empType;
+                return bankName;
             }
             set
             {
-                empType = value.ToUpper();
+                bankName = value.ToUpper();
+            }
+        }
+
+        public string AccountNo
+        {
+            get
+            {
+                return accNo;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                    if (value.Trim().Length > 30)
+                    {
+                        throw new Exception("Length can not be greater than 30 Character(s).");
+                    }
+                }
+                accNo = value.Trim().ToUpper();
+                flgEdited = true;
+            }
+        }
+
+        public string PFNo
+        {
+            get
+            {
+                return pfNO; 
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                    if (value.Trim().Length > 30)
+                    {
+                        throw new Exception("Length can not be greater than 30 Character(s).");
+                    }
+                }
+                pfNO = value.Trim().ToUpper();
+                flgEdited = true;
+            }
+        }
+
+        public string UANNo
+        {
+            get
+            {
+                return uanNo;
+            }
+            set
+            {
+                if (!flgLoading)
+                {
+                    if (value.Trim().Length > 15)
+                    {
+                        throw new Exception("Length can not be greater than 15 Character(s).");
+                    }
+                }
+                uanNo = value.Trim().ToUpper();
+                flgEdited = true;
             }
         }
 
@@ -595,6 +743,12 @@ namespace EntityObject
                 flgPT = value;
                 flgEdited = true;
             }
+        }
+        
+        public EmpLeavesList EmpLeaves
+        {
+            get;
+            set;
         }
         #endregion
     }

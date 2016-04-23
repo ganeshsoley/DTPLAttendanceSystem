@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lvwEmployees = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -43,6 +43,7 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.conMnu.SuspendLayout();
             this.SuspendLayout();
@@ -53,14 +54,15 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader5});
             this.lvwEmployees.Location = new System.Drawing.Point(3, 4);
             this.lvwEmployees.Name = "lvwEmployees";
             this.lvwEmployees.Size = new System.Drawing.Size(457, 299);
             this.lvwEmployees.TabIndex = 0;
             this.lvwEmployees.UseCompatibleStateImageBehavior = false;
-            this.lvwEmployees.DoubleClick += new System.EventHandler(this.lvwEmployees_DoubleClick);
             this.lvwEmployees.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvwEmployees_ColumnClick);
+            this.lvwEmployees.DoubleClick += new System.EventHandler(this.lvwEmployees_DoubleClick);
             this.lvwEmployees.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lvwEmployees_KeyPress);
             // 
             // columnHeader1
@@ -131,34 +133,39 @@
             this.toolStripSeparator1,
             this.deleteToolStripMenuItem});
             this.conMnu.Name = "conMnu";
-            this.conMnu.Size = new System.Drawing.Size(118, 76);
+            this.conMnu.Size = new System.Drawing.Size(113, 76);
             this.conMnu.Opening += new System.ComponentModel.CancelEventHandler(this.conMnu_Opening);
             // 
             // modifyToolStripMenuItem
             // 
             this.modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.modifyToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.modifyToolStripMenuItem.Text = "&Modify";
             this.modifyToolStripMenuItem.Click += new System.EventHandler(this.modifyToolStripMenuItem_Click);
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(114, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(109, 6);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.deleteToolStripMenuItem.Text = "&Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Employee Type";
+            this.columnHeader5.Width = 80;
             // 
             // frmEmployeeList
             // 
@@ -173,8 +180,8 @@
             this.Name = "frmEmployeeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Employee List";
-            this.Load += new System.EventHandler(this.frmEmployeeList_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmployeeList_FormClosing);
+            this.Load += new System.EventHandler(this.frmEmployeeList_Load);
             this.groupBox1.ResumeLayout(false);
             this.conMnu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -197,5 +204,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

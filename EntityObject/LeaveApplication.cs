@@ -18,7 +18,7 @@ namespace EntityObject
         private long leaveTypeID;
         private string leaveType;
         private long employeeID;
-        private string empID;
+        private string empCode;
         private string empName;
         private string empType;
         private string empDept;
@@ -45,6 +45,7 @@ namespace EntityObject
             leaveTypeID = 0;
             leaveType = string.Empty;
             employeeID = 0;
+            empCode = string.Empty;
             empName = string.Empty;
             empDept = string.Empty;
             empType = string.Empty;
@@ -58,7 +59,7 @@ namespace EntityObject
             isCOff = 0;
             coffDate = string.Empty;
 
-            RuleBroken("EmpID", true);
+            RuleBroken("EmpDBID", true);
             RuleBroken("LeaveTypeID", true);
             RuleBroken("FromDate", true);
             RuleBroken("ToDate", true);
@@ -163,22 +164,21 @@ namespace EntityObject
             }
             set
             {
-                RuleBroken("EmpID", (value == 0));
+                RuleBroken("EmpDBID", (value == 0));
                 employeeID = value;
                 flgEdited = true;
             }
         }
 
-        public string EmpID
+        public string EmpCode
         {
             get
             {
-                return empID;
+                return empCode;
             }
             set
             {
-                empID = value.Trim().ToUpper();
-                flgEdited = true;
+                empCode = value.Trim().ToUpper();
             }
         }
 
@@ -191,7 +191,6 @@ namespace EntityObject
             set
             {
                 empName = value.Trim().ToUpper();
-                flgEdited = true;
             }
         }
 
@@ -204,7 +203,6 @@ namespace EntityObject
             set
             {
                 empDept = value.Trim().ToUpper();
-                flgEdited = true;
             }
         }
 
@@ -217,7 +215,6 @@ namespace EntityObject
             set
             {
                 empType = value.Trim().ToUpper();
-                flgEdited = true;
             }
         }
 
@@ -367,6 +364,10 @@ namespace EntityObject
             {
                 if (!flgLoading)
                 {
+                    if (value.Trim().Length > 15)
+                    {
+                        throw new Exception("Length can not be greater than 15 character(s).");
+                    }
                 }
                 coffDate = value.Trim().ToUpper();
                 flgEdited = true;

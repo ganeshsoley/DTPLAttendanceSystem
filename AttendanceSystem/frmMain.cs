@@ -343,6 +343,24 @@ namespace AttendanceSystem
             }
         }
 
-        
+        private void empStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmEmpStatusList objFrmList;
+                objFrmList = new frmEmpStatusList(CurrentCompany, CurrentUser);
+                objFrmList.MdiParent = this;
+                objFrmList.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void utilityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

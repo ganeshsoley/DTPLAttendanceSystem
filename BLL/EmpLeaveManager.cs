@@ -16,9 +16,9 @@ namespace BLL
         /// </summary>
         /// <param name="strWhere">Condition based on which List is retrieved.</param>
         /// <returns>EmpLeave List</returns>
-        public static EmpLeavesList GetList(string strWhere)
+        public static EmpLeavesList GetList(long EmpDBID)
         {
-            return EmpLeaveDAL.GetList(strWhere);
+            return EmpLeaveDAL.GetList(EmpDBID);
         }
 
         /// <summary>

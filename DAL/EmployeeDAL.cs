@@ -23,29 +23,13 @@ namespace DAL
             objEmp.DBID = Convert.ToInt32(myDataRec["DBID"]);
             objEmp.EmpCode = Convert.ToString(myDataRec["EMPCODE"]);
             objEmp.FirstName = Convert.ToString(myDataRec["FIRSTNAME"]);
-             
             objEmp.MiddleName = Convert.ToString(myDataRec["MIDDLENAME"]);
-            objEmp.LastName = Convert.ToString(myDataRec["LASTNAME"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LASTNAME")))
+                objEmp.LastName = Convert.ToString(myDataRec["LASTNAME"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("INITIALS")))
                 objEmp.Initials = Convert.ToString(myDataRec["INITIALS"]);
             objEmp.DeptID = Convert.ToInt32(myDataRec["DEPT"]);
             objEmp.DeptName = Convert.ToString(myDataRec["DEPTNAME"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("JOINDATE")))
-                objEmp.JoinDate = Convert.ToDateTime(myDataRec["JOINDATE"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("BIRTHDATE")))
-                objEmp.BirthDate = Convert.ToDateTime(myDataRec["BIRTHDATE"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LEFTDATE")))
-                objEmp.LeftDate = Convert.ToDateTime(myDataRec["LEFTDATE"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("MOBILENO")))
-                objEmp.MobileNo = Convert.ToString(myDataRec["MOBILENO"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMAILID")))
-                objEmp.EMailID = Convert.ToString(myDataRec["EMAILID"]);
-            objEmp.InActive = Convert.ToInt32(myDataRec["INACTIVE"]);
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPPLANT")))
-                objEmp.EmpPlant = Convert.ToString(myDataRec["EMPPLANT"]);
-
-            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("GENDER")))
-                objEmp.Gender= Convert.ToString(myDataRec["GENDER"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("DESIGNATIONID")))
                 objEmp.DesignationID = Convert.ToInt32(myDataRec["DESIGNATIONID"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("DESIGNATION")))
@@ -54,6 +38,26 @@ namespace DAL
                 objEmp.EmpTypeID = Convert.ToInt32(myDataRec["EMPTYPEID"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPTYPE")))
                 objEmp.EmpType = Convert.ToString(myDataRec["EMPTYPE"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPSTATUSID")))
+                objEmp.EmpStatusID = Convert.ToInt32(myDataRec["EMPSTATUSID"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPSTATUSNAME")))
+                objEmp.EmpStatus = Convert.ToString(myDataRec["EMPSTATUSNAME"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("JOINDATE")))
+                objEmp.JoinDate = Convert.ToDateTime(myDataRec["JOINDATE"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("BIRTHDATE")))
+                objEmp.BirthDate = Convert.ToDateTime(myDataRec["BIRTHDATE"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMPPLANT")))
+                objEmp.EmpPlant = Convert.ToString(myDataRec["EMPPLANT"]);
+
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("EMAILID")))
+                objEmp.EMailID = Convert.ToString(myDataRec["EMAILID"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("MOBILENO")))
+                objEmp.MobileNo = Convert.ToString(myDataRec["MOBILENO"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LEFTDATE")))
+                objEmp.LeftDate = Convert.ToString(myDataRec["LEFTDATE"]);
+            objEmp.InActive = Convert.ToInt16(myDataRec["INACTIVE"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("GENDER")))
+                objEmp.Gender= Convert.ToString(myDataRec["GENDER"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("COFFFLAG")))
                 objEmp.FlgCOff = Convert.ToInt16(myDataRec["COFFFLAG"]);
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("LWFFLAG")))
@@ -67,6 +71,15 @@ namespace DAL
             if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("PTFLAG")))
                 objEmp.CalculatePT= Convert.ToInt16(myDataRec["PTFLAG"]);
 
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("BANKID")))
+                objEmp.BankID = Convert.ToInt32(myDataRec["BANKID"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("BANKNAME")))
+                objEmp.BankName= Convert.ToString(myDataRec["BANKNAME"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("ACCNO")))
+                objEmp.AccountNo = Convert.ToString(myDataRec["ACCNO"]);
+            if (!myDataRec.IsDBNull(myDataRec.GetOrdinal("PFNO")))
+                objEmp.PFNo = Convert.ToString(myDataRec["PFNO"]);
+            
             objEmp.IsNew = false;
             objEmp.IsEdited = false;
             objEmp.IsDeleted = false;
@@ -93,12 +106,20 @@ namespace DAL
                     {
                         objCmd.Connection = Conn;
                         objCmd.CommandType = CommandType.Text;
-                        objCmd.CommandText = "SELECT a.*, b.DeptName, C.DESIGNATION, D.EMPTYPE " +
-                            " FROM EMPMast a, DEPTMAST b, DESIGNATIONMAST C, EMPTYPEMAST D" +
-                            " WHERE a.dept = b.dbid " +
-                            " AND A.DESIGNATIONID = C.DBID(+) " +
-                            " AND A.EMPTYPEID = D.DBID(+)" +
-                            " and a.DBID = @mDBID";
+                        objCmd.CommandText = "SELECT A.*, B.DEPTNAME, C.EmpType, D.EMPSTATUSNAME, " +
+                            " E.DESIGNATION, F.BANKNAME " +
+                            " FROM EMPMAST A INNER JOIN DEPTMAST B " +
+                            " ON A.DEPT = B.DBID " +
+                            " LEFT OUTER JOIN EMPTYPEMAST C " +
+                            " ON A.EmpTypeID = C.DBID " +
+                            " LEFT OUTER JOIN EMPSTATUSMAST D " +
+                            " ON A.EMPSTATUSID = D.DBID" +
+                            " LEFT OUTER JOIN DESIGNATIONMAST E " +
+                            " ON A.DesignationID = E.DBID" +
+                            " LEFT OUTER JOIN BANKMASTER F " +
+                            " ON A.BANKID = F.DBID" +
+                            " WHERE a.DBID = @mDBID";
+
                         objCmd.Parameters.AddWithValue("@mDBID", dbid);
 
                         if (Conn.State != ConnectionState.Open)
@@ -132,13 +153,22 @@ namespace DAL
         public static EmployeeList GetList(string strWhere)
         {
             EmployeeList objList = null;
-            string strSql = "SELECT A.*, B.DEPTNAME " +
-                " FROM EmpMast A, DEPTMAST B " +
-                " WHERE A.DEPT = B.DBID ";//(+)
+            string strSql = "SELECT A.*, B.DEPTNAME, C.EmpType, D.EMPSTATUSNAME, " +
+                " E.DESIGNATION, F.BANKNAME " +
+                " FROM EMPMAST A INNER JOIN DEPTMAST B " +
+                " ON A.DEPT = B.DBID " +
+                " LEFT OUTER JOIN EMPTYPEMAST C " +
+                " ON A.EmpTypeID = C.DBID " +
+                " LEFT OUTER JOIN EMPSTATUSMAST D " +
+                " ON A.EMPSTATUSID = D.DBID" +
+                " LEFT OUTER JOIN DESIGNATIONMAST E " +
+                " ON A.DesignationID = E.DBID" +
+                " LEFT OUTER JOIN BANKMASTER F " +
+                " ON A.BANKID = F.DBID";
 
             if (strWhere != string.Empty)
                 strSql = strSql + " AND " + strWhere;
-            strSql += " ORDER BY DEPTNAME, INITIALS";
+            strSql += " ORDER BY INITIALS ";
 
             using (SqlConnection Conn = new SqlConnection(General.GetSQLConnectionString()))
             {
@@ -190,12 +220,12 @@ namespace DAL
                         " INITIALS, DEPT, JOINDATE, BIRTHDATE, LEFTDATE, MOBILENO, EMAILID, INACTIVE, " +
                         " EMPPLANT, ST_DATE, MODIFY_DATE, CRBY, MODBY, MACHINENAME, " +
                         " GENDER, DESIGNATIONID, EMPTYPEID, COFFFLAG, LWFFLAG, SALARYFLAG, " +
-                        " ESIFLAG, PFFLAG, PTFLAG) " +
+                        " ESIFLAG, PFFLAG, PTFLAG, BANKID, ACCNO, PFNO, EMPSTATUSID) " +
                         " VALUES (@dbId, @EMPCODE, @FIRSTNAME, @MIDDLENAME, @LASTNAME,  " +
                         " @INITIALS, @DEPT, @JOINDATE, @BIRTHDATE, @LEFTDATE, @MOBILENO, @EMAILID, @INACTIVE, " +
                         " @EMPPLANT, @STDate, @ModifyDate, @CrBy, @ModBy, @MachineName, "  +
                         " @GENDER, @DesignationID, @EmpTypeID, @COffFlg, @LWFFlg, @SalaryFlg, " +
-                        " @ESIFlg, @PFFlg, @PTFlg)";
+                        " @ESIFlg, @PFFlg, @PTFlg, @BankID, @AccNo, @PFNo, @EmpStatusID)";
                 }
                 else
                 {
@@ -208,7 +238,8 @@ namespace DAL
                         " EMPTYPEID = @EmpTypeID, COFFFLAG = @COffFlg, LWFFLAG = @LWFFlg, " +
                         " SALARYFLAG = @SalaryFlg, ESIFLAG = @ESIFlg, PFFLAG = @PFFlg, " +
                         " PTFLAG = @PTFlg, " +
-                        " MODIFY_DATE = @ModifyDate, MODBY = @ModBy, MACHINENAME = @MachineName " +
+                        " MODIFY_DATE = @ModifyDate, MODBY = @ModBy, MACHINENAME = @MachineName, " +
+                        " BANKID =  @BankID, ACCNO = @AccNo, PFNO = @PFNo, EMPSTATUSID = @EmpStatusID " +
                         " WHERE DBID = @dbId";
                 }
 
@@ -252,6 +283,11 @@ namespace DAL
                     objCmd.Parameters.AddWithValue("@ModifyDate", DateTime.Now);
                     objCmd.Parameters.AddWithValue("@ModBy", "");           //CurrentCompany.m_UserName
                     objCmd.Parameters.AddWithValue("@MachineName", General.GetMachineName());
+
+                    objCmd.Parameters.AddWithValue("@BankID", objEmp.BankID);
+                    objCmd.Parameters.AddWithValue("@AccNo", objEmp.AccountNo);
+                    objCmd.Parameters.AddWithValue("@PFNo", objEmp.PFNo);
+                    objCmd.Parameters.AddWithValue("@EmpStatusID", objEmp.EmpStatusID);
                     objCmd.Parameters.AddWithValue("@dbID", objEmp.DBID);
 
                     if (Conn.State != ConnectionState.Open)

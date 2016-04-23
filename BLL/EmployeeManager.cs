@@ -27,7 +27,13 @@ namespace BLL
         /// <returns></returns>
         public static Employee GetItem(long dbid)
         {
-            return EmployeeDAL.GetItem(dbid);
+            Employee objEmp;
+            objEmp = EmployeeDAL.GetItem(dbid);
+            if (objEmp != null)
+            {
+                objEmp.EmpLeaves = EmpLeaveDAL.GetList(objEmp.DBID);
+            }
+            return objEmp;
         }
 
         /// <summary>
@@ -45,6 +51,23 @@ namespace BLL
                     if (objEmp.IsEdited || objEmp.IsNew)
                     {
                         EmployeeDAL.Save(objEmp);
+                    }
+                    if (objEmp.EmpLeaves != null)
+                    {
+                        foreach (EmployeeLeave objEmpLeave in objEmp.EmpLeaves)
+                        {
+                            if (objEmpLeave.IsDeleted && !objEmpLeave.IsNew)
+                            {
+                                EmpLeaveDAL.Delete(objEmpLeave.DBID);
+                            }
+                            else if ((objEmpLeave.IsEdited || objEmpLeave.IsNew) && !objEmpLeave.IsDeleted)
+                            {
+                                objEmpLeave.EmployeeID = objEmp.DBID;
+                                objEmpLeave.EmployeeName = objEmp.Initials;
+                                objEmpLeave.EmpDept = objEmp.DeptName;
+                                EmpLeaveDAL.Save(objEmpLeave);
+                            }
+                        }
                     }
                     flgSave = true;
                     objTScope.Complete();

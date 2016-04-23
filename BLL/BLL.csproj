@@ -49,6 +49,7 @@
     <Compile Include="DesignationManager.cs" />
     <Compile Include="EmpLeaveManager.cs" />
     <Compile Include="EmployeeManager.cs" />
+    <Compile Include="EmployeeStatusManager.cs" />
     <Compile Include="EmpTypeManager.cs" />
     <Compile Include="frmMainManager.cs" />
     <Compile Include="GeneralBLL.cs" />

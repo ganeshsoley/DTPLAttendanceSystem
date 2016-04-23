@@ -33,6 +33,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnLeaveTypeList = new System.Windows.Forms.Button();
             this.btnEmpList = new System.Windows.Forms.Button();
+            this.txtLeaveType = new System.Windows.Forms.TextBox();
+            this.txtEmpDept = new System.Windows.Forms.TextBox();
+            this.txtEmpName = new System.Windows.Forms.TextBox();
+            this.txtEmpID = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grbLeave = new System.Windows.Forms.GroupBox();
             this.txtCOffDt = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -46,14 +54,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtLeaveType = new System.Windows.Forms.TextBox();
-            this.txtEmpDept = new System.Windows.Forms.TextBox();
-            this.txtEmpName = new System.Windows.Forms.TextBox();
-            this.txtEmpID = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.grbButtons = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -68,7 +68,6 @@
             this.grbProp.Controls.Add(this.label9);
             this.grbProp.Controls.Add(this.btnLeaveTypeList);
             this.grbProp.Controls.Add(this.btnEmpList);
-            this.grbProp.Controls.Add(this.grbLeave);
             this.grbProp.Controls.Add(this.txtLeaveType);
             this.grbProp.Controls.Add(this.txtEmpDept);
             this.grbProp.Controls.Add(this.txtEmpName);
@@ -77,6 +76,7 @@
             this.grbProp.Controls.Add(this.label3);
             this.grbProp.Controls.Add(this.label2);
             this.grbProp.Controls.Add(this.label1);
+            this.grbProp.Controls.Add(this.grbLeave);
             this.grbProp.Location = new System.Drawing.Point(3, 3);
             this.grbProp.Name = "grbProp";
             this.grbProp.Size = new System.Drawing.Size(388, 246);
@@ -122,142 +122,6 @@
             this.btnEmpList.TabIndex = 6;
             this.btnEmpList.UseVisualStyleBackColor = true;
             this.btnEmpList.Click += new System.EventHandler(this.btnEmpList_Click);
-            // 
-            // grbLeave
-            // 
-            this.grbLeave.Controls.Add(this.txtCOffDt);
-            this.grbLeave.Controls.Add(this.label12);
-            this.grbLeave.Controls.Add(this.label11);
-            this.grbLeave.Controls.Add(this.chkHalfDay);
-            this.grbLeave.Controls.Add(this.chkIsCoff);
-            this.grbLeave.Controls.Add(this.txtReason);
-            this.grbLeave.Controls.Add(this.dtpToDate);
-            this.grbLeave.Controls.Add(this.dtpFromDate);
-            this.grbLeave.Controls.Add(this.label8);
-            this.grbLeave.Controls.Add(this.label7);
-            this.grbLeave.Controls.Add(this.label6);
-            this.grbLeave.Controls.Add(this.label5);
-            this.grbLeave.Location = new System.Drawing.Point(6, 133);
-            this.grbLeave.Name = "grbLeave";
-            this.grbLeave.Size = new System.Drawing.Size(376, 107);
-            this.grbLeave.TabIndex = 12;
-            this.grbLeave.TabStop = false;
-            // 
-            // txtCOffDt
-            // 
-            this.txtCOffDt.Location = new System.Drawing.Point(254, 72);
-            this.txtCOffDt.Name = "txtCOffDt";
-            this.txtCOffDt.Size = new System.Drawing.Size(95, 20);
-            this.txtCOffDt.TabIndex = 24;
-            this.txtCOffDt.TextChanged += new System.EventHandler(this.txtCOffDt_TextChanged);
-            this.txtCOffDt.Enter += new System.EventHandler(this.txtCOffDt_Enter);
-            this.txtCOffDt.Leave += new System.EventHandler(this.txtCOffDt_Leave);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(352, 16);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(11, 13);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "*";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(185, 16);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(11, 13);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "*";
-            // 
-            // chkHalfDay
-            // 
-            this.chkHalfDay.AutoSize = true;
-            this.chkHalfDay.Location = new System.Drawing.Point(44, 68);
-            this.chkHalfDay.Name = "chkHalfDay";
-            this.chkHalfDay.Size = new System.Drawing.Size(67, 17);
-            this.chkHalfDay.TabIndex = 21;
-            this.chkHalfDay.Text = "Half Day";
-            this.chkHalfDay.UseVisualStyleBackColor = true;
-            this.chkHalfDay.CheckedChanged += new System.EventHandler(this.chkHalfDay_CheckedChanged);
-            // 
-            // chkIsCoff
-            // 
-            this.chkIsCoff.AutoSize = true;
-            this.chkIsCoff.Location = new System.Drawing.Point(126, 68);
-            this.chkIsCoff.Name = "chkIsCoff";
-            this.chkIsCoff.Size = new System.Drawing.Size(56, 17);
-            this.chkIsCoff.TabIndex = 22;
-            this.chkIsCoff.Text = "C - Off";
-            this.chkIsCoff.UseVisualStyleBackColor = true;
-            this.chkIsCoff.CheckedChanged += new System.EventHandler(this.chkIsCoff_CheckedChanged);
-            // 
-            // txtReason
-            // 
-            this.txtReason.Location = new System.Drawing.Point(87, 42);
-            this.txtReason.Name = "txtReason";
-            this.txtReason.Size = new System.Drawing.Size(262, 20);
-            this.txtReason.TabIndex = 20;
-            this.txtReason.TextChanged += new System.EventHandler(this.txtReason_TextChanged);
-            this.txtReason.Enter += new System.EventHandler(this.txtReason_Enter);
-            this.txtReason.Leave += new System.EventHandler(this.txtReason_Leave);
-            // 
-            // dtpToDate
-            // 
-            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpToDate.Location = new System.Drawing.Point(254, 16);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(95, 20);
-            this.dtpToDate.TabIndex = 17;
-            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
-            // 
-            // dtpFromDate
-            // 
-            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFromDate.Location = new System.Drawing.Point(87, 16);
-            this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(95, 20);
-            this.dtpFromDate.TabIndex = 14;
-            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(194, 72);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 13);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "C-Off Date";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(21, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "Reason";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(202, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "To Date";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "From Date";
             // 
             // txtLeaveType
             // 
@@ -326,6 +190,144 @@
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Employee ID";
+            // 
+            // grbLeave
+            // 
+            this.grbLeave.Controls.Add(this.txtCOffDt);
+            this.grbLeave.Controls.Add(this.label12);
+            this.grbLeave.Controls.Add(this.label11);
+            this.grbLeave.Controls.Add(this.chkHalfDay);
+            this.grbLeave.Controls.Add(this.chkIsCoff);
+            this.grbLeave.Controls.Add(this.txtReason);
+            this.grbLeave.Controls.Add(this.dtpToDate);
+            this.grbLeave.Controls.Add(this.dtpFromDate);
+            this.grbLeave.Controls.Add(this.label8);
+            this.grbLeave.Controls.Add(this.label7);
+            this.grbLeave.Controls.Add(this.label6);
+            this.grbLeave.Controls.Add(this.label5);
+            this.grbLeave.Location = new System.Drawing.Point(6, 133);
+            this.grbLeave.Name = "grbLeave";
+            this.grbLeave.Size = new System.Drawing.Size(376, 107);
+            this.grbLeave.TabIndex = 12;
+            this.grbLeave.TabStop = false;
+            // 
+            // txtCOffDt
+            // 
+            this.txtCOffDt.Location = new System.Drawing.Point(254, 68);
+            this.txtCOffDt.Name = "txtCOffDt";
+            this.txtCOffDt.Size = new System.Drawing.Size(95, 20);
+            this.txtCOffDt.TabIndex = 24;
+            this.txtCOffDt.TextChanged += new System.EventHandler(this.txtCOffDt_TextChanged);
+            this.txtCOffDt.Enter += new System.EventHandler(this.txtCOffDt_Enter);
+            this.txtCOffDt.Leave += new System.EventHandler(this.txtCOffDt_Leave);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(352, 16);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(11, 13);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(185, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(11, 13);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "*";
+            // 
+            // chkHalfDay
+            // 
+            this.chkHalfDay.AutoSize = true;
+            this.chkHalfDay.Location = new System.Drawing.Point(44, 68);
+            this.chkHalfDay.Name = "chkHalfDay";
+            this.chkHalfDay.Size = new System.Drawing.Size(67, 17);
+            this.chkHalfDay.TabIndex = 21;
+            this.chkHalfDay.Text = "Half Day";
+            this.chkHalfDay.UseVisualStyleBackColor = true;
+            this.chkHalfDay.CheckedChanged += new System.EventHandler(this.chkHalfDay_CheckedChanged);
+            // 
+            // chkIsCoff
+            // 
+            this.chkIsCoff.AutoSize = true;
+            this.chkIsCoff.Location = new System.Drawing.Point(126, 68);
+            this.chkIsCoff.Name = "chkIsCoff";
+            this.chkIsCoff.Size = new System.Drawing.Size(56, 17);
+            this.chkIsCoff.TabIndex = 22;
+            this.chkIsCoff.Text = "C - Off";
+            this.chkIsCoff.UseVisualStyleBackColor = true;
+            this.chkIsCoff.CheckedChanged += new System.EventHandler(this.chkIsCoff_CheckedChanged);
+            // 
+            // txtReason
+            // 
+            this.txtReason.Location = new System.Drawing.Point(87, 42);
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(262, 20);
+            this.txtReason.TabIndex = 20;
+            this.txtReason.TextChanged += new System.EventHandler(this.txtReason_TextChanged);
+            this.txtReason.Enter += new System.EventHandler(this.txtReason_Enter);
+            this.txtReason.Leave += new System.EventHandler(this.txtReason_Leave);
+            // 
+            // dtpToDate
+            // 
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpToDate.Location = new System.Drawing.Point(254, 16);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(95, 20);
+            this.dtpToDate.TabIndex = 17;
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
+            this.dtpToDate.Leave += new System.EventHandler(this.dtpToDate_Leave);
+            // 
+            // dtpFromDate
+            // 
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFromDate.Location = new System.Drawing.Point(87, 16);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(95, 20);
+            this.dtpFromDate.TabIndex = 14;
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
+            this.dtpFromDate.Leave += new System.EventHandler(this.dtpFromDate_Leave);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(191, 68);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "C-Off Date";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(21, 42);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Reason";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(202, 16);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "To Date";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "From Date";
             // 
             // grbButtons
             // 

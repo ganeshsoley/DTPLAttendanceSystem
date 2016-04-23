@@ -108,7 +108,7 @@ namespace AttendanceSystem
             {
                 this.Text += " [ " + objLeaveApplication.EmpName + " ]";
             }
-            txtEmpID.Text = objLeaveApplication.EmpID;
+            txtEmpID.Text = objLeaveApplication.EmpCode;
             txtEmpName.Text = objLeaveApplication.EmpName;
             txtEmpDept.Text = objLeaveApplication.EmpDept;
             txtLeaveType.Text = objLeaveApplication.LeaveType;
@@ -125,11 +125,13 @@ namespace AttendanceSystem
             if (objLeaveApplication.IsCOff == 1)
             {
                 chkIsCoff.Checked = true;
+                txtCOffDt.Visible = true;
                 txtCOffDt.Text = objLeaveApplication.COffDate;
             }
             else
             {
                 chkIsCoff.Checked = false;
+                txtCOffDt.Visible = false;
             }
 
             SubscribeToEvents();
@@ -145,10 +147,11 @@ namespace AttendanceSystem
             if (!frmList.IsListCancel)
             {
                 objLeaveApplication.EmployeeID = frmList.DBID;
+                objLeaveApplication.EmpCode = frmList.EmpCode;
                 objLeaveApplication.EmpName = frmList.Initials;
                 objLeaveApplication.EmpDept = frmList.DeptName;
 
-                txtEmpID.Text = objLeaveApplication.EmpID;
+                txtEmpID.Text = objLeaveApplication.EmpCode;
                 txtEmpName.Text = objLeaveApplication.EmpName;
                 txtEmpDept.Text = objLeaveApplication.EmpDept;
 
@@ -283,7 +286,11 @@ namespace AttendanceSystem
             {
                 if (!IsLoading)
                 {
-                    objLeaveApplication.COffDate = txtCOffDt.Text.Trim();
+                    DateTime dt;
+                    if (GeneralMethods.IsDate(txtCOffDt.Text, out dt) & txtCOffDt.Text.Trim().Length == 10)
+                    {
+                        objLeaveApplication.COffDate = txtCOffDt.Text.Trim();
+                    }
                 }
             }
             catch (Exception ex)
@@ -306,7 +313,7 @@ namespace AttendanceSystem
                 if (flgApplyEdit)
                 {
                     // instance the event args and pass it value
-                    LeaveApplicationUpdateEventArgs args = new LeaveApplicationUpdateEventArgs(objLeaveApplication.DBID, objLeaveApplication.EmpID, objLeaveApplication.EmpName, objLeaveApplication.EmpDept, objLeaveApplication.FromDate, objLeaveApplication.ToDate, objLeaveApplication.LeaveType);
+                    LeaveApplicationUpdateEventArgs args = new LeaveApplicationUpdateEventArgs(objLeaveApplication.DBID, objLeaveApplication.EmpCode, objLeaveApplication.EmpName, objLeaveApplication.EmpDept, objLeaveApplication.FromDate, objLeaveApplication.ToDate, objLeaveApplication.LeaveType);
 
                     // raise event wtth  updated 
                     if (Entry_DataChanged != null)
@@ -347,6 +354,15 @@ namespace AttendanceSystem
         }
         #endregion
 
+        private void dtpFromDate_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpToDate_Leave(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class LeaveApplicationUpdateEventArgs : EventArgs
